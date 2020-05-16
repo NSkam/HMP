@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package hmp_gui;
 
 /**
@@ -16,6 +11,7 @@ public class Dashboard extends javax.swing.JFrame {
      */
     public Dashboard() {
         initComponents();
+        this.FormatDashboardForUser();
     }
 
     /**
@@ -27,37 +23,108 @@ public class Dashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Dashboard = new javax.swing.JPanel();
+        Dashboard_tabs = new javax.swing.JTabbedPane();
+        user_info = new javax.swing.JPanel();
+        applications = new javax.swing.JPanel();
+        patient_list = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(153, 204, 255));
 
-        Dashboard.setBackground(new java.awt.Color(153, 204, 255));
+        Dashboard_tabs.setBackground(new java.awt.Color(153, 204, 255));
+        Dashboard_tabs.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
-        javax.swing.GroupLayout DashboardLayout = new javax.swing.GroupLayout(Dashboard);
-        Dashboard.setLayout(DashboardLayout);
-        DashboardLayout.setHorizontalGroup(
-            DashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        javax.swing.GroupLayout user_infoLayout = new javax.swing.GroupLayout(user_info);
+        user_info.setLayout(user_infoLayout);
+        user_infoLayout.setHorizontalGroup(
+            user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 625, Short.MAX_VALUE)
         );
-        DashboardLayout.setVerticalGroup(
-            DashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        user_infoLayout.setVerticalGroup(
+            user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 535, Short.MAX_VALUE)
         );
+
+        Dashboard_tabs.addTab("<html>Πληροφορίες<br>&nbsp;&nbsp;&nbsp; Χρήστη</html>", user_info);
+
+        javax.swing.GroupLayout applicationsLayout = new javax.swing.GroupLayout(applications);
+        applications.setLayout(applicationsLayout);
+        applicationsLayout.setHorizontalGroup(
+            applicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 625, Short.MAX_VALUE)
+        );
+        applicationsLayout.setVerticalGroup(
+            applicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 535, Short.MAX_VALUE)
+        );
+
+        Dashboard_tabs.addTab("Αιτήσεις", applications);
+
+        javax.swing.GroupLayout patient_listLayout = new javax.swing.GroupLayout(patient_list);
+        patient_list.setLayout(patient_listLayout);
+        patient_listLayout.setHorizontalGroup(
+            patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 625, Short.MAX_VALUE)
+        );
+        patient_listLayout.setVerticalGroup(
+            patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 535, Short.MAX_VALUE)
+        );
+
+        Dashboard_tabs.addTab("Λίστα Ασθενών", patient_list);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 625, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 535, Short.MAX_VALUE)
+        );
+
+        Dashboard_tabs.addTab("tab5", jPanel3);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 625, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 535, Short.MAX_VALUE)
+        );
+
+        Dashboard_tabs.addTab("tab5", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Dashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Dashboard_tabs)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Dashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Dashboard_tabs)
         );
+
+        Dashboard_tabs.getAccessibleContext().setAccessibleParent(Dashboard_tabs);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    //Synartisi pou analoga me to ti eidos xrhsth kanei login apokryftei h emfanizei
+    //elements tou gui 
+    private void FormatDashboardForUser(){
+        if(Login.epimelitis_counter == false){
+            this.Dashboard_tabs.remove(patient_list);
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -88,12 +155,17 @@ public class Dashboard extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Dashboard().setVisible(true);
+               new Dashboard().setVisible(true);  
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Dashboard;
+    private javax.swing.JTabbedPane Dashboard_tabs;
+    private javax.swing.JPanel applications;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel patient_list;
+    private javax.swing.JPanel user_info;
     // End of variables declaration//GEN-END:variables
 }

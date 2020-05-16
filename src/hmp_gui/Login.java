@@ -11,13 +11,13 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
     }
-    protected boolean headdoc_counter = false;
-    protected boolean epimelitis_counter = false;
-    protected boolean eidik_counter = false;
-    protected boolean nosileutis_counter = false;
-    protected boolean dioikitis_counter = false;
-    protected boolean gramateia_counter = false;
-    protected boolean promithies_counter = false;
+    protected static boolean headdoc_counter = false;
+    protected static boolean epimelitis_counter = false;
+    protected static boolean eidik_counter = false;
+    protected static boolean nosileutis_counter = false;
+    protected static boolean dioikitis_counter = false;
+    protected static boolean gramateia_counter = false;
+    protected static boolean promithies_counter = false;
        
        
     /*Generated code gia thn dhmiourgia twn diaforwn parathyrwn/koumpiwn ths login
@@ -27,7 +27,6 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
         Login = new javax.swing.JPanel();
         Please_Enter = new javax.swing.JPanel();
         Username = new javax.swing.JLabel();
@@ -41,8 +40,6 @@ public class Login extends javax.swing.JFrame {
         login_error_msg.setVisible(false);
         HMP_logo = new javax.swing.JLabel();
         Greetings = new javax.swing.JLabel();
-
-        jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("HMP - Log-in");
@@ -249,44 +246,41 @@ public class Login extends javax.swing.JFrame {
     promithies --> Tmhma Promuthiwn
     */
     private void Login_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Login_ButtonActionPerformed
-        
-        Dashboard dashboard = new Dashboard();
+
         
        switch(login_username_field.getText()){
         
            case "headdoc":
                headdoc_counter = true;  
-               dispose();
-               dashboard.setVisible(true);
+               break;
            case "epimelitis":
                epimelitis_counter = true;
-               dispose();
-               dashboard.setVisible(true);
+               break;
            case "eidik":
                eidik_counter = true;
-               dispose();
-               dashboard.setVisible(true);
+               break;
            case "nosileutis":
                nosileutis_counter = true;
-               dispose();
-               dashboard.setVisible(true);
+               break;
            case "dioikitis":
                dioikitis_counter = true;
-               dispose();
-               dashboard.setVisible(true);
+               break;
            case "gramateia":
                gramateia_counter = true;
-               dispose();
-               dashboard.setVisible(true);
+               break;
            case "promithies":
                promithies_counter = true;
-               dispose();
-               dashboard.setVisible(true);
+               break;
            default:
                System.out.println("Wrong Username/Passsword");
                login_error_msg.setVisible(true);
+               break;
         }
-       
+               
+               Dashboard dashboard = new Dashboard(); 
+               dispose();
+               dashboard.setVisible(true);
+               
     }//GEN-LAST:event_Login_ButtonActionPerformed
 
     /**
@@ -333,7 +327,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel Please_Enter;
     private javax.swing.JLabel Username;
     private javax.swing.JButton create_account_button;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel login_error_msg;
     private javax.swing.JPasswordField login_password_field;
     private javax.swing.JTextField login_username_field;
