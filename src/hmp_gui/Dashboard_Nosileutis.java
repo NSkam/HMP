@@ -35,8 +35,8 @@ public class Dashboard_Nosileutis extends javax.swing.JFrame {
         user_info = new javax.swing.JPanel();
         patient_list = new javax.swing.JPanel();
         clinic_info = new javax.swing.JPanel();
-        shifts = new javax.swing.JPanel();
-        eidik_comments = new javax.swing.JPanel();
+        on_calls = new javax.swing.JPanel();
+        docs_sched = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -119,37 +119,37 @@ public class Dashboard_Nosileutis extends javax.swing.JFrame {
 
         Dashboard_tabs.addTab("<html>Πληροφορίες<br>&nbsp;&nbsp;&nbsp;&nbsp; Κλινικής</html>", clinic_info);
 
-        shifts.setBackground(new java.awt.Color(153, 204, 255));
-        shifts.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        on_calls.setBackground(new java.awt.Color(153, 204, 255));
+        on_calls.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
-        javax.swing.GroupLayout shiftsLayout = new javax.swing.GroupLayout(shifts);
-        shifts.setLayout(shiftsLayout);
-        shiftsLayout.setHorizontalGroup(
-            shiftsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout on_callsLayout = new javax.swing.GroupLayout(on_calls);
+        on_calls.setLayout(on_callsLayout);
+        on_callsLayout.setHorizontalGroup(
+            on_callsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        shiftsLayout.setVerticalGroup(
-            shiftsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        on_callsLayout.setVerticalGroup(
+            on_callsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 421, Short.MAX_VALUE)
         );
 
-        Dashboard_tabs.addTab("Εφημερίες", shifts);
+        Dashboard_tabs.addTab("Εφημερίες", on_calls);
 
-        eidik_comments.setBackground(new java.awt.Color(153, 204, 255));
-        eidik_comments.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        docs_sched.setBackground(new java.awt.Color(153, 204, 255));
+        docs_sched.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
-        javax.swing.GroupLayout eidik_commentsLayout = new javax.swing.GroupLayout(eidik_comments);
-        eidik_comments.setLayout(eidik_commentsLayout);
-        eidik_commentsLayout.setHorizontalGroup(
-            eidik_commentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout docs_schedLayout = new javax.swing.GroupLayout(docs_sched);
+        docs_sched.setLayout(docs_schedLayout);
+        docs_schedLayout.setHorizontalGroup(
+            docs_schedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        eidik_commentsLayout.setVerticalGroup(
-            eidik_commentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        docs_schedLayout.setVerticalGroup(
+            docs_schedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 421, Short.MAX_VALUE)
         );
 
-        Dashboard_tabs.addTab("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Πρόγραμμα<br> Υπεύθυνου Ιατρού</html>", eidik_comments);
+        Dashboard_tabs.addTab("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Πρόγραμμα<br> Υπεύθυνου Ιατρού</html>", docs_sched);
 
         javax.swing.GroupLayout Tab_PanelLayout = new javax.swing.GroupLayout(Tab_Panel);
         Tab_Panel.setLayout(Tab_PanelLayout);
@@ -255,10 +255,10 @@ public class Dashboard_Nosileutis extends javax.swing.JFrame {
     private javax.swing.JTabbedPane Dashboard_tabs;
     private javax.swing.JPanel Tab_Panel;
     private javax.swing.JPanel clinic_info;
-    private javax.swing.JPanel eidik_comments;
+    private javax.swing.JPanel docs_sched;
     private javax.swing.JButton logout_button;
+    private javax.swing.JPanel on_calls;
     private javax.swing.JPanel patient_list;
-    private javax.swing.JPanel shifts;
     private javax.swing.JPanel user_info;
     // End of variables declaration//GEN-END:variables
 }

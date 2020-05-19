@@ -36,7 +36,7 @@ public class Dashboard_Eidik extends javax.swing.JFrame {
         applications = new javax.swing.JPanel();
         patient_list = new javax.swing.JPanel();
         clinic_info = new javax.swing.JPanel();
-        eidik_comments = new javax.swing.JPanel();
+        epim_comments = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 204, 255));
@@ -135,21 +135,21 @@ public class Dashboard_Eidik extends javax.swing.JFrame {
 
         Dashboard_tabs.addTab("<html>Πληροφορίες<br>&nbsp;&nbsp;&nbsp;&nbsp; Κλινικής</html>", clinic_info);
 
-        eidik_comments.setBackground(new java.awt.Color(153, 204, 255));
-        eidik_comments.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        epim_comments.setBackground(new java.awt.Color(153, 204, 255));
+        epim_comments.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
-        javax.swing.GroupLayout eidik_commentsLayout = new javax.swing.GroupLayout(eidik_comments);
-        eidik_comments.setLayout(eidik_commentsLayout);
-        eidik_commentsLayout.setHorizontalGroup(
-            eidik_commentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout epim_commentsLayout = new javax.swing.GroupLayout(epim_comments);
+        epim_comments.setLayout(epim_commentsLayout);
+        epim_commentsLayout.setHorizontalGroup(
+            epim_commentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        eidik_commentsLayout.setVerticalGroup(
-            eidik_commentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        epim_commentsLayout.setVerticalGroup(
+            epim_commentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 362, Short.MAX_VALUE)
         );
 
-        Dashboard_tabs.addTab("<html>&nbsp;&nbsp;&nbsp;&nbsp;Σχόλια<br> Επιμελητών</html>", eidik_comments);
+        Dashboard_tabs.addTab("<html>&nbsp;&nbsp;&nbsp;&nbsp;Σχόλια<br> Επιμελητών</html>", epim_comments);
 
         javax.swing.GroupLayout Tab_PanelLayout = new javax.swing.GroupLayout(Tab_Panel);
         Tab_Panel.setLayout(Tab_PanelLayout);
@@ -256,7 +256,7 @@ public class Dashboard_Eidik extends javax.swing.JFrame {
     private javax.swing.JPanel Tab_Panel;
     private javax.swing.JPanel applications;
     private javax.swing.JPanel clinic_info;
-    private javax.swing.JPanel eidik_comments;
+    private javax.swing.JPanel epim_comments;
     private javax.swing.JButton logout_button;
     private javax.swing.JPanel patient_list;
     private javax.swing.JPanel user_info;

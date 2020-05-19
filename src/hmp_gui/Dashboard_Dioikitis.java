@@ -33,10 +33,10 @@ public class Dashboard_Dioikitis extends javax.swing.JFrame {
         Tab_Panel = new javax.swing.JPanel();
         Dashboard_tabs = new javax.swing.JTabbedPane();
         user_info = new javax.swing.JPanel();
-        applications = new javax.swing.JPanel();
-        patient_list = new javax.swing.JPanel();
-        clinic_info = new javax.swing.JPanel();
-        eidik_comments = new javax.swing.JPanel();
+        synallages = new javax.swing.JPanel();
+        supplie_req_list = new javax.swing.JPanel();
+        hosp_rules = new javax.swing.JPanel();
+        legal_issues = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 204, 255));
@@ -87,69 +87,69 @@ public class Dashboard_Dioikitis extends javax.swing.JFrame {
 
         Dashboard_tabs.addTab("<html>Πληροφορίες<br>&nbsp;&nbsp;&nbsp; Χρήστη</html>", user_info);
 
-        applications.setBackground(new java.awt.Color(153, 204, 255));
-        applications.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        synallages.setBackground(new java.awt.Color(153, 204, 255));
+        synallages.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
-        javax.swing.GroupLayout applicationsLayout = new javax.swing.GroupLayout(applications);
-        applications.setLayout(applicationsLayout);
-        applicationsLayout.setHorizontalGroup(
-            applicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout synallagesLayout = new javax.swing.GroupLayout(synallages);
+        synallages.setLayout(synallagesLayout);
+        synallagesLayout.setHorizontalGroup(
+            synallagesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        applicationsLayout.setVerticalGroup(
-            applicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        synallagesLayout.setVerticalGroup(
+            synallagesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 362, Short.MAX_VALUE)
         );
 
-        Dashboard_tabs.addTab("Συναλλαγές", applications);
+        Dashboard_tabs.addTab("Συναλλαγές", synallages);
 
-        patient_list.setBackground(new java.awt.Color(153, 204, 255));
-        patient_list.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        supplie_req_list.setBackground(new java.awt.Color(153, 204, 255));
+        supplie_req_list.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
-        javax.swing.GroupLayout patient_listLayout = new javax.swing.GroupLayout(patient_list);
-        patient_list.setLayout(patient_listLayout);
-        patient_listLayout.setHorizontalGroup(
-            patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout supplie_req_listLayout = new javax.swing.GroupLayout(supplie_req_list);
+        supplie_req_list.setLayout(supplie_req_listLayout);
+        supplie_req_listLayout.setHorizontalGroup(
+            supplie_req_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        patient_listLayout.setVerticalGroup(
-            patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        supplie_req_listLayout.setVerticalGroup(
+            supplie_req_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 362, Short.MAX_VALUE)
         );
 
-        Dashboard_tabs.addTab("Λίστα Ελλείψεων", patient_list);
+        Dashboard_tabs.addTab("Λίστα Ελλείψεων", supplie_req_list);
 
-        clinic_info.setBackground(new java.awt.Color(153, 204, 255));
-        clinic_info.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        hosp_rules.setBackground(new java.awt.Color(153, 204, 255));
+        hosp_rules.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
-        javax.swing.GroupLayout clinic_infoLayout = new javax.swing.GroupLayout(clinic_info);
-        clinic_info.setLayout(clinic_infoLayout);
-        clinic_infoLayout.setHorizontalGroup(
-            clinic_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout hosp_rulesLayout = new javax.swing.GroupLayout(hosp_rules);
+        hosp_rules.setLayout(hosp_rulesLayout);
+        hosp_rulesLayout.setHorizontalGroup(
+            hosp_rulesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        clinic_infoLayout.setVerticalGroup(
-            clinic_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        hosp_rulesLayout.setVerticalGroup(
+            hosp_rulesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 362, Short.MAX_VALUE)
         );
 
-        Dashboard_tabs.addTab("<html>&nbsp;Κανονισμοί<br>Νοσοκομείου</html>", clinic_info);
+        Dashboard_tabs.addTab("<html>&nbsp;Κανονισμοί<br>Νοσοκομείου</html>", hosp_rules);
 
-        eidik_comments.setBackground(new java.awt.Color(153, 204, 255));
-        eidik_comments.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        legal_issues.setBackground(new java.awt.Color(153, 204, 255));
+        legal_issues.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
-        javax.swing.GroupLayout eidik_commentsLayout = new javax.swing.GroupLayout(eidik_comments);
-        eidik_comments.setLayout(eidik_commentsLayout);
-        eidik_commentsLayout.setHorizontalGroup(
-            eidik_commentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout legal_issuesLayout = new javax.swing.GroupLayout(legal_issues);
+        legal_issues.setLayout(legal_issuesLayout);
+        legal_issuesLayout.setHorizontalGroup(
+            legal_issuesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        eidik_commentsLayout.setVerticalGroup(
-            eidik_commentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        legal_issuesLayout.setVerticalGroup(
+            legal_issuesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 362, Short.MAX_VALUE)
         );
 
-        Dashboard_tabs.addTab("<html>&nbsp;&nbsp;Νομικά<br> Ζητήματα</html>", eidik_comments);
+        Dashboard_tabs.addTab("<html>&nbsp;&nbsp;Νομικά<br> Ζητήματα</html>", legal_issues);
 
         javax.swing.GroupLayout Tab_PanelLayout = new javax.swing.GroupLayout(Tab_Panel);
         Tab_Panel.setLayout(Tab_PanelLayout);
@@ -254,11 +254,11 @@ public class Dashboard_Dioikitis extends javax.swing.JFrame {
     private javax.swing.JLayeredPane Dashboard_Layer;
     private javax.swing.JTabbedPane Dashboard_tabs;
     private javax.swing.JPanel Tab_Panel;
-    private javax.swing.JPanel applications;
-    private javax.swing.JPanel clinic_info;
-    private javax.swing.JPanel eidik_comments;
+    private javax.swing.JPanel hosp_rules;
+    private javax.swing.JPanel legal_issues;
     private javax.swing.JButton logout_button;
-    private javax.swing.JPanel patient_list;
+    private javax.swing.JPanel supplie_req_list;
+    private javax.swing.JPanel synallages;
     private javax.swing.JPanel user_info;
     // End of variables declaration//GEN-END:variables
 }
