@@ -11,13 +11,13 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
     }
-    protected boolean headdoc_counter = false;
-    protected boolean epimelitis_counter = false;
-    protected boolean eidik_counter = false;
-    protected boolean nosileutis_counter = false;
-    protected boolean dioikitis_counter = false;
-    protected boolean gramateia_counter = false;
-    protected boolean promithies_counter = false;
+    protected static boolean headdoc_counter = false;
+    protected static boolean epimelitis_counter = false;
+    protected static boolean eidik_counter = false;
+    protected static boolean nosileutis_counter = false;
+    protected static boolean dioikitis_counter = false;
+    protected static boolean gramateia_counter = false;
+    protected static boolean promithies_counter = false;
        
        
     /*Generated code gia thn dhmiourgia twn diaforwn parathyrwn/koumpiwn ths login
@@ -27,7 +27,6 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
         Login = new javax.swing.JPanel();
         Please_Enter = new javax.swing.JPanel();
         Username = new javax.swing.JLabel();
@@ -42,17 +41,17 @@ public class Login extends javax.swing.JFrame {
         HMP_logo = new javax.swing.JLabel();
         Greetings = new javax.swing.JLabel();
 
-        jTextField1.setText("jTextField1");
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("HMP - Log-in");
         setBackground(new java.awt.Color(153, 204, 255));
+        setLocationByPlatform(true);
+        setResizable(false);
 
         Login.setBackground(new java.awt.Color(153, 204, 255));
         Login.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         Please_Enter.setBackground(new java.awt.Color(153, 204, 255));
-        Please_Enter.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)), "Παρακαλώ Εισάγετε", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        Please_Enter.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), "Παρακαλώ Εισάγετε", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(255, 255, 255))); // NOI18N
         Please_Enter.setOpaque(false);
 
         Username.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -151,8 +150,8 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(login_error_msg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Please_EnterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Username)
-                    .addComponent(login_username_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Username, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(login_username_field))
                 .addGap(34, 34, 34)
                 .addGroup(Please_EnterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Password)
@@ -188,8 +187,8 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(LoginLayout.createSequentialGroup()
                         .addGap(86, 86, 86)
                         .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Greetings, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Please_Enter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(Greetings)
+                            .addComponent(Please_Enter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(HMP_logo))
                 .addContainerGap(68, Short.MAX_VALUE))
         );
@@ -198,9 +197,9 @@ public class Login extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
                 .addComponent(HMP_logo)
                 .addGap(26, 26, 26)
-                .addComponent(Greetings, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Greetings, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Please_Enter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Please_Enter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
@@ -249,44 +248,59 @@ public class Login extends javax.swing.JFrame {
     promithies --> Tmhma Promuthiwn
     */
     private void Login_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Login_ButtonActionPerformed
-        
-        Dashboard dashboard = new Dashboard();
+
         
        switch(login_username_field.getText()){
         
            case "headdoc":
                headdoc_counter = true;  
+               Dashboard_Headdoc dashboard_hd = new Dashboard_Headdoc(); 
                dispose();
-               dashboard.setVisible(true);
+               dashboard_hd.setVisible(true);
+               break;
            case "epimelitis":
                epimelitis_counter = true;
+               Dashboard_Epimelitis dashboard_ep = new Dashboard_Epimelitis(); 
                dispose();
-               dashboard.setVisible(true);
+               dashboard_ep.setVisible(true);
+               break;
            case "eidik":
                eidik_counter = true;
+               Dashboard_Eidik dashboard_eid = new Dashboard_Eidik(); 
                dispose();
-               dashboard.setVisible(true);
+               dashboard_eid.setVisible(true);
+               break;
            case "nosileutis":
                nosileutis_counter = true;
+               Dashboard_Nosileutis dashboard_nos = new Dashboard_Nosileutis(); 
                dispose();
-               dashboard.setVisible(true);
+               dashboard_nos.setVisible(true);
+               break;
            case "dioikitis":
                dioikitis_counter = true;
+               Dashboard_Dioikitis dashboard_dioi = new Dashboard_Dioikitis(); 
                dispose();
-               dashboard.setVisible(true);
+               dashboard_dioi.setVisible(true);
+               break;
            case "gramateia":
                gramateia_counter = true;
+               Dashboard_Gramateia dashboard_gra = new Dashboard_Gramateia(); 
                dispose();
-               dashboard.setVisible(true);
+               dashboard_gra.setVisible(true);
+               break;
            case "promithies":
                promithies_counter = true;
+               Dashboard_Promithies dashboard_pro = new Dashboard_Promithies(); 
                dispose();
-               dashboard.setVisible(true);
+               dashboard_pro.setVisible(true);
+               break;
            default:
                System.out.println("Wrong Username/Passsword");
                login_error_msg.setVisible(true);
+               break;
         }
-       
+               
+               
     }//GEN-LAST:event_Login_ButtonActionPerformed
 
     /**
@@ -333,7 +347,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel Please_Enter;
     private javax.swing.JLabel Username;
     private javax.swing.JButton create_account_button;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel login_error_msg;
     private javax.swing.JPasswordField login_password_field;
     private javax.swing.JTextField login_username_field;
