@@ -35,10 +35,10 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         user_info = new javax.swing.JPanel();
         applications = new javax.swing.JPanel();
         patient_list = new javax.swing.JPanel();
-        clinic_info = new javax.swing.JPanel();
         on_call = new javax.swing.JPanel();
         day_offs = new javax.swing.JPanel();
         supplies = new javax.swing.JPanel();
+        clinic_info = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 204, 255));
@@ -60,9 +60,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         Button_Panel.setLayout(Button_PanelLayout);
         Button_PanelLayout.setHorizontalGroup(
             Button_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Button_PanelLayout.createSequentialGroup()
-                .addComponent(logout_button, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(logout_button, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
         );
         Button_PanelLayout.setVerticalGroup(
             Button_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,23 +117,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
             .addGap(0, 466, Short.MAX_VALUE)
         );
 
-        Dashboard_tabs.addTab("Λίστα Ασθενών", patient_list);
-
-        clinic_info.setBackground(new java.awt.Color(153, 204, 255));
-        clinic_info.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-
-        javax.swing.GroupLayout clinic_infoLayout = new javax.swing.GroupLayout(clinic_info);
-        clinic_info.setLayout(clinic_infoLayout);
-        clinic_infoLayout.setHorizontalGroup(
-            clinic_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        clinic_infoLayout.setVerticalGroup(
-            clinic_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 466, Short.MAX_VALUE)
-        );
-
-        Dashboard_tabs.addTab("<html>Πληροφορίες<br>&nbsp;&nbsp;&nbsp;&nbsp; Κλινικής</html>", clinic_info);
+        Dashboard_tabs.addTab("<html>Πληροφορίες<br>&nbsp;&nbsp;&nbsp; Ασθενών</html>", patient_list);
 
         on_call.setBackground(new java.awt.Color(153, 204, 255));
         on_call.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
@@ -175,7 +157,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         supplies.setLayout(suppliesLayout);
         suppliesLayout.setHorizontalGroup(
             suppliesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 601, Short.MAX_VALUE)
+            .addGap(0, 608, Short.MAX_VALUE)
         );
         suppliesLayout.setVerticalGroup(
             suppliesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,6 +165,22 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         );
 
         Dashboard_tabs.addTab("<html>Διαχείριση <br>Ιατρικών<br> Προμηθειών</hmtl>", supplies);
+
+        clinic_info.setBackground(new java.awt.Color(153, 204, 255));
+        clinic_info.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+
+        javax.swing.GroupLayout clinic_infoLayout = new javax.swing.GroupLayout(clinic_info);
+        clinic_info.setLayout(clinic_infoLayout);
+        clinic_infoLayout.setHorizontalGroup(
+            clinic_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        clinic_infoLayout.setVerticalGroup(
+            clinic_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 466, Short.MAX_VALUE)
+        );
+
+        Dashboard_tabs.addTab("<html>Πληροφορίες<br>&nbsp;&nbsp;&nbsp;&nbsp; Κλινικής</html>", clinic_info);
 
         javax.swing.GroupLayout Tab_PanelLayout = new javax.swing.GroupLayout(Tab_Panel);
         Tab_Panel.setLayout(Tab_PanelLayout);
@@ -203,8 +201,8 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         Dashboard_LayerLayout.setHorizontalGroup(
             Dashboard_LayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Dashboard_LayerLayout.createSequentialGroup()
-                .addComponent(Button_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 600, Short.MAX_VALUE))
+                .addComponent(Button_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 605, Short.MAX_VALUE))
             .addGroup(Dashboard_LayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(Tab_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

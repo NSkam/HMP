@@ -33,7 +33,6 @@ public class Dashboard_Gramateia extends javax.swing.JFrame {
         Tab_Panel = new javax.swing.JPanel();
         Dashboard_tabs = new javax.swing.JTabbedPane();
         user_info = new javax.swing.JPanel();
-        patient_list = new javax.swing.JPanel();
         staff_list = new javax.swing.JPanel();
         documents = new javax.swing.JPanel();
 
@@ -85,22 +84,6 @@ public class Dashboard_Gramateia extends javax.swing.JFrame {
 
         Dashboard_tabs.addTab("<html>Πληροφορίες<br>&nbsp;&nbsp;&nbsp; Χρήστη</html>", user_info);
 
-        patient_list.setBackground(new java.awt.Color(153, 204, 255));
-        patient_list.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-
-        javax.swing.GroupLayout patient_listLayout = new javax.swing.GroupLayout(patient_list);
-        patient_list.setLayout(patient_listLayout);
-        patient_listLayout.setHorizontalGroup(
-            patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        patient_listLayout.setVerticalGroup(
-            patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 364, Short.MAX_VALUE)
-        );
-
-        Dashboard_tabs.addTab("Λίστα Ασθενών", patient_list);
-
         staff_list.setBackground(new java.awt.Color(153, 204, 255));
         staff_list.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
@@ -115,7 +98,7 @@ public class Dashboard_Gramateia extends javax.swing.JFrame {
             .addGap(0, 364, Short.MAX_VALUE)
         );
 
-        Dashboard_tabs.addTab("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Λίστα<br>Προσωπικού</html>", staff_list);
+        Dashboard_tabs.addTab("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Λίστα<br>Προσωπικού -<br>&nbsp;&nbsp;&nbsp;Ασθενών</html>", staff_list);
 
         documents.setBackground(new java.awt.Color(153, 204, 255));
         documents.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
@@ -238,7 +221,6 @@ public class Dashboard_Gramateia extends javax.swing.JFrame {
     private javax.swing.JPanel Tab_Panel;
     private javax.swing.JPanel documents;
     private javax.swing.JButton logout_button;
-    private javax.swing.JPanel patient_list;
     private javax.swing.JPanel staff_list;
     private javax.swing.JPanel user_info;
     // End of variables declaration//GEN-END:variables
