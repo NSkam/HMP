@@ -7,7 +7,7 @@ package hmp_gui;
 
 /**
  *
- * @author Alastor
+ * @author Nikolaos Skamnelos
  */
 public class Dashboard_Nosileutis extends javax.swing.JFrame {
 

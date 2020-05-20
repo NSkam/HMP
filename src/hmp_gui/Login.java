@@ -1,4 +1,4 @@
-package hmp_gui;
+package hmp_gui; 
 
 /**
   * @author Nikolaos Skamnelos

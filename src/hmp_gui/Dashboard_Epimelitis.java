@@ -1,16 +1,26 @@
 package hmp_gui;
 
+import java.sql.*;  
+import java.util.ArrayList;
+import java.util.Arrays;
+import data.Epimelitis;
+import data.Clinic;
+
+
 /**
  *
  * @author Nikolaos Skamnelos
  */
 public class Dashboard_Epimelitis extends javax.swing.JFrame {
-
+    
+    
+        Epimelitis epimelitis = new Epimelitis();
     /**
      * Creates new form Dashboard
      */
     public Dashboard_Epimelitis() {
-        initComponents();     
+        initComponents();   
+        this.getAmkaDB();
     }
 
     /**
@@ -30,6 +40,9 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         user_info = new javax.swing.JPanel();
         applications = new javax.swing.JPanel();
         patient_list = new javax.swing.JPanel();
+        Patient_Scroll = new javax.swing.JScrollPane();
+        this.InitPatientList();
+        Patient_Jlist = new javax.swing.JList<>();
         clinic_info = new javax.swing.JPanel();
         eidik_comments = new javax.swing.JPanel();
 
@@ -100,15 +113,28 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         patient_list.setBackground(new java.awt.Color(153, 204, 255));
         patient_list.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
+        Patient_Jlist.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = Arrays.stream(epimelitis.getPatientList()).mapToObj(String::valueOf).toArray(String[]::new);
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        Patient_Scroll.setViewportView(Patient_Jlist);
+
         javax.swing.GroupLayout patient_listLayout = new javax.swing.GroupLayout(patient_list);
         patient_list.setLayout(patient_listLayout);
         patient_listLayout.setHorizontalGroup(
             patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(patient_listLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(Patient_Scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         patient_listLayout.setVerticalGroup(
             patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+            .addGroup(patient_listLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(Patient_Scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         Dashboard_tabs.addTab("Λίστα Ασθενών", patient_list);
@@ -208,8 +234,67 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         login_page.setVisible(true);
         
     }//GEN-LAST:event_logout_buttonActionPerformed
-
- 
+    
+    public void getAmkaDB(){
+        
+       epimelitis.setAMKA(1234567);
+       /*try{  
+           //connect to the MySQL Database
+        Class.forName("com.mysql.jdbc.Driver");  
+        Connection connection=DriverManager.getConnection(  
+        "jdbc:mysql://localhost:3306/sonoo","root","root");    
+        
+        //create the statement to get the AMKA
+        Statement stmt1=connection.createStatement();  
+        ResultSet rs1=stmt1.executeQuery("select amka from doctor where amka=... ");  
+        while(rs1.next()){
+            epimelitis.setAMKA(rs1.getInt("amka"));     
+        }          
+        //Closing Connection
+        connection.close();  
+        }
+       catch(Exception e){ System.out.println(e);}  */
+    }
+    
+    public void InitPatientList(){
+        int[] tempArray={1,23,4,5,67,5};
+        epimelitis.setPatientList(tempArray);
+       /* try{  
+           //connect to the MySQL Database
+        Class.forName("com.mysql.jdbc.Driver");  
+        Connection connection=DriverManager.getConnection(  
+        "jdbc:mysql://localhost:3306/sonoo","root","root");   
+        
+        //create the Statment to get the Patients
+        Statement stmt2=connection.createStatement(); 
+        ResultSet rs2=stmt2.executeQuery("select patient_amka from ... where doctor_amka=... ");  
+        
+        //to store the patients
+        ArrayList<Integer> PatList = new ArrayList<Integer>();
+        
+        //storing the patients from the database
+        while(rs2.next()){
+            PatList.add(rs2.getInt("patient_amka"));        
+        }
+        
+        //Converting PatList to array of integers
+        int[] tempArray = new int[PatList.size()];  
+        for (int i=0; i < tempArray.length; i++){
+        tempArray[i] = PatList.get(i).intValue();
+        }
+        
+        //Setting the patient_list
+        epimelitis.setPatientList(tempArray);
+        
+        //Converting the patient_list to a string list for the Patient_JList
+        String Patient_AMKA_Str[] = Arrays.stream(epimelitis.getPatientList()).mapToObj(String::valueOf).toArray(String[]::new);
+        
+        //Closing Connection
+        connection.close(); 
+       
+        }
+       catch(Exception e){ System.out.println(e);}  */
+    }
     /**
      * @param args the command line arguments
      */
@@ -237,7 +322,7 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -250,6 +335,8 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
     private javax.swing.JPanel Button_Panel;
     private javax.swing.JLayeredPane Dashboard_Layer;
     private javax.swing.JTabbedPane Dashboard_tabs;
+    private javax.swing.JList<String> Patient_Jlist;
+    private javax.swing.JScrollPane Patient_Scroll;
     private javax.swing.JPanel Tab_Panel;
     private javax.swing.JPanel applications;
     private javax.swing.JPanel clinic_info;
@@ -258,4 +345,5 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
     private javax.swing.JPanel patient_list;
     private javax.swing.JPanel user_info;
     // End of variables declaration//GEN-END:variables
+
 }
