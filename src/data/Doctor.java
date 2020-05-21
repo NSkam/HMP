@@ -42,4 +42,8 @@ public class Doctor extends MedicalStaff {
             this.patient_list[i]=PatList[i];
         }
     }
+    
+    public Clinic getClinic(){
+        return this.doc_clinic;
+    }
 }

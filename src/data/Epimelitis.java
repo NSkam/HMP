@@ -10,7 +10,7 @@ public class Epimelitis extends Doctor {
     
     private char rank = ' ';//o bathmos tou epimeliti
     private int num_of_eidik = 0; //Arithmos Eidikeuomenwn
-    private int[] eidik = {}; //Lista Eidikeuomenwn symfwna me ta AMKA tous
+    private int[] eidik = new int[100]; //Lista Eidikeuomenwn symfwna me ta AMKA tous
     
     //Contructor
     public Epimelitis(){}
