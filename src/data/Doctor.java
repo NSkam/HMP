@@ -33,6 +33,10 @@ public class Doctor extends MedicalStaff {
         this.amka = amka_set;
     }
     
+    public String getName(){
+        return this.name;
+    }
+    
     public int[] getPatientList(){
         return this.patient_list;
     }

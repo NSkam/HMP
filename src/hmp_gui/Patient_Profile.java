@@ -1,16 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package hmp_gui;
+
+import data.Patient;
 
 /**
  *
- * @author Alastor
+ * @author Nikolaos Skamnelos
  */
 public class Patient_Profile extends javax.swing.JFrame {
 
+    Patient patient = new Patient();
     /**
      * Creates new form Patient_Profile
      */
@@ -27,22 +25,249 @@ public class Patient_Profile extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        Patient_Profile = new javax.swing.JPanel();
+        patient_info_panel = new javax.swing.JPanel();
+        amka = new javax.swing.JLabel();
+        onoma = new javax.swing.JLabel();
+        history_scroll = new javax.swing.JScrollPane();
+        patient_history_panel = new javax.swing.JPanel();
+        patient_history = new javax.swing.JTextArea();
+        age = new javax.swing.JLabel();
+        supervised_by = new javax.swing.JLabel();
+        status = new javax.swing.JLabel();
+        cond_scroll = new javax.swing.JScrollPane();
+        patient_conditions_panel = new javax.swing.JPanel();
+        patient_conditions = new javax.swing.JTextArea();
+        patient_history_label = new javax.swing.JLabel();
+        patient_cond_label = new javax.swing.JLabel();
+        patient_amka = new javax.swing.JTextArea();
+        patient_name = new javax.swing.JTextArea();
+        patient_age = new javax.swing.JTextArea();
+        patient_doctor = new javax.swing.JTextArea();
+        patient_status = new javax.swing.JTextArea();
+        change_info_button = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Patient Info");
+
+        Patient_Profile.setBackground(new java.awt.Color(153, 204, 255));
+
+        patient_info_panel.setBackground(new java.awt.Color(153, 204, 255));
+        patient_info_panel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2), "Στοιχεία Ασθενή", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+
+        amka.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        amka.setForeground(new java.awt.Color(255, 255, 255));
+        amka.setText("AMKA:");
+
+        onoma.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        onoma.setForeground(new java.awt.Color(255, 255, 255));
+        onoma.setText("Ονοματεπώνυμο:");
+
+        patient_history.setEditable(false);
+        patient_history.setColumns(20);
+        patient_history.setRows(5);
+
+        javax.swing.GroupLayout patient_history_panelLayout = new javax.swing.GroupLayout(patient_history_panel);
+        patient_history_panel.setLayout(patient_history_panelLayout);
+        patient_history_panelLayout.setHorizontalGroup(
+            patient_history_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(patient_history_panelLayout.createSequentialGroup()
+                .addComponent(patient_history, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        patient_history_panelLayout.setVerticalGroup(
+            patient_history_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(patient_history, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+        );
+
+        history_scroll.setViewportView(patient_history_panel);
+
+        age.setBackground(new java.awt.Color(255, 255, 255));
+        age.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        age.setForeground(new java.awt.Color(255, 255, 255));
+        age.setText("Ηλικία:");
+
+        supervised_by.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        supervised_by.setForeground(new java.awt.Color(255, 255, 255));
+        supervised_by.setText("Υπεύθυνος Ιατρός:");
+
+        status.setBackground(new java.awt.Color(255, 255, 255));
+        status.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        status.setForeground(new java.awt.Color(255, 255, 255));
+        status.setText("Κατάσταση:");
+
+        patient_conditions.setEditable(false);
+        patient_conditions.setColumns(20);
+        patient_conditions.setRows(5);
+
+        javax.swing.GroupLayout patient_conditions_panelLayout = new javax.swing.GroupLayout(patient_conditions_panel);
+        patient_conditions_panel.setLayout(patient_conditions_panelLayout);
+        patient_conditions_panelLayout.setHorizontalGroup(
+            patient_conditions_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(patient_conditions_panelLayout.createSequentialGroup()
+                .addComponent(patient_conditions, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        patient_conditions_panelLayout.setVerticalGroup(
+            patient_conditions_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(patient_conditions, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+        );
+
+        cond_scroll.setViewportView(patient_conditions_panel);
+
+        patient_history_label.setBackground(new java.awt.Color(255, 255, 255));
+        patient_history_label.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        patient_history_label.setForeground(new java.awt.Color(255, 255, 255));
+        patient_history_label.setText("Ιστορικό Ασθενή:");
+
+        patient_cond_label.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        patient_cond_label.setForeground(new java.awt.Color(255, 255, 255));
+        patient_cond_label.setText("Παθήσεις Ασθενή:");
+
+        patient_amka.setEditable(false);
+        patient_amka.setColumns(20);
+        patient_amka.setRows(5);
+
+        patient_name.setEditable(false);
+        patient_name.setColumns(20);
+        patient_name.setRows(5);
+
+        patient_age.setEditable(false);
+        patient_age.setColumns(20);
+        patient_age.setRows(5);
+
+        patient_doctor.setEditable(false);
+        patient_doctor.setColumns(20);
+        patient_doctor.setRows(5);
+
+        patient_status.setEditable(false);
+        patient_status.setColumns(20);
+        patient_status.setRows(5);
+
+        change_info_button.setText("Αλλαγή Στοιχείων Ασθενή");
+
+        javax.swing.GroupLayout patient_info_panelLayout = new javax.swing.GroupLayout(patient_info_panel);
+        patient_info_panel.setLayout(patient_info_panelLayout);
+        patient_info_panelLayout.setHorizontalGroup(
+            patient_info_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patient_info_panelLayout.createSequentialGroup()
+                .addGroup(patient_info_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(patient_info_panelLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(history_scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(patient_info_panelLayout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(patient_history_label)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addGroup(patient_info_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cond_scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patient_info_panelLayout.createSequentialGroup()
+                        .addComponent(patient_cond_label)
+                        .addGap(70, 70, 70)))
+                .addGap(38, 38, 38))
+            .addGroup(patient_info_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(patient_info_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, patient_info_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(status)
+                        .addComponent(amka)
+                        .addComponent(supervised_by)
+                        .addComponent(onoma)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(patient_info_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(patient_doctor, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+                    .addComponent(patient_age)
+                    .addComponent(patient_name)
+                    .addComponent(patient_status)
+                    .addComponent(patient_amka))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patient_info_panelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(change_info_button, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        patient_info_panelLayout.setVerticalGroup(
+            patient_info_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patient_info_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(change_info_button)
+                .addGap(19, 19, 19)
+                .addGroup(patient_info_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(amka)
+                    .addComponent(patient_amka, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(patient_info_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(onoma)
+                    .addComponent(patient_status, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(patient_info_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(age)
+                    .addComponent(patient_name, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(patient_info_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(supervised_by)
+                    .addComponent(patient_doctor, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(patient_info_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(status)
+                    .addComponent(patient_age, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGroup(patient_info_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(patient_history_label)
+                    .addComponent(patient_cond_label))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(patient_info_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(history_scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cond_scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33))
+        );
+
+        javax.swing.GroupLayout Patient_ProfileLayout = new javax.swing.GroupLayout(Patient_Profile);
+        Patient_Profile.setLayout(Patient_ProfileLayout);
+        Patient_ProfileLayout.setHorizontalGroup(
+            Patient_ProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Patient_ProfileLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(patient_info_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+        Patient_ProfileLayout.setVerticalGroup(
+            Patient_ProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Patient_ProfileLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(patient_info_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(Patient_Profile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(Patient_Profile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void ShowPatientInfo(Patient patient){
+            
+            String amka = Integer.toString(patient.getAmka());
+            String age = Integer.toString(patient.getAge());
+            patient_amka.setText(amka);
+            patient_name.setText(patient.getName());
+            patient_age.setText(age);
+            patient_doctor.setText(patient.getSupervisedBy().getName());
+            patient_status.setText(patient.getStatus());
+            patient_history.setText(patient.getHistory());
+            patient_conditions.setText(patient.getConditions());
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -79,5 +304,26 @@ public class Patient_Profile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Patient_Profile;
+    private javax.swing.JLabel age;
+    private javax.swing.JLabel amka;
+    private javax.swing.JButton change_info_button;
+    private javax.swing.JScrollPane cond_scroll;
+    private javax.swing.JScrollPane history_scroll;
+    private javax.swing.JLabel onoma;
+    private javax.swing.JTextArea patient_age;
+    private javax.swing.JTextArea patient_amka;
+    private javax.swing.JLabel patient_cond_label;
+    private javax.swing.JTextArea patient_conditions;
+    private javax.swing.JPanel patient_conditions_panel;
+    private javax.swing.JTextArea patient_doctor;
+    private javax.swing.JTextArea patient_history;
+    private javax.swing.JLabel patient_history_label;
+    private javax.swing.JPanel patient_history_panel;
+    private javax.swing.JPanel patient_info_panel;
+    private javax.swing.JTextArea patient_name;
+    private javax.swing.JTextArea patient_status;
+    private javax.swing.JLabel status;
+    private javax.swing.JLabel supervised_by;
     // End of variables declaration//GEN-END:variables
 }
