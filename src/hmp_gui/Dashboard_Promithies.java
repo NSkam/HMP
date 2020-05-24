@@ -7,7 +7,7 @@ package hmp_gui;
 
 /**
  *
- * @author Alastor
+ * @author Nikolaos Skamnelos
  */
 public class Dashboard_Promithies extends javax.swing.JFrame {
 

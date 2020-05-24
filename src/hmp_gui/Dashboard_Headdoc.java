@@ -7,7 +7,7 @@ package hmp_gui;
 
 /**
  *
- * @author Alastor
+ * @author Nikolaos Skamnelos
  */
 public class Dashboard_Headdoc extends javax.swing.JFrame {
 

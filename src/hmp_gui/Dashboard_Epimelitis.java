@@ -1,16 +1,32 @@
 package hmp_gui;
 
+import java.sql.*;  
+import java.util.ArrayList;
+import java.util.Arrays;
+import data.Epimelitis;
+import data.Clinic;
+import data.Patient;
+import data.Doctor;
+
+
+
 /**
  *
  * @author Nikolaos Skamnelos
  */
 public class Dashboard_Epimelitis extends javax.swing.JFrame {
-
+    
+    
+        Epimelitis epimelitis = new Epimelitis();
+        ArrayList<String> JList_Str = new ArrayList<String>(200);
     /**
      * Creates new form Dashboard
      */
     public Dashboard_Epimelitis() {
-        initComponents();     
+        initComponents(); 
+        Settings();
+        this.getAmkaDB();
+        
     }
 
     /**
@@ -30,6 +46,13 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         user_info = new javax.swing.JPanel();
         applications = new javax.swing.JPanel();
         patient_list = new javax.swing.JPanel();
+        Patient_Scroll = new javax.swing.JScrollPane();
+        Patient_Jlist = new javax.swing.JList<>();
+        this.InitPatientList();
+        SelectPatButton = new javax.swing.JButton();
+        permission_error_msg = new javax.swing.JLabel();
+        permission_error_msg.setVisible(false);
+        select_patient_label = new javax.swing.JLabel();
         clinic_info = new javax.swing.JPanel();
         eidik_comments = new javax.swing.JPanel();
 
@@ -64,6 +87,11 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         );
 
         Dashboard_tabs.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        Dashboard_tabs.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                Dashboard_tabsStateChanged(evt);
+            }
+        });
 
         user_info.setBackground(new java.awt.Color(153, 204, 255));
         user_info.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
@@ -100,15 +128,61 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         patient_list.setBackground(new java.awt.Color(153, 204, 255));
         patient_list.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
+        Patient_Jlist.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        Patient_Jlist.setModel(new javax.swing.DefaultListModel<String>());
+        //Update Default List Model for the Jlist
+        javax.swing.DefaultListModel<String> patient_jlist_model = (javax.swing.DefaultListModel<String>)Patient_Jlist.getModel();
+        for(int x=0;x<JList_Str.size();x++){
+            patient_jlist_model.addElement(JList_Str.get(x));
+        }
+        Patient_Scroll.setViewportView(Patient_Jlist);
+
+        SelectPatButton.setText("Επιλογή");
+        SelectPatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SelectPatButtonActionPerformed(evt);
+            }
+        });
+
+        permission_error_msg.setBackground(new java.awt.Color(102, 153, 255));
+        permission_error_msg.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        permission_error_msg.setForeground(new java.awt.Color(255, 0, 0));
+        permission_error_msg.setText("<html>Δεν έχετε άδεια να δείτε τα στοιχεία αυτού του Ασθενή... <br>Επιλέξτε κάποιον άλλον.</html>");
+
+        select_patient_label.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        select_patient_label.setForeground(new java.awt.Color(255, 255, 255));
+        select_patient_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        select_patient_label.setText("Παρακαλώ επιλέξτε Ασθενή:");
+        select_patient_label.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+
         javax.swing.GroupLayout patient_listLayout = new javax.swing.GroupLayout(patient_list);
         patient_list.setLayout(patient_listLayout);
         patient_listLayout.setHorizontalGroup(
             patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(patient_listLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(select_patient_label)
+                    .addGroup(patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(patient_listLayout.createSequentialGroup()
+                            .addComponent(permission_error_msg, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(SelectPatButton))
+                        .addComponent(Patient_Scroll, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE)))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         patient_listLayout.setVerticalGroup(
             patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patient_listLayout.createSequentialGroup()
+                .addContainerGap(53, Short.MAX_VALUE)
+                .addComponent(select_patient_label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Patient_Scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(SelectPatButton)
+                    .addComponent(permission_error_msg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25))
         );
 
         Dashboard_tabs.addTab("Λίστα Ασθενών", patient_list);
@@ -149,7 +223,7 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         Tab_Panel.setLayout(Tab_PanelLayout);
         Tab_PanelLayout.setHorizontalGroup(
             Tab_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Dashboard_tabs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
+            .addComponent(Dashboard_tabs, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         Tab_PanelLayout.setVerticalGroup(
             Tab_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,6 +265,8 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
             .addComponent(Dashboard_Layer)
         );
 
+        getAccessibleContext().setAccessibleName("DashboardEpimelitis");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -209,7 +285,114 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         
     }//GEN-LAST:event_logout_buttonActionPerformed
 
- 
+    //An epilektei h 2h kartela na kanei diplay
+    private void Dashboard_tabsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_Dashboard_tabsStateChanged
+        if(Dashboard_tabs.getSelectedIndex()==2) 
+            {
+                this.displayPatListMenu();
+            }
+    }//GEN-LAST:event_Dashboard_tabsStateChanged
+
+    //Otan patiete to koumpi pairnei to Selected Value apo th lista kai kanei checkDocPermisions()
+    private void SelectPatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectPatButtonActionPerformed
+        int Pat_Jlist_Index = Patient_Jlist.getSelectedIndex();
+        Patient patient = epimelitis.getPatientList().get(Pat_Jlist_Index);
+        
+        
+        //get his values from the Database
+       /* try{  
+           //connect to the MySQL Database
+        Class.forName("com.mysql.jdbc.Driver");  
+        Connection connection=DriverManager.getConnection(  
+        "jdbc:mysql://localhost:3306/sonoo","root","root");    
+        
+        //create the statement to get the AMKA
+        Statement stmt3=connection.createStatement();  
+        ResultSet rs2=stmt3.executeQuery("select * from patient where amka=... ");  
+        while(rs2.next()){
+            patient.setSupervisedBy(rs2.getInt("amka"));     
+        }          
+        //Closing Connection
+        connection.close();  
+        }
+       catch(Exception e){ System.out.println(e);}  */
+       
+       //boolean can_check = patient.CheckDocPermissions(patient.getSupervisedBy().getAMKA(),"Check");
+       boolean can_check = true;
+       //An isxuei dhmiourgise to parathyro patient_profile, kane set to info tou patient sta pedia
+       //kai kane to parathyro visible, alliws kane display error message.
+       if (can_check){
+           patient = patient.getPatientInfo();//***************************************
+           Patient_Profile PatientProfile = new Patient_Profile(epimelitis.getAMKA(),this,patient);
+           PatientProfile.ShowPatientInfo(patient);
+           PatientProfile.setVisible(true);
+           this.setEnabled(false);
+       }
+       else {
+           Conditional_Message display_error_msg = new Conditional_Message(this);
+           display_error_msg.triggerMsg("<html>ΣΦΑΛΜΑ: <br> Δεν έχετε άδεια να δείτε τα στοιχεία αυτού του Ασθενή... <br>Επιλέξτε κάποιον άλλον.</html>");
+           display_error_msg.setVisible(true);
+           this.setEnabled(false);
+       }
+    }//GEN-LAST:event_SelectPatButtonActionPerformed
+    
+    //Gia na paroume to Amka tou giatrou*************************************
+    public void getAmkaDB(){
+        
+       epimelitis.setAMKA(1234567);
+       /*try{  
+           //connect to the MySQL Database
+        Class.forName("com.mysql.jdbc.Driver");  
+        Connection connection=DriverManager.getConnection(  
+        "jdbc:mysql://localhost:3306/sonoo","root","root");    
+        
+        //create the statement to get the AMKA
+        Statement stmt1=connection.createStatement();  
+        ResultSet rs1=stmt1.executeQuery("select amka from doctor where amka=... ");  
+        while(rs1.next()){
+            epimelitis.setAMKA(rs1.getInt("amka"));     
+        }          
+        //Closing Connection
+        connection.close();  
+        }
+       catch(Exception e){ System.out.println(e);}  */
+    }
+    
+    //Gia na paroume to Patient List tou giatrou
+    public void InitPatientList(){
+        ArrayList<Patient> tempArray= new ArrayList<Patient>(200);
+        Doctor d1 = new Doctor();
+        Patient p1 = new Patient(1, "BOB", 12, "Thanatos", "Death", d1, Patient.status_enum.very_bad);
+        Patient p2 = new Patient(2, "BOB", 12, "Thanatos", "Death", d1, Patient.status_enum.very_bad);
+        Patient p3 = new Patient(3, "BOB", 12, "Thanatos", "Death", d1, Patient.status_enum.very_bad);
+        Patient p4 = new Patient(4, "BOB", 12, "Thanatos", "Death", d1, Patient.status_enum.very_bad);
+                
+        tempArray.add(p1);
+        tempArray.add(p2);
+        tempArray.add(p3);
+        tempArray.add(p4);
+        
+       epimelitis.setPatientList(tempArray);
+       JList_Str.clear();
+         for(int i=0 ; i<epimelitis.getPatientList().size();i++){
+         this.JList_Str.add("AMKA: " + epimelitis.getPatientList().get(i).getAmka()+ "        " + "Name: " + epimelitis.getPatientList().get(i).getName());
+         }
+    }
+    
+    //Kanei Display to Patient Menu
+    public void displayPatListMenu(){
+        Patient_Jlist.setVisible(true);
+        Patient_Scroll.setVisible(true);
+        permission_error_msg.setVisible(false);
+        
+    }
+    
+    //Apokryptei merika Stoixeia tou gui
+    public void Settings(){
+        Patient_Scroll.setVisible(false);
+        Patient_Jlist.setVisible(false);
+        permission_error_msg.setVisible(false);
+    }
     /**
      * @param args the command line arguments
      */
@@ -237,7 +420,7 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -250,12 +433,18 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
     private javax.swing.JPanel Button_Panel;
     private javax.swing.JLayeredPane Dashboard_Layer;
     private javax.swing.JTabbedPane Dashboard_tabs;
+    private javax.swing.JList<String> Patient_Jlist;
+    private javax.swing.JScrollPane Patient_Scroll;
+    private javax.swing.JButton SelectPatButton;
     private javax.swing.JPanel Tab_Panel;
     private javax.swing.JPanel applications;
     private javax.swing.JPanel clinic_info;
     private javax.swing.JPanel eidik_comments;
     private javax.swing.JButton logout_button;
     private javax.swing.JPanel patient_list;
+    private javax.swing.JLabel permission_error_msg;
+    private javax.swing.JLabel select_patient_label;
     private javax.swing.JPanel user_info;
     // End of variables declaration//GEN-END:variables
+
 }
