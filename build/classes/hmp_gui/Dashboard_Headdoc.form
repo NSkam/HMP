@@ -7,10 +7,10 @@
       <Color blue="ff" green="cc" red="99" type="rgb"/>
     </Property>
     <Property name="locationByPlatform" type="boolean" value="true"/>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[695, 477]"/>
+    </Property>
   </Properties>
-  <AccessibilityProperties>
-    <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="DashboardEpimelitis"/>
-  </AccessibilityProperties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
@@ -54,8 +54,8 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="Button_Panel" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="600" max="32767" attributes="0"/>
+                  <Component id="Button_Panel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="605" max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Component id="Tab_Panel" alignment="0" max="32767" attributes="0"/>
@@ -65,8 +65,8 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="454" max="32767" attributes="0"/>
-                  <Component id="Button_Panel" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="450" max="32767" attributes="0"/>
+                  <Component id="Button_Panel" min="-2" max="-2" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Component id="Tab_Panel" alignment="0" max="32767" attributes="0"/>
@@ -83,10 +83,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="logout_button" min="-2" pref="95" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="logout_button" alignment="0" pref="90" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -120,7 +117,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="Dashboard_tabs" alignment="1" max="32767" attributes="0"/>
+                  <Component id="Dashboard_tabs" alignment="1" pref="695" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -134,14 +131,6 @@
               <Properties>
                 <Property name="tabPlacement" type="int" value="2"/>
               </Properties>
-              <AccessibilityProperties>
-                <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="Dashboard_tabs"/>
-                </Property>
-              </AccessibilityProperties>
-              <Events>
-                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="Dashboard_tabsStateChanged"/>
-              </Events>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
               <SubComponents>
@@ -174,7 +163,7 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="470" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="466" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -208,7 +197,7 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="470" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="466" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -228,8 +217,8 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="&#x39b;&#x3af;&#x3c3;&#x3c4;&#x3b1; &#x391;&#x3c3;&#x3b8;&#x3b5;&#x3bd;&#x3ce;&#x3bd;">
-                        <Property name="tabTitle" type="java.lang.String" value="&#x39b;&#x3af;&#x3c3;&#x3c4;&#x3b1; &#x391;&#x3c3;&#x3b8;&#x3b5;&#x3bd;&#x3ce;&#x3bd;"/>
+                      <JTabbedPaneConstraints tabName="&lt;html&gt;&#x3a0;&#x3bb;&#x3b7;&#x3c1;&#x3bf;&#x3c6;&#x3bf;&#x3c1;&#x3af;&#x3b5;&#x3c2;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; &#x391;&#x3c3;&#x3b8;&#x3b5;&#x3bd;&#x3ce;&#x3bd;&lt;/html&gt;">
+                        <Property name="tabTitle" type="java.lang.String" value="&lt;html&gt;&#x3a0;&#x3bb;&#x3b7;&#x3c1;&#x3bf;&#x3c6;&#x3bf;&#x3c1;&#x3af;&#x3b5;&#x3c2;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; &#x391;&#x3c3;&#x3b8;&#x3b5;&#x3bd;&#x3ce;&#x3bd;&lt;/html&gt;"/>
                       </JTabbedPaneConstraints>
                     </Constraint>
                   </Constraints>
@@ -237,108 +226,110 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="select_patient_label" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="permission_error_msg" min="-2" pref="392" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="SelectPatButton" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="Patient_Scroll" alignment="0" pref="503" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace pref="57" max="32767" attributes="0"/>
-                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="53" max="32767" attributes="0"/>
-                              <Component id="select_patient_label" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="Patient_Scroll" min="-2" pref="321" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="SelectPatButton" min="-2" max="-2" attributes="0"/>
-                                  <Component id="permission_error_msg" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                          </Group>
+                          <EmptySpace min="0" pref="466" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
-                  <SubComponents>
-                    <Container class="javax.swing.JScrollPane" name="Patient_Scroll">
-                      <AuxValues>
-                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                      </AuxValues>
+                </Container>
+                <Container class="javax.swing.JPanel" name="on_call">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="cc" red="99" type="rgb"/>
+                    </Property>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder roundedCorners="true">
+                          <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                        </LineBorder>
+                      </Border>
+                    </Property>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                      <JTabbedPaneConstraints tabName="&lt;html&gt;&#x394;&#x3b9;&#x3b1;&#x3c7;&#x3b5;&#x3af;&#x3c1;&#x3b9;&#x3c3;&#x3b7;&lt;br&gt; &#x395;&#x3c6;&#x3b7;&#x3bc;&#x3b5;&#x3c1;&#x3b9;&#x3ce;&#x3bd;&lt;/html&gt;">
+                        <Property name="tabTitle" type="java.lang.String" value="&lt;html&gt;&#x394;&#x3b9;&#x3b1;&#x3c7;&#x3b5;&#x3af;&#x3c1;&#x3b9;&#x3c3;&#x3b7;&lt;br&gt; &#x395;&#x3c6;&#x3b7;&#x3bc;&#x3b5;&#x3c1;&#x3b9;&#x3ce;&#x3bd;&lt;/html&gt;"/>
+                      </JTabbedPaneConstraints>
+                    </Constraint>
+                  </Constraints>
 
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                      <SubComponents>
-                        <Component class="javax.swing.JList" name="Patient_Jlist">
-                          <Properties>
-                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                                <LineBorder roundedCorners="true">
-                                  <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
-                                </LineBorder>
-                              </Border>
-                            </Property>
-                            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                              <Connection code="new javax.swing.DefaultListModel&lt;String&gt;()" type="code"/>
-                            </Property>
-                          </Properties>
-                          <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="this.InitPatientList();"/>
-                            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="         //Update Default List Model for the Jlist&#xa;        javax.swing.DefaultListModel&lt;String&gt; patient_jlist_model = (javax.swing.DefaultListModel&lt;String&gt;)Patient_Jlist.getModel();&#xa;        for(int x=0;x&lt;JList_Str.size();x++){&#xa;            patient_jlist_model.addElement(JList_Str.get(x));&#xa;        }"/>
-                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                          </AuxValues>
-                        </Component>
-                      </SubComponents>
-                    </Container>
-                    <Component class="javax.swing.JButton" name="SelectPatButton">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="&#x395;&#x3c0;&#x3b9;&#x3bb;&#x3bf;&#x3b3;&#x3ae;"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SelectPatButtonActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="permission_error_msg">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="99" red="66" type="rgb"/>
-                        </Property>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="12" style="0"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#x394;&#x3b5;&#x3bd; &#x3ad;&#x3c7;&#x3b5;&#x3c4;&#x3b5; &#x3ac;&#x3b4;&#x3b5;&#x3b9;&#x3b1; &#x3bd;&#x3b1; &#x3b4;&#x3b5;&#x3af;&#x3c4;&#x3b5; &#x3c4;&#x3b1; &#x3c3;&#x3c4;&#x3bf;&#x3b9;&#x3c7;&#x3b5;&#x3af;&#x3b1; &#x3b1;&#x3c5;&#x3c4;&#x3bf;&#x3cd; &#x3c4;&#x3bf;&#x3c5; &#x391;&#x3c3;&#x3b8;&#x3b5;&#x3bd;&#x3ae;... &lt;br&gt;&#x395;&#x3c0;&#x3b9;&#x3bb;&#x3ad;&#x3be;&#x3c4;&#x3b5; &#x3ba;&#x3ac;&#x3c0;&#x3bf;&#x3b9;&#x3bf;&#x3bd; &#x3ac;&#x3bb;&#x3bb;&#x3bf;&#x3bd;.&lt;/html&gt;"/>
-                      </Properties>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="permission_error_msg.setVisible(false);"/>
-                      </AuxValues>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="select_patient_label">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="24" style="0"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="&#x3a0;&#x3b1;&#x3c1;&#x3b1;&#x3ba;&#x3b1;&#x3bb;&#x3ce; &#x3b5;&#x3c0;&#x3b9;&#x3bb;&#x3ad;&#x3be;&#x3c4;&#x3b5; &#x391;&#x3c3;&#x3b8;&#x3b5;&#x3bd;&#x3ae;:"/>
-                        <Property name="debugGraphicsOptions" type="int" value="-1"/>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="466" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                </Container>
+                <Container class="javax.swing.JPanel" name="day_offs">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="cc" red="99" type="rgb"/>
+                    </Property>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder roundedCorners="true">
+                          <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                        </LineBorder>
+                      </Border>
+                    </Property>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                      <JTabbedPaneConstraints tabName="&lt;html&gt;&#x394;&#x3b9;&#x3b1;&#x3c7;&#x3b5;&#x3af;&#x3c1;&#x3b9;&#x3c3;&#x3b7;&lt;br&gt;&amp;nbsp;&amp;nbsp;&#x386;&#x3b4;&#x3b5;&#x3b9;&#x3c9;&#x3bd;&lt;/html&gt;">
+                        <Property name="tabTitle" type="java.lang.String" value="&lt;html&gt;&#x394;&#x3b9;&#x3b1;&#x3c7;&#x3b5;&#x3af;&#x3c1;&#x3b9;&#x3c3;&#x3b7;&lt;br&gt;&amp;nbsp;&amp;nbsp;&#x386;&#x3b4;&#x3b5;&#x3b9;&#x3c9;&#x3bd;&lt;/html&gt;"/>
+                      </JTabbedPaneConstraints>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="466" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                </Container>
+                <Container class="javax.swing.JPanel" name="supplies">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="cc" red="99" type="rgb"/>
+                    </Property>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                      <JTabbedPaneConstraints tabName="&lt;html&gt;&#x394;&#x3b9;&#x3b1;&#x3c7;&#x3b5;&#x3af;&#x3c1;&#x3b9;&#x3c3;&#x3b7; &lt;br&gt;&#x399;&#x3b1;&#x3c4;&#x3c1;&#x3b9;&#x3ba;&#x3ce;&#x3bd;&lt;br&gt; &#x3a0;&#x3c1;&#x3bf;&#x3bc;&#x3b7;&#x3b8;&#x3b5;&#x3b9;&#x3ce;&#x3bd;&lt;/hmtl&gt;">
+                        <Property name="tabTitle" type="java.lang.String" value="&lt;html&gt;&#x394;&#x3b9;&#x3b1;&#x3c7;&#x3b5;&#x3af;&#x3c1;&#x3b9;&#x3c3;&#x3b7; &lt;br&gt;&#x399;&#x3b1;&#x3c4;&#x3c1;&#x3b9;&#x3ba;&#x3ce;&#x3bd;&lt;br&gt; &#x3a0;&#x3c1;&#x3bf;&#x3bc;&#x3b7;&#x3b8;&#x3b5;&#x3b9;&#x3ce;&#x3bd;&lt;/hmtl&gt;"/>
+                      </JTabbedPaneConstraints>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="608" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="468" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
                 </Container>
                 <Container class="javax.swing.JPanel" name="clinic_info">
                   <Properties>
@@ -369,41 +360,7 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="470" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                </Container>
-                <Container class="javax.swing.JPanel" name="eidik_comments">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="cc" red="99" type="rgb"/>
-                    </Property>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                        <LineBorder roundedCorners="true">
-                          <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
-                        </LineBorder>
-                      </Border>
-                    </Property>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="&lt;html&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&#x39b;&#x3af;&#x3c3;&#x3c4;&#x3b1;&lt;br&gt; &#x395;&#x3b9;&#x3b4;&#x3b9;&#x3ba;&#x3b5;&#x3c5;&#x3cc;&#x3bc;&#x3b5;&#x3bd;&#x3c9;&#x3bd;&lt;/html&gt;">
-                        <Property name="tabTitle" type="java.lang.String" value="&lt;html&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&#x39b;&#x3af;&#x3c3;&#x3c4;&#x3b1;&lt;br&gt; &#x395;&#x3b9;&#x3b4;&#x3b9;&#x3ba;&#x3b5;&#x3c5;&#x3cc;&#x3bc;&#x3b5;&#x3bd;&#x3c9;&#x3bd;&lt;/html&gt;"/>
-                      </JTabbedPaneConstraints>
-                    </Constraint>
-                  </Constraints>
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="470" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="466" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>

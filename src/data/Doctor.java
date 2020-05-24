@@ -12,7 +12,7 @@ public class Doctor extends MedicalStaff {
     private String name=" "; //Onoma kai epwnymo
     private String speciality= " "; //Eidikothta
     private Clinic doc_clinic = new Clinic(); //Klinikh pou briskete o giatros
-    private int[] patient_list = new int[500]; // Lista me tous astheneis tou giatrou
+    private ArrayList<Patient> patient_list = new ArrayList<Patient>(200); // Lista me tous astheneis tou giatrou
     //Constructor
     public Doctor(){}
     
@@ -37,13 +37,14 @@ public class Doctor extends MedicalStaff {
         return this.name;
     }
     
-    public int[] getPatientList(){
+    public ArrayList<Patient> getPatientList(){
         return this.patient_list;
     }
     
-    public void setPatientList(int[] PatList){
-        for(int i=0; i<PatList.length; i++){
-            this.patient_list[i]=PatList[i];
+    public void setPatientList(ArrayList<Patient> PatList){
+        this.patient_list.clear();
+        for(int i=0; i<PatList.size(); i++){
+            this.patient_list.add(PatList.get(i));
         }
     }
     

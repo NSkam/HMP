@@ -1,20 +1,21 @@
 package data;
 
+import java.util.ArrayList;
 /**
  *
  * @author Nikolaos Skamnelos
  */
 public class Patient {
-    private int amka;//AMKA
-    private String name;//ONOMA
-    private int age;//Hlikia
-    private String patient_history;//Istoriko Asthenh
-    private String patient_cond;//Istoriko pathisewn Asthenh
-    private Doctor supervised_by;//Ypeuthinos Iatros
+    private int amka = 0;//AMKA
+    private String name = " ";//ONOMA
+    private int age = 18;//Hlikia
+    private String patient_history = " ";//Istoriko Asthenh
+    private String patient_cond = " ";//Istoriko pathisewn Asthenh
+    private Doctor supervised_by = new Doctor();//Ypeuthinos Iatros
     public enum status_enum{
         excellent, good, ok, bad, very_bad, life_threatening
     }
-    status_enum status;
+    status_enum status = status_enum.excellent;
     
     public Patient(int amka, String name, int age, String patient_history, String patient_cond, Doctor supervised_by, status_enum status){
         this.amka = amka;
@@ -31,9 +32,12 @@ public class Patient {
     public boolean CheckDocPermissions(int AMKA, String Permissions){
         
         if(Permissions.equals("Check")){
+            
+            ArrayList<Doctor> staff = this.supervised_by.getClinic().getPersonnel();
+            
             if(AMKA == this.supervised_by.getAMKA()){return true;}
             for(int i=0 ; i<this.supervised_by.getClinic().getNumStaff(); i++){
-                if(AMKA == this.supervised_by.getClinic().getPersonnel()[i]){
+                if(AMKA == staff.get(i).getAMKA()){
                     return true;
                 }
             }
@@ -94,5 +98,19 @@ public class Patient {
     
     public Patient getPatientInfo(){
         return this;
+    }
+    //Kanei Set tis times tou Patient
+    public void setPatientInfo(int amka, String name, int age, String patient_history, String patient_cond, int doc_amka, status_enum status){
+        this.amka = amka;
+        this.name = name;
+        this.age = age;
+        this.patient_history = patient_history;
+        this.patient_cond = patient_cond;
+        this.status = status;
+        //Change Doctor
+        Clinic doc_clinic = this.supervised_by.getClinic();
+        for(int i = 0 ; i<doc_clinic.getPersonnel().size() ; i++){
+          if(doc_amka == doc_clinic.getPersonnel().get(i).getAMKA()){this.supervised_by = doc_clinic.getPersonnel().get(i);}
+        }
     }
 }

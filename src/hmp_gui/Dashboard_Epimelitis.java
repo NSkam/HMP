@@ -18,7 +18,7 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
     
     
         Epimelitis epimelitis = new Epimelitis();
-        String[] JList_Str = new String[500];
+        ArrayList<String> JList_Str = new ArrayList<String>(200);
     /**
      * Creates new form Dashboard
      */
@@ -27,11 +27,6 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         Settings();
         this.getAmkaDB();
         
-    }
-    public void Settings(){
-        Patient_Scroll.setVisible(false);
-        Patient_Jlist.setVisible(false);
-        permission_error_msg.setVisible(false);
     }
 
     /**
@@ -137,8 +132,8 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         Patient_Jlist.setModel(new javax.swing.DefaultListModel<String>());
         //Update Default List Model for the Jlist
         javax.swing.DefaultListModel<String> patient_jlist_model = (javax.swing.DefaultListModel<String>)Patient_Jlist.getModel();
-        for(int x=0;x<5;x++){
-            patient_jlist_model.addElement(JList_Str[x]);
+        for(int x=0;x<JList_Str.size();x++){
+            patient_jlist_model.addElement(JList_Str.get(x));
         }
         Patient_Scroll.setViewportView(Patient_Jlist);
 
@@ -300,9 +295,8 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
 
     //Otan patiete to koumpi pairnei to Selected Value apo th lista kai kanei checkDocPermisions()
     private void SelectPatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectPatButtonActionPerformed
-        Object Pat_Jlist_Value = Patient_Jlist.getSelectedValue();
-        String Pat_Jlist_Str = Pat_Jlist_Value.toString();
-        Patient patient = new Patient();
+        int Pat_Jlist_Index = Patient_Jlist.getSelectedIndex();
+        Patient patient = epimelitis.getPatientList().get(Pat_Jlist_Index);
         
         
         //get his values from the Database
@@ -325,9 +319,11 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
        
        //boolean can_check = patient.CheckDocPermissions(patient.getSupervisedBy().getAMKA(),"Check");
        boolean can_check = true;
+       //An isxuei dhmiourgise to parathyro patient_profile, kane set to info tou patient sta pedia
+       //kai kane to parathyro visible, alliws kane display error message.
        if (can_check){
-           patient = patient.getPatientInfo();
-           Patient_Profile PatientProfile = new Patient_Profile();
+           patient = patient.getPatientInfo();//***************************************
+           Patient_Profile PatientProfile = new Patient_Profile(epimelitis.getAMKA(),this,patient);
            PatientProfile.ShowPatientInfo(patient);
            PatientProfile.setVisible(true);
            this.setEnabled(false);
@@ -340,7 +336,7 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_SelectPatButtonActionPerformed
     
-    //Gia na paroume to Amka tou giatrou
+    //Gia na paroume to Amka tou giatrou*************************************
     public void getAmkaDB(){
         
        epimelitis.setAMKA(1234567);
@@ -364,64 +360,23 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
     
     //Gia na paroume to Patient List tou giatrou
     public void InitPatientList(){
-        int[] tempArray={1,23,4,5,67,5};
-        epimelitis.setPatientList(tempArray);
-        ArrayList<String> PatListStr = new ArrayList<String>();
-        PatListStr.add("Bob1");
-        PatListStr.add("Bob2");
-        PatListStr.add("Bob3");
-        PatListStr.add("Bob4");
-        PatListStr.add("Bob5");
-        PatListStr.add("Bob6");
+        ArrayList<Patient> tempArray= new ArrayList<Patient>(200);
+        Doctor d1 = new Doctor();
+        Patient p1 = new Patient(1, "BOB", 12, "Thanatos", "Death", d1, Patient.status_enum.very_bad);
+        Patient p2 = new Patient(2, "BOB", 12, "Thanatos", "Death", d1, Patient.status_enum.very_bad);
+        Patient p3 = new Patient(3, "BOB", 12, "Thanatos", "Death", d1, Patient.status_enum.very_bad);
+        Patient p4 = new Patient(4, "BOB", 12, "Thanatos", "Death", d1, Patient.status_enum.very_bad);
+                
+        tempArray.add(p1);
+        tempArray.add(p2);
+        tempArray.add(p3);
+        tempArray.add(p4);
         
-        try{  
-        /*   //connect to the MySQL Database
-        Class.forName("com.mysql.jdbc.Driver");  
-        Connection connection=DriverManager.getConnection(  
-        "jdbc:mysql://localhost:3306/sonoo","root","root");   
-        
-        //create the Statment to get the Patients
-        Statement stmt2=connection.createStatement(); 
-        ResultSet rs2=stmt2.executeQuery("select patient_amka, name from ... where doctor_amka=... ");  
-        
-        //to store the patients
-        ArrayList<Integer> PatList = new ArrayList<Integer>();
-        ArrayList<String>  PatListStr = new ArrayList<String>();
-        
-        //storing the patients from the database
-        while(rs2.next()){
-            PatList.add(rs2.getInt("patient_amka")); 
-            PatListStr.add(rs2.getString("name"));
-        }
-        
-        //Converting PatList to array of integers
-        int[] tempArray = new int[PatList.size()];  
-        for (int i=0; i < tempArray.length; i++){
-        tempArray[i] = PatList.get(i).intValue();
-        }*/
-        
-        //Converting PatListStr to array of Strings
-        String[] Patient_Name_Str = PatListStr.toArray(new String[0]);
-       
-        //Setting the patient_list
-        epimelitis.setPatientList(tempArray);
-        
-        //Converting the patient_list to a string list for the Patient_JList
-        String Patient_AMKA_Str[] = Arrays.stream(epimelitis.getPatientList()).mapToObj(String::valueOf).toArray(String[]::new);
-        
-  
-         String[] s = new String[500];
-         for(int i=0 ; i<5;i++){
-         this.JList_Str[i] = "AMKA: " + Patient_AMKA_Str[i]+ "        " + "Name: " + Patient_Name_Str[i];
+       epimelitis.setPatientList(tempArray);
+       JList_Str.clear();
+         for(int i=0 ; i<epimelitis.getPatientList().size();i++){
+         this.JList_Str.add("AMKA: " + epimelitis.getPatientList().get(i).getAmka()+ "        " + "Name: " + epimelitis.getPatientList().get(i).getName());
          }
-        
-
-         
-        //Closing Connection
-        //connection.close(); 
-       
-        }
-       catch(Exception e){ System.out.println(e);}  
     }
     
     //Kanei Display to Patient Menu
@@ -432,6 +387,12 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         
     }
     
+    //Apokryptei merika Stoixeia tou gui
+    public void Settings(){
+        Patient_Scroll.setVisible(false);
+        Patient_Jlist.setVisible(false);
+        permission_error_msg.setVisible(false);
+    }
     /**
      * @param args the command line arguments
      */
