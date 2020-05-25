@@ -312,7 +312,7 @@ public class Patient_Profile extends javax.swing.JFrame {
     private void displayNewVal(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayNewVal
         
         boolean check_change = patient.CheckDocPermissions(dashboard.epimelitis.getAMKA(), "Change");
-        check_change = true;//Gia debugging
+        check_change = true;//Gia Debuging
         if(check_change == true){
             patient_amka.setEditable(true);
             patient_name.setEditable(true);
@@ -364,6 +364,18 @@ public class Patient_Profile extends javax.swing.JFrame {
                     break;
             }
             patient.setPatientInfo(amka, patient_name.getText(), age, patient_history.getText(), patient_conditions.getText(), doc_amka, status);
+            
+            //Epistrefoume sthn prohgoumenh katasthash
+            patient_amka.setEditable(false);
+            patient_name.setEditable(false);
+            patient_age.setEditable(false);
+            patient_doctor.setEditable(false);
+            patient_status.setEnabled(false);
+            patient_history.setEditable(false);
+            patient_conditions.setEditable(false);
+            change_info_button.setVisible(true);
+            Ok_button.setVisible(false);
+            change_value_msg.setVisible(false);
         }
         else{
            Conditional_Message display_error_msg = new Conditional_Message(this);
