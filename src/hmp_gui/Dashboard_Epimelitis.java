@@ -400,6 +400,7 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         /**********************************/
         
         //Ftiaxnoume to List pou tha kanei display sto Application Scroll kai List
+         Application_JList_Str.clear();
          for(int i=0 ; i<Appl_history.getApplHistory().size();i++){
              this.Application_JList_Str.add("ID: " + Appl_history.getApplHistory().get(i).getID()+ " " + "Ημερομηνία: " + Appl_history.getApplHistory().get(i).getDate() + " " + "Υποβλήθηκε από: " + Appl_history.getApplHistory().get(i).getDoctor().getName() + " Κατάστηση: " +Appl_history.getApplHistory().get(i).getStatus() + " Είδος: "+ Appl_history.getApplHistory().get(i).getType());
          }

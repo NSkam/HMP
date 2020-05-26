@@ -75,6 +75,10 @@ public class Application {
             default:
                 return "Not Available";
         
-    }
+    }   
   }
+    
+    public void setType(Type type){
+        this.type = type;
+    }
 }
