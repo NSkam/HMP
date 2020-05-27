@@ -21,13 +21,14 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
     
     
         Epimelitis epimelitis = new Epimelitis();
+        Application_History Appl_history = new Application_History(epimelitis);
         ArrayList<String> Patient_JList_Str = new ArrayList<String>(200);
         ArrayList<String> Application_JList_Str = new ArrayList<String>(200);
     /**
      * Creates new form Dashboard
      */
     public Dashboard_Epimelitis() {
-        initComponents(); 
+        initComponents();
         Settings();
         this.getAmkaDB();
         
@@ -66,7 +67,7 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 204, 255));
-        setLocationByPlatform(true);
+        setLocation(new java.awt.Point(800, 400));
 
         Dashboard_Layer.setBackground(new java.awt.Color(153, 204, 255));
         Dashboard_Layer.setForeground(new java.awt.Color(153, 204, 255));
@@ -344,20 +345,20 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
             }
         if(Dashboard_tabs.getSelectedIndex()==1)
         {
-               this.displayAppMenu();
+                this.displayAppMenu();
         }
     }//GEN-LAST:event_Dashboard_tabsStateChanged
 
     //Otan patiete to koumpi pairnei to Selected Value apo th lista kai kanei checkDocPermisions()
     private void SelectPatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectPatButtonActionPerformed
-        int Pat_Jlist_Index = Patient_Jlist.getSelectedIndex();
-        Patient patient = epimelitis.getClinic().getPatientList().get(Pat_Jlist_Index);
+       int Pat_Jlist_Index = Patient_Jlist.getSelectedIndex();
+       Patient patient = epimelitis.getClinic().getPatientList().get(Pat_Jlist_Index);
        boolean can_check = patient.CheckDocPermissions(patient.getSupervisedBy().getAMKA(),"Check");
        //An isxuei dhmiourgise to parathyro patient_profile, kane set to info tou patient sta pedia
        //kai kane to parathyro visible, alliws kane display error message.
        if (can_check){
            patient = patient.getPatientInfo();//***************************************
-           Patient_Profile PatientProfile = new Patient_Profile(epimelitis.getAMKA(),this,patient);
+           Patient_Profile PatientProfile = new Patient_Profile(epimelitis.getAMKA(),this,patient,Pat_Jlist_Index);
            PatientProfile.ShowPatientInfo(patient);
            PatientProfile.setVisible(true);
            this.setEnabled(false);
@@ -390,7 +391,6 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         Application appl4 =new Application(epimelitis,Application.Type.admission_appl);
         Application appl5 =new Application(epimelitis,Application.Type.admission_appl);
         Application appl6 =new Application(epimelitis,Application.Type.admission_appl);
-        Application_History Appl_history= new Application_History(epimelitis);
         Appl_history.getApplHistory().add(appl1);
         Appl_history.getApplHistory().add(appl2);
         Appl_history.getApplHistory().add(appl3);
@@ -398,7 +398,6 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         Appl_history.getApplHistory().add(appl5);
         Appl_history.getApplHistory().add(appl6);
         /**********************************/
-        
         //Ftiaxnoume to List pou tha kanei display sto Application Scroll kai List
          Application_JList_Str.clear();
          for(int i=0 ; i<Appl_history.getApplHistory().size();i++){
@@ -444,12 +443,20 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         
     }
     
-    //Kanei DIsplay to Application Menu
+    //Kanei Display to Application Menu
     public void displayAppMenu(){
         Appl_Scroll.setVisible(true);
         Appl_List.setVisible(true);
     }
     
+    //Epistrefei thn Appl_List
+    public javax.swing.JList<String> getAppl_List(){
+        return this.Appl_List;
+    }
+    //Epistrefei thn Patient_jlist
+    public javax.swing.JList<String> getPatient_Jlist(){
+        return this.Patient_Jlist;
+    }
     //Apokryptei merika Stoixeia tou gui
     public void Settings(){
         Patient_Scroll.setVisible(false);

@@ -6,14 +6,16 @@ import data.Patient;
  * @author Nikolaos Skamnelos
  */
 public class Patient_Profile extends javax.swing.JFrame {
-
-    Patient patient = new Patient();//O patient
-    private Dashboard_Epimelitis dashboard = new Dashboard_Epimelitis();//Pairnei meso tou constructor thn timh tou prohgounmenou Dashboard
+    
+    private int patient_index;
+    private Patient patient = new Patient();//O patient
+    private Dashboard_Epimelitis dashboard;//Pairnei meso tou constructor thn timh tou prohgounmenou Dashboard
     /**
      * Creates new form Patient_Profile
      */
-    public Patient_Profile(int doctor_amka, Dashboard_Epimelitis dashboard, Patient patient) {
+    public Patient_Profile(int doctor_amka, Dashboard_Epimelitis dashboard, Patient patient, int Patient_Index) {
         this.dashboard = dashboard;
+        this.patient_index = Patient_Index;
         initComponents();
         change_value_msg.setVisible(false);
         Ok_button.setVisible(false);
@@ -53,6 +55,7 @@ public class Patient_Profile extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Patient Info");
+        setLocation(new java.awt.Point(800, 400));
 
         Patient_Profile.setBackground(new java.awt.Color(153, 204, 255));
 
@@ -325,7 +328,7 @@ public class Patient_Profile extends javax.swing.JFrame {
             Ok_button.setVisible(true);
             change_value_msg.setVisible(true);
         }else{
-            Conditional_Message display_error_msg = new Conditional_Message(this);
+           Conditional_Message display_error_msg = new Conditional_Message(this);
            display_error_msg.triggerMsg("<html>ΣΦΑΛΜΑ: <br> Δεν έχετε άδεια να αλλάξετε τα στοιχεία αυτού του Ασθενή... <br>Επιλέξτε κάποιον άλλον.</html>");
            display_error_msg.setVisible(true);
            this.setEnabled(false);
@@ -365,6 +368,11 @@ public class Patient_Profile extends javax.swing.JFrame {
             }
             patient.setPatientInfo(amka, patient_name.getText(), age, patient_history.getText(), patient_conditions.getText(), doc_amka, status);
             
+            //Prosthetoumne 
+            String patient_str = "AMKA: " + patient.getAmka()+ "        " + "Name: " + patient.getName();
+            javax.swing.DefaultListModel<String>  patient_jlist_model = (javax.swing.DefaultListModel<String>)dashboard.getPatient_Jlist().getModel();
+            patient_jlist_model.set(this.patient_index,patient_str);
+           
             //Epistrefoume sthn prohgoumenh katasthash
             patient_amka.setEditable(false);
             patient_name.setEditable(false);
@@ -388,9 +396,9 @@ public class Patient_Profile extends javax.swing.JFrame {
     public boolean checkFieldValues(){
         
         //Elenxos gia kathe field
-        if(!(patient_amka.getText().matches("[0-9]") && patient_amka.getText().length()<12)){return false;}//Prepei na einai arithmos me ligotera apo 12 psifia
-        if(!(patient_name.getText().matches("[\\p{L}\\p{Z}]+") && patient_name.getText().length()<=30)){return false;}//Matches Unicode Letters and Whitespaces
-        if(!(Integer.parseInt(patient_age.getText())<= 120 && patient_age.getText().matches("[0-9]+"))){return false;}//Prepei na einai arithmos mikroteros tous 120
+        if(!(patient_amka.getText().matches("[0-9]+") || patient_amka.getText().length()<12)){return false;}//Prepei na einai arithmos me ligotera apo 12 psifia
+        if(!(patient_name.getText().matches("[\\p{L}\\p{Z}]+") || patient_name.getText().length()<=30)){return false;}//Matches Unicode Letters and Whitespaces
+        if(!(Integer.parseInt(patient_age.getText())<= 120 || patient_age.getText().matches("[0-9]+"))){return false;}//Prepei na einai arithmos mikroteros tous 120
         if(!(patient_history.getText().length()<1000)){return false;}//Elenxos gia to Istoriko
         if(!(patient_conditions.getText().length()<1000)){return false;}//Elenxos gia ta Conditions
         return true;

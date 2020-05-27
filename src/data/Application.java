@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public class Application {
     
-    private static int counter = 0;//Counter pou metraei ta applications gia to id
+    public static int counter = 0;//Counter pou metraei ta applications gia to id
     private int id = 0;//to id kathe application
     private Date date = new Date();//Hmeronymia ypobolis
     private Doctor submited_by = new Doctor();//Apo poion giatro ypoblithike
@@ -33,7 +33,11 @@ public class Application {
         this.type = type;
     }
     
-    public Application(){}
+    public Application(){
+        this.id=counter;
+        this.date = new Date();
+        this.status = Status_enum.in_progress;
+    }
     
     //Setters and Getters
     public int getID(){
@@ -44,6 +48,9 @@ public class Application {
     }
     public Doctor getDoctor(){
         return this.submited_by;
+    }
+    public void setDoctor(Doctor doc){
+        this.submited_by = doc;
     }
     public String getStatus(){
     
@@ -80,5 +87,9 @@ public class Application {
     
     public void setType(Type type){
         this.type = type;
+    }
+    public void IncID(){
+        counter++;
+        this.id= counter;
     }
 }

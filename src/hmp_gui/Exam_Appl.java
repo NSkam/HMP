@@ -10,7 +10,7 @@ public class Exam_Appl extends javax.swing.JFrame {
 
     
     private Application exam_application = new Application();
-    private Dashboard_Epimelitis dashboard = new Dashboard_Epimelitis();
+    private Dashboard_Epimelitis dashboard;
     /**
      * Creates new form Admission_Appl
      */
@@ -34,6 +34,7 @@ public class Exam_Appl extends javax.swing.JFrame {
         Exam_Appl_Panel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
 
         Exam_Appl_Panel.setBackground(new java.awt.Color(153, 204, 255));
 

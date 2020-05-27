@@ -11,7 +11,7 @@ public class Discharge_Appl extends javax.swing.JFrame {
 
     
     private Discharge_Application discharge_application = new Discharge_Application();
-    private Dashboard_Epimelitis dashboard = new Dashboard_Epimelitis();
+    private Dashboard_Epimelitis dashboard;
     /**
      * Creates new form Admission_Appl
      */
@@ -36,6 +36,7 @@ public class Discharge_Appl extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Discharge Application Form");
+        setLocation(new java.awt.Point(800, 400));
 
         Discharge_Appl_Panel.setBackground(new java.awt.Color(153, 204, 255));
 

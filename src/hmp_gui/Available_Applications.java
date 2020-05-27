@@ -12,7 +12,7 @@ public class Available_Applications extends javax.swing.JFrame {
     private Application created_appl = new Application();
     private Admission_Application admission_application= new Admission_Application();
     private Discharge_Application discharge_application= new Discharge_Application();
-    private Dashboard_Epimelitis dashboard = new Dashboard_Epimelitis();//Pairnei meso tou constructor thn timh tou prohgounmenou Dashboard
+    private Dashboard_Epimelitis dashboard;//Pairnei meso tou constructor thn timh tou prohgounmenou Dashboard
     /**
      * Creates new form Available_Applications
      */
@@ -38,7 +38,7 @@ public class Available_Applications extends javax.swing.JFrame {
         select_appl_label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setLocationByPlatform(true);
+        setLocation(new java.awt.Point(800, 450));
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
 

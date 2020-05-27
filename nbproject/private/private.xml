@@ -5,6 +5,7 @@
         <group>
             <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP/src/data/Clinic.java</file>
             <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP/src/data/Discharge_Application.java</file>
+            <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP/src/hmp_gui/Dashboard_Dioikitis.java</file>
             <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP/src/hmp_gui/Admission_Appl.java</file>
             <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP/src/hmp_gui/Discharge_Appl.java</file>
             <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP/src/hmp_gui/Available_Applications.java</file>
@@ -14,10 +15,12 @@
             <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP/src/data/Doctor.java</file>
             <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP/src/hmp_gui/Dashboard_Eidik.java</file>
             <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP/src/hmp_gui/Patient_Profile.java</file>
+            <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP/src/hmp_gui/Dashboard_Gramateia.java</file>
             <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP/src/hmp_gui/Login.java</file>
             <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP/src/data/Admission_Application.java</file>
             <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP/src/hmp_gui/Dashboard_Epimelitis.java</file>
             <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP/src/data/MedicalStaff.java</file>
+            <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP/src/hmp_gui/Conditional_Message.java</file>
             <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP/src/data/Patient.java</file>
             <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP/src/hmp_gui/Transfer_Appl.java</file>
         </group>
