@@ -44,7 +44,7 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("HMP - Log-in");
         setBackground(new java.awt.Color(153, 204, 255));
-        setLocation(new java.awt.Point(800, 400));
+        setLocationByPlatform(true);
         setResizable(false);
 
         Login.setBackground(new java.awt.Color(153, 204, 255));

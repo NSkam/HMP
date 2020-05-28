@@ -5,17 +5,29 @@
  */
 package hmp_gui;
 
+import data.Patient;
+import data.Nosileutis;
+import data.Doctor;
+import data.Clinic;
+import java.util.ArrayList;
 /**
  *
  * @author Nikolaos Skamnelos
  */
 public class Dashboard_Nosileutis extends javax.swing.JFrame {
 
-    /**
+    /*
      * Creates new form Dashboard_nosileutis
      */
+    Nosileutis nosileutis = new Nosileutis();
+    Doctor doc = new Doctor();
+    
+    ArrayList<String> patList = new ArrayList();
     public Dashboard_Nosileutis() {
         initComponents();
+        //Settings();
+        displayPatListMenu();
+        this.getAMKA();
     }
 
     /**
@@ -34,13 +46,16 @@ public class Dashboard_Nosileutis extends javax.swing.JFrame {
         Dashboard_tabs = new javax.swing.JTabbedPane();
         user_info = new javax.swing.JPanel();
         patient_list = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        SelectPatButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Patient_Jlist = new javax.swing.JList<>();
         clinic_info = new javax.swing.JPanel();
         on_calls = new javax.swing.JPanel();
         docs_sched = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
-        setPreferredSize(new java.awt.Dimension(695, 477));
 
         Dashboard_Layer.setBackground(new java.awt.Color(153, 204, 255));
         Dashboard_Layer.setForeground(new java.awt.Color(153, 204, 255));
@@ -82,7 +97,7 @@ public class Dashboard_Nosileutis extends javax.swing.JFrame {
         );
         user_infoLayout.setVerticalGroup(
             user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 421, Short.MAX_VALUE)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
 
         Dashboard_tabs.addTab("<html>Πληροφορίες<br>&nbsp;&nbsp;&nbsp; Χρήστη</html>", user_info);
@@ -90,15 +105,53 @@ public class Dashboard_Nosileutis extends javax.swing.JFrame {
         patient_list.setBackground(new java.awt.Color(153, 204, 255));
         patient_list.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Παρακαλώ επιλέξτε ασθενή:");
+
+        SelectPatButton.setText("Επιλογή");
+        SelectPatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SelectPatButtonActionPerformed(evt);
+            }
+        });
+
+        this.InitPatientList();
+        Patient_Jlist.setModel(new javax.swing.DefaultListModel<String>());
+        {
+            javax.swing.DefaultListModel<String> pl = (javax.swing.DefaultListModel<String>)Patient_Jlist.getModel();
+            for (int i = 0; i < patList.size(); i++){
+                pl.addElement(patList.get(i));
+            }
+        }
+        jScrollPane1.setViewportView(Patient_Jlist);
+
         javax.swing.GroupLayout patient_listLayout = new javax.swing.GroupLayout(patient_list);
         patient_list.setLayout(patient_listLayout);
         patient_listLayout.setHorizontalGroup(
             patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(patient_listLayout.createSequentialGroup()
+                .addGroup(patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(patient_listLayout.createSequentialGroup()
+                            .addGap(429, 429, 429)
+                            .addComponent(SelectPatButton))
+                        .addGroup(patient_listLayout.createSequentialGroup()
+                            .addGap(33, 33, 33)
+                            .addComponent(jLabel2))))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         patient_listLayout.setVerticalGroup(
             patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 421, Short.MAX_VALUE)
+            .addGroup(patient_listLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SelectPatButton)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         Dashboard_tabs.addTab("Λίστα Ασθενών", patient_list);
@@ -114,7 +167,7 @@ public class Dashboard_Nosileutis extends javax.swing.JFrame {
         );
         clinic_infoLayout.setVerticalGroup(
             clinic_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 421, Short.MAX_VALUE)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
 
         Dashboard_tabs.addTab("<html>Πληροφορίες<br>&nbsp;&nbsp;&nbsp;&nbsp; Κλινικής</html>", clinic_info);
@@ -130,7 +183,7 @@ public class Dashboard_Nosileutis extends javax.swing.JFrame {
         );
         on_callsLayout.setVerticalGroup(
             on_callsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 421, Short.MAX_VALUE)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
 
         Dashboard_tabs.addTab("Εφημερίες", on_calls);
@@ -146,7 +199,7 @@ public class Dashboard_Nosileutis extends javax.swing.JFrame {
         );
         docs_schedLayout.setVerticalGroup(
             docs_schedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 421, Short.MAX_VALUE)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
 
         Dashboard_tabs.addTab("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Πρόγραμμα<br> Υπεύθυνου Ιατρού</html>", docs_sched);
@@ -171,14 +224,14 @@ public class Dashboard_Nosileutis extends javax.swing.JFrame {
             Dashboard_LayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Dashboard_LayerLayout.createSequentialGroup()
                 .addComponent(Button_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 623, Short.MAX_VALUE))
+                .addGap(0, 600, Short.MAX_VALUE))
             .addGroup(Dashboard_LayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(Tab_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Dashboard_LayerLayout.setVerticalGroup(
             Dashboard_LayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Dashboard_LayerLayout.createSequentialGroup()
-                .addGap(0, 405, Short.MAX_VALUE)
+                .addGap(0, 454, Short.MAX_VALUE)
                 .addComponent(Button_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(Dashboard_LayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(Tab_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -202,6 +255,9 @@ public class Dashboard_Nosileutis extends javax.swing.JFrame {
     private void clearTokens(){
         Login.nosileutis_counter = false;  
     }
+    public void getAMKA(){
+        doc.setAMKA(1234567);
+    } 
     
     //Logout Function
     private void logout_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_buttonActionPerformed
@@ -213,6 +269,61 @@ public class Dashboard_Nosileutis extends javax.swing.JFrame {
 
     }//GEN-LAST:event_logout_buttonActionPerformed
 
+    private void SelectPatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectPatButtonActionPerformed
+        // TODO add your handling code here:
+        int Pat_Jlist = Patient_Jlist.getSelectedIndex();
+        Patient patient = doc.getPatientList().get(Pat_Jlist);
+        
+        boolean can_check = true;
+        
+        if (can_check){
+            Nosileutis_options opts = new Nosileutis_options();
+            opts.setVisible(true);
+            
+            
+           //this.setEnabled(false);
+       }
+       else {
+           Conditional_Message display_error_msg = new Conditional_Message(this);
+           display_error_msg.triggerMsg("<html>ΣΦΑΛΜΑ: <br> Δεν έχετε άδεια να δείτε τα στοιχεία αυτού του Ασθενή... <br>Επιλέξτε κάποιον άλλον.</html>");
+           display_error_msg.setVisible(true);
+           this.setEnabled(false);
+       }
+    }//GEN-LAST:event_SelectPatButtonActionPerformed
+
+    public void InitPatientList(){
+        ArrayList<Patient> temp = new ArrayList(200);
+        
+        Patient p1 = new Patient(123456,"Spuros",43,"patient history","Patient cond",doc,Patient.status_enum.ok);
+        Patient p2 = new Patient(123457,"Giwrgos",61,"patient history","Patient cond",doc,Patient.status_enum.bad);
+        Patient p3 = new Patient(123458,"Giannhs",27,"patient history","Patient cond",doc,Patient.status_enum.good);
+        //Patient p4 = new Patient(123459,"Malaka", 1 ,"patient history","Patient cond",doc, Patient.status_enum.very_bad);
+        
+        temp.add(p1);
+        temp.add(p2);
+        temp.add(p3);
+        //temp.add(p4);
+        
+        doc.setPatientList(temp);
+        patList.clear();
+        int i;
+        for (i=0; i<temp.size(); i++){
+            this.patList.add(temp.get(i).getName());
+        }
+        
+    }
+    public void displayPatListMenu(){
+        Patient_Jlist.setVisible(true);
+        //Patient_Scroll.setVisible(true);
+        //permission_error_msg.setVisible(false);
+        
+    }
+    
+    public void Settings(){
+        //Patient_Scroll.setVisible(false);
+        Patient_Jlist.setVisible(false);
+        //permission_error_msg.setVisible(false);
+    }
     /**
      * @param args the command line arguments
      */
@@ -248,14 +359,17 @@ public class Dashboard_Nosileutis extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Button_Panel;
     private javax.swing.JLayeredPane Dashboard_Layer;
     private javax.swing.JTabbedPane Dashboard_tabs;
+    private javax.swing.JList<String> Patient_Jlist;
+    private javax.swing.JButton SelectPatButton;
     private javax.swing.JPanel Tab_Panel;
     private javax.swing.JPanel clinic_info;
     private javax.swing.JPanel docs_sched;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton logout_button;
     private javax.swing.JPanel on_calls;
     private javax.swing.JPanel patient_list;

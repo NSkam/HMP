@@ -29,9 +29,6 @@ public class Clinic {
     public ArrayList<Doctor> getPersonnel(){
         return this.personnel_list;
     }
-    public ArrayList<Patient> getPatientList(){
-        return this.patient_list;
-    }
     public int getNumStaff(){
         return this.num_staff;
     }
