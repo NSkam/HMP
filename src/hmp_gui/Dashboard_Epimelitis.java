@@ -412,10 +412,10 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         ArrayList<Patient> tempArray= new ArrayList<Patient>(200);
       
         Doctor d1 = new Doctor();
-        Patient p1 = new Patient(1, "BOB", 12, "Thanatos", "Death", d1, Patient.status_enum.very_bad);
-        Patient p2 = new Patient(2, "BOB", 12, "Thanatos", "Death", d1, Patient.status_enum.very_bad);
-        Patient p3 = new Patient(3, "BOB", 12, "Thanatos", "Death", d1, Patient.status_enum.very_bad);
-        Patient p4 = new Patient(4, "BOB", 12, "Thanatos", "Death", d1, Patient.status_enum.very_bad);
+        Patient p1 = new Patient(1, "BOB1", 12, "Thanatos1", "Death1", d1, Patient.status_enum.very_bad);
+        Patient p2 = new Patient(2, "BOB2", 13, "Thanatos2", "Death2", d1, Patient.status_enum.very_bad);
+        Patient p3 = new Patient(3, "BOB3", 14, "Thanatos3", "Death3", d1, Patient.status_enum.very_bad);
+        Patient p4 = new Patient(4, "BOB4", 15, "Thanatos5", "Death4", d1, Patient.status_enum.very_bad);
                 
         tempArray.add(p1);
         tempArray.add(p2);
@@ -431,7 +431,7 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
        //Ftiaxnoume to List pou tha kanei display sto Patient Scroll kai List
        Patient_JList_Str.clear();
          for(int i=0 ; i<epimelitis.getPatientList().size();i++){
-         this.Patient_JList_Str.add("AMKA: " + epimelitis.getPatientList().get(i).getAmka()+ "        " + "Name: " + epimelitis.getPatientList().get(i).getName());
+         this.Patient_JList_Str.add("AMKA: " + epimelitis.getClinic().getPatientList().get(i).getAmka()+ "        " + "Name: " + epimelitis.getClinic().getPatientList().get(i).getName());
          }
     }
     

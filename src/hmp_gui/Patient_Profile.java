@@ -367,8 +367,8 @@ public class Patient_Profile extends javax.swing.JFrame {
                     break;
             }
             patient.setPatientInfo(amka, patient_name.getText(), age, patient_history.getText(), patient_conditions.getText(), doc_amka, status);
-            
-            //Prosthetoumne 
+            this.dashboard.epimelitis.getClinic().getPatientList().set(patient_index,patient);
+            //Prosthetoumne ton Asthenh sth lista
             String patient_str = "AMKA: " + patient.getAmka()+ "        " + "Name: " + patient.getName();
             javax.swing.DefaultListModel<String>  patient_jlist_model = (javax.swing.DefaultListModel<String>)dashboard.getPatient_Jlist().getModel();
             patient_jlist_model.set(this.patient_index,patient_str);
