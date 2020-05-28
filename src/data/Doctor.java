@@ -14,6 +14,7 @@ public class Doctor extends MedicalStaff {
     private Clinic doc_clinic = new Clinic(); //Klinikh pou briskete o giatros
     private ArrayList<Patient> patient_list = new ArrayList<Patient>(200); // Lista me tous astheneis tou giatrou
     //Constructor
+    
     public Doctor(){}
     
     public Doctor(int amka, String name, String speciality, Clinic doc_clinic){
@@ -51,4 +52,5 @@ public class Doctor extends MedicalStaff {
     public Clinic getClinic(){
         return this.doc_clinic;
     }
+    
 }

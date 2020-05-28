@@ -34,6 +34,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         Dashboard_tabs = new javax.swing.JTabbedPane();
         user_info = new javax.swing.JPanel();
         applications = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         patient_list = new javax.swing.JPanel();
         on_call = new javax.swing.JPanel();
         day_offs = new javax.swing.JPanel();
@@ -43,7 +44,6 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 204, 255));
         setLocationByPlatform(true);
-        setPreferredSize(new java.awt.Dimension(695, 477));
 
         Dashboard_Layer.setBackground(new java.awt.Color(153, 204, 255));
         Dashboard_Layer.setForeground(new java.awt.Color(153, 204, 255));
@@ -82,7 +82,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         );
         user_infoLayout.setVerticalGroup(
             user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 466, Short.MAX_VALUE)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
 
         Dashboard_tabs.addTab("<html>Πληροφορίες<br>&nbsp;&nbsp;&nbsp; Χρήστη</html>", user_info);
@@ -90,15 +90,28 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         applications.setBackground(new java.awt.Color(153, 204, 255));
         applications.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout applicationsLayout = new javax.swing.GroupLayout(applications);
         applications.setLayout(applicationsLayout);
         applicationsLayout.setHorizontalGroup(
             applicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(applicationsLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jButton1)
+                .addContainerGap(490, Short.MAX_VALUE))
         );
         applicationsLayout.setVerticalGroup(
             applicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 466, Short.MAX_VALUE)
+            .addGroup(applicationsLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(jButton1)
+                .addContainerGap(398, Short.MAX_VALUE))
         );
 
         Dashboard_tabs.addTab("Αιτήσεις", applications);
@@ -114,7 +127,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         );
         patient_listLayout.setVerticalGroup(
             patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 466, Short.MAX_VALUE)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
 
         Dashboard_tabs.addTab("<html>Πληροφορίες<br>&nbsp;&nbsp;&nbsp; Ασθενών</html>", patient_list);
@@ -130,7 +143,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         );
         on_callLayout.setVerticalGroup(
             on_callLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 466, Short.MAX_VALUE)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
 
         Dashboard_tabs.addTab("<html>Διαχείριση<br> Εφημεριών</html>", on_call);
@@ -146,7 +159,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         );
         day_offsLayout.setVerticalGroup(
             day_offsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 466, Short.MAX_VALUE)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
 
         Dashboard_tabs.addTab("<html>Διαχείριση<br>&nbsp;&nbsp;Άδειων</html>", day_offs);
@@ -161,7 +174,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         );
         suppliesLayout.setVerticalGroup(
             suppliesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 468, Short.MAX_VALUE)
+            .addGap(0, 472, Short.MAX_VALUE)
         );
 
         Dashboard_tabs.addTab("<html>Διαχείριση <br>Ιατρικών<br> Προμηθειών</hmtl>", supplies);
@@ -177,7 +190,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         );
         clinic_infoLayout.setVerticalGroup(
             clinic_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 466, Short.MAX_VALUE)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
 
         Dashboard_tabs.addTab("<html>Πληροφορίες<br>&nbsp;&nbsp;&nbsp;&nbsp; Κλινικής</html>", clinic_info);
@@ -209,7 +222,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         Dashboard_LayerLayout.setVerticalGroup(
             Dashboard_LayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Dashboard_LayerLayout.createSequentialGroup()
-                .addGap(0, 450, Short.MAX_VALUE)
+                .addGap(0, 454, Short.MAX_VALUE)
                 .addComponent(Button_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(Dashboard_LayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(Tab_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -243,8 +256,12 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
 
     }//GEN-LAST:event_logout_buttonActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+System.out.println("Hello Niggers");        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
-     * @param args the command line arguments
+     * @parameter args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -286,6 +303,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
     private javax.swing.JPanel applications;
     private javax.swing.JPanel clinic_info;
     private javax.swing.JPanel day_offs;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton logout_button;
     private javax.swing.JPanel on_call;
     private javax.swing.JPanel patient_list;
