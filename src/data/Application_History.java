@@ -25,7 +25,12 @@ public class Application_History {
     }
     
     //Prosthetei ena neo application sto history
-    public void updateAppHistory(Application appl_to_save){
+    public void updateAppHistory(Application appl_to_save){//an thes kanto addToAppHistory
         this.appl_history.add(appl_to_save);
+    }
+    
+    //Afairei ena application apo to history
+    public void removeFromAppHistory(Application appl_to_save){
+        this.appl_history.remove(appl_to_save);
     }
 }
