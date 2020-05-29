@@ -84,6 +84,10 @@ public class Application {
         
     }   
   }
+        
+    public void setStatus(Status_enum status){
+        this.status = status;
+    }
     
     public void setType(Type type){
         this.type = type;
