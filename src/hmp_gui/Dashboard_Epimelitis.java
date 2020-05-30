@@ -384,6 +384,7 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
     
     //Gia na paroume to Application List tou giatrou
     public void InitApplList(){
+        /////////////Test DATA//////////////
         /**********************************/
         Application appl1 =new Application(epimelitis,Application.Type.admission_appl);
         Application appl2 =new Application(epimelitis,Application.Type.admission_appl);
@@ -407,7 +408,7 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
     
     //Gia na paroume to Patient List tou giatrou
     public void InitPatientList(){
-        
+        //////////////////Test DATA////////////////////
         /********************************************/
         ArrayList<Patient> tempArray= new ArrayList<Patient>(200);
       
