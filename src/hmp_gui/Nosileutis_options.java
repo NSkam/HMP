@@ -16,7 +16,11 @@ public class Nosileutis_options extends javax.swing.JFrame {
      * Creates new form Nosileutis_options
      */
     Patient pat = new Patient();
-    public Nosileutis_options() {
+    //Dashboard_Nosileutis dn = new Dashboard_Nosileutis();
+    public Nosileutis_options(){}
+    public Nosileutis_options(Patient patient) {
+        this.pat = patient;
+        //this.dn = nosileutis;
         initComponents();
     }
     
@@ -117,7 +121,7 @@ public class Nosileutis_options extends javax.swing.JFrame {
 
     private void PatMedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatMedicineActionPerformed
         dispose();
-        Nosileutis_Farmaka nf = new Nosileutis_Farmaka();   
+        Nosileutis_Farmaka nf = new Nosileutis_Farmaka(pat);   
         nf.setVisible(true);
     }//GEN-LAST:event_PatMedicineActionPerformed
 

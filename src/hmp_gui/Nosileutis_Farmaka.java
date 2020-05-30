@@ -17,11 +17,16 @@ import data.Doctor;
 public class Nosileutis_Farmaka extends javax.swing.JFrame {
 
     /* Creates new form Nosileutis_Farmaka */
+    
+    ArrayList<PatientMedicine> tmpMedList = new ArrayList();
+    ArrayList<Boolean> medTaken = new ArrayList();
+    ArrayList<String> medList = new ArrayList(500);
     Doctor doc = new Doctor();
     Patient pat = new Patient();
-    Dashboard_Nosileutis dn = new Dashboard_Nosileutis();
-    public Nosileutis_Farmaka(Dashboard_Nosileutis dash, Patient patient) {
-        this.dn = dash;
+    //Dashboard_Nosileutis dn = new Dashboard_Nosileutis();
+    public Nosileutis_Farmaka(){}
+    public Nosileutis_Farmaka(Patient patient) {
+        //this.dn = dash;
         this.pat = patient;
         initComponents();
     }
@@ -43,6 +48,8 @@ public class Nosileutis_Farmaka extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         pat_list = new javax.swing.JList<>();
         EditButton = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,18 +64,35 @@ public class Nosileutis_Farmaka extends javax.swing.JFrame {
         EnumDisp.setForeground(new java.awt.Color(255, 255, 255));
         EnumDisp.setText("Ένδειξη λήψης φαρμάκων");
 
-        enum_list.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        enum_list.setModel(new javax.swing.DefaultListModel<String>() {
         });
+        {
+
+            javax.swing.DefaultListModel<String> l = (javax.swing.DefaultListModel<String>) enum_list.getModel();
+            for (int i=0;i<medTaken.size();i++){
+                if(medTaken.get(i)){
+                    l.addElement("Έλαβε");
+                    l.addElement("");
+                }
+                else{
+                    l.addElement("Δεν έλαβε");
+                    l.addElement("");
+                }
+            }
+        }
         jScrollPane1.setViewportView(enum_list);
 
-        pat_list.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        this.InitMeds();
+        pat_list.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        pat_list.setModel(new javax.swing.DefaultListModel<String>() {
         });
+        {
+            javax.swing.DefaultListModel<String> pl = (javax.swing.DefaultListModel<String>)pat_list.getModel();
+            for (int i=0;i<medList.size();i++){
+                pl.addElement(medList.get(i));
+                pl.addElement("");
+            }
+        }
         jScrollPane2.setViewportView(pat_list);
 
         EditButton.setText("Αλλαγή ένδειξης");
@@ -78,27 +102,46 @@ public class Nosileutis_Farmaka extends javax.swing.JFrame {
             }
         });
 
+        jList1.setBackground(new java.awt.Color(153, 204, 255));
+        jList1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jList1.setForeground(new java.awt.Color(255, 255, 255));
+        jList1.setModel(new javax.swing.DefaultListModel<String>()
+        );
+        {
+            javax.swing.DefaultListModel<String> l = (javax.swing.DefaultListModel<String>)jList1.getModel();
+            l.addElement("Spuros");
+        }
+        jScrollPane3.setViewportView(jList1);
+
         javax.swing.GroupLayout med_infoLayout = new javax.swing.GroupLayout(med_info);
         med_info.setLayout(med_infoLayout);
         med_infoLayout.setHorizontalGroup(
             med_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(med_infoLayout.createSequentialGroup()
+                .addGap(288, 288, 288)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, med_infoLayout.createSequentialGroup()
                 .addGap(67, 67, 67)
                 .addGroup(med_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(MedsDisp)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
+                    .addGroup(med_infoLayout.createSequentialGroup()
+                        .addComponent(MedsDisp)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE))
+                    .addGroup(med_infoLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(med_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(EditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(EnumDisp)
-                    .addGroup(med_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(EditButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(172, 172, 172))
         );
         med_infoLayout.setVerticalGroup(
             med_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(med_infoLayout.createSequentialGroup()
-                .addGap(73, 73, 73)
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
                 .addGroup(med_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(MedsDisp)
                     .addComponent(EnumDisp))
@@ -115,7 +158,7 @@ public class Nosileutis_Farmaka extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 864, Short.MAX_VALUE)
+            .addGap(0, 893, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -124,7 +167,7 @@ public class Nosileutis_Farmaka extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
+            .addGap(0, 573, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -136,29 +179,42 @@ public class Nosileutis_Farmaka extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditButtonActionPerformed
-            System.out.println(pat.getName());        // TODO add your handling code here:
+        //enum_list.setVisible(false);
+        medTaken.clear();
+        for (int i=0; i<tmpMedList.size();i++){
+            nosileutis_medCheck nmc = new nosileutis_medCheck(pat.getName(),tmpMedList.get(i).getName());
+            nmc.setVisible(true);
+            medTaken.add(nmc.isChecked());
+            //System.out.println(nmc.isChecked());
+            
+            
+        }
+    
     }//GEN-LAST:event_EditButtonActionPerformed
-    public void InitPatientList(){
-        ArrayList<Patient> temp = new ArrayList(200);
+
+    
+    
+    public void InitMeds(){
         
-        Patient p1 = new Patient(123456,"Spuros",43,"patient history","Patient cond",doc,Patient.status_enum.ok);
-        Patient p2 = new Patient(123457,"Giwrgos",61,"patient history","Patient cond",doc,Patient.status_enum.bad);
-        Patient p3 = new Patient(123458,"Giannhs",27,"patient history","Patient cond",doc,Patient.status_enum.good);
-        //Patient p4 = new Patient(123459,"Malaka", 1 ,"patient history","Patient cond",doc, Patient.status_enum.very_bad);
+        PatientMedicine pm1 = new PatientMedicine(pat.getName(),pat,"Zanax", "Hremistiko","1 xapi ana 8 wres","adunamia",101);
+        PatientMedicine pm2 = new PatientMedicine(pat.getName(),pat,"Depon", "Pausipono","2 xapia ana 8 wres","-",101);
+        PatientMedicine pm3 = new PatientMedicine(pat.getName(),pat,"A medicine", "Type","recommended dosage","side effects",1);
         
-        temp.add(p1);
-        temp.add(p2);
-        temp.add(p3);
-        //temp.add(p4);
         
-        doc.setPatientList(temp);
-        patList.clear();
-        int i;
-        for (i=0; i<temp.size(); i++){
-            this.patList.add(temp.get(i).getName());
+        
+        tmpMedList.add(pm3);
+        tmpMedList.add(pm2);
+        tmpMedList.add(pm1);
+        
+        
+        medList.clear();
+        
+        for (int i=0; i<tmpMedList.size();i++){
+            medList.add("Medicine: " + tmpMedList.get(i).getName() + "      Type: " + tmpMedList.get(i).getType() +         "Recommended dosage: " + tmpMedList.get(i).getDosage() + "      Side effects: " + tmpMedList.get(i).getSideEffects());
         }
         
     }
+    
     /**
      * @param args the command line arguments
      */
@@ -199,8 +255,10 @@ public class Nosileutis_Farmaka extends javax.swing.JFrame {
     private javax.swing.JLabel EnumDisp;
     private javax.swing.JLabel MedsDisp;
     private javax.swing.JList<String> enum_list;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel med_info;
     private javax.swing.JList<String> pat_list;
     // End of variables declaration//GEN-END:variables

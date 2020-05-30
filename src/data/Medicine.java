@@ -28,4 +28,39 @@ public class Medicine {
         this.side_effects = side_effects;
         this.remaining = remaining;
     }
+    
+    public String getName(){
+        return name;
+    }
+    public void setName(String n){
+        this.name = n;
+    }
+    
+    public String getType(){
+        return type;
+    }
+    public void setType(String t){
+        this.type = t;
+    }
+    
+    public String getDosage(){
+        return recom_dosage;
+    }
+    public void setDosage(String d){
+        this.recom_dosage = d;
+    }
+    
+    public String getSideEffects(){
+        return side_effects;
+    }
+    public void setSideEffects(String se){
+        this.side_effects = se;
+    }
+    
+    public int getQuantity(){
+        return remaining;
+    }
+    public void setQuantity(int q){
+        this.remaining = q;
+    }
 }
