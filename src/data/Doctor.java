@@ -51,4 +51,7 @@ public class Doctor extends MedicalStaff {
     public Clinic getClinic(){
         return this.doc_clinic;
     }
+    public void setClinic(Clinic clinic){
+        this.doc_clinic = clinic;
+    }
 }

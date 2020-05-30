@@ -326,7 +326,7 @@
                                   <Component id="select_patient_label" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="permission_error_msg" min="-2" pref="392" max="-2" attributes="0"/>
+                                          <Component id="select_patient_msg" min="-2" pref="392" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
                                           <Component id="SelectPatButton" min="-2" max="-2" attributes="0"/>
                                       </Group>
@@ -340,14 +340,14 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="53" max="32767" attributes="0"/>
+                              <EmptySpace pref="60" max="32767" attributes="0"/>
                               <Component id="select_patient_label" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="Patient_Scroll" min="-2" pref="321" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="SelectPatButton" min="-2" max="-2" attributes="0"/>
-                                  <Component id="permission_error_msg" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="select_patient_msg" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
@@ -377,7 +377,6 @@
                           </Properties>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="this.InitPatientList();"/>
-                            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="         //Update Default List Model for the Jlist&#xa;        javax.swing.DefaultListModel&lt;String&gt; patient_jlist_model = (javax.swing.DefaultListModel&lt;String&gt;)Patient_Jlist.getModel();&#xa;        for(int x=0;x&lt;Patient_JList_Str.size();x++){&#xa;            patient_jlist_model.addElement(Patient_JList_Str.get(x));&#xa;        }"/>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>
                         </Component>
@@ -391,7 +390,7 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SelectPatButtonActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="permission_error_msg">
+                    <Component class="javax.swing.JLabel" name="select_patient_msg">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="99" red="66" type="rgb"/>
@@ -402,10 +401,10 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="ff" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#x394;&#x3b5;&#x3bd; &#x3ad;&#x3c7;&#x3b5;&#x3c4;&#x3b5; &#x3ac;&#x3b4;&#x3b5;&#x3b9;&#x3b1; &#x3bd;&#x3b1; &#x3b4;&#x3b5;&#x3af;&#x3c4;&#x3b5; &#x3c4;&#x3b1; &#x3c3;&#x3c4;&#x3bf;&#x3b9;&#x3c7;&#x3b5;&#x3af;&#x3b1; &#x3b1;&#x3c5;&#x3c4;&#x3bf;&#x3cd; &#x3c4;&#x3bf;&#x3c5; &#x391;&#x3c3;&#x3b8;&#x3b5;&#x3bd;&#x3ae;... &lt;br&gt;&#x395;&#x3c0;&#x3b9;&#x3bb;&#x3ad;&#x3be;&#x3c4;&#x3b5; &#x3ba;&#x3ac;&#x3c0;&#x3bf;&#x3b9;&#x3bf;&#x3bd; &#x3ac;&#x3bb;&#x3bb;&#x3bf;&#x3bd;.&lt;/html&gt;"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#x3a0;&#x3b1;&#x3c1;&#x3b1;&#x3ba;&#x3b1;&#x3bb;&#x3ce; &#x3b5;&#x3c0;&#x3b9;&#x3bb;&#x3ad;&#x3be;&#x3c4;&#x3b5; &#x3ba;&#x3ac;&#x3c0;&#x3bf;&#x3b9;&#x3bf;&#x3bd; &#x391;&#x3c3;&#x3b8;&#x3b5;&#x3bd;&#x3ae;.&lt;/html&gt;"/>
                       </Properties>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="permission_error_msg.setVisible(false);"/>
+                        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="select_patient_msg.setVisible(false);"/>
                       </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="select_patient_label">

@@ -227,15 +227,13 @@ public class Admission_Appl extends javax.swing.JFrame {
     public boolean checkFieldValues(){
         try{
         //Elenxos gia kathe field
-        if(!(patient_amka.getText().matches("[0-9]+") || patient_amka.getText().length()<12)){return false;}//Prepei na einai arithmos me ligotera apo 12 psifia
-        if(!(patient_name.getText().matches("[\\p{L}\\p{Z}]+") || patient_name.getText().length()<=30)){return false;}//Matches Unicode Letters and Whitespaces
-        if(!(Integer.parseInt(patient_age.getText())<= 120 || patient_age.getText().matches("[0-9]+"))){System.out.println("FLASE");return false;}//Prepei na einai arithmos mikroteros tous 120
-        if(!(patient_history.getText().length()<1000)){return false;}//Elenxos gia to Istoriko
-        if(!(patient_conditions.getText().length()<1000)){return false;}//Elenxos gia ta Conditions
+        if(!(patient_amka.getText().matches("[0-9]+")) || patient_amka.getText().length()>12){return false;}//Prepei na einai arithmos me ligotera apo 12 psifia
+        if(!(patient_name.getText().matches("[\\p{L}\\p{Z}]+")) || patient_name.getText().length()>=30){return false;}//Matches Unicode Letters and Whitespaces
+        if(!(patient_age.getText().matches("[0-9]+"))){return false;}//Prepei na einai arithmos mikroteros tous 120
+        if(patient_history.getText().length()>1000){return false;}//Elenxos gia to Istoriko
+        if(patient_conditions.getText().length()>1000){return false;}//Elenxos gia ta Conditions
         return true;}
-        catch(Exception e){
-            return false;
-        }
+     catch(java.lang.NumberFormatException e){return false;}
     }
     //Etoimazei to application gia na prosthehei sto istoriko
     public void save_appl(){    

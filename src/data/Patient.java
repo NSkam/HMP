@@ -29,14 +29,17 @@ public class Patient {
     
     public Patient(){}
     
+    //Elenxei ta permissions pou exei o giatros panw se enan asthenh
+    //To check einai na dei ta stoixeia tou
+    //To change einai na alla3ei ta stoixeia tou
     public boolean CheckDocPermissions(int AMKA, String Permissions){
         
         if(Permissions.equals("Check")){
+            if(AMKA == this.supervised_by.getAMKA()){return true;}
             
             ArrayList<Doctor> staff = this.supervised_by.getClinic().getPersonnel();
-            
-            if(AMKA == this.supervised_by.getAMKA()){return true;}
-            for(int i=0 ; i<this.supervised_by.getClinic().getNumStaff(); i++){
+  
+            for(int i=0 ; i<staff.size(); i++){
                 if(AMKA == staff.get(i).getAMKA()){
                     return true;
                 }

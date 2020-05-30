@@ -13,8 +13,9 @@ public class Patient_Profile extends javax.swing.JFrame {
     /**
      * Creates new form Patient_Profile
      */
-    public Patient_Profile(int doctor_amka, Dashboard_Epimelitis dashboard, Patient patient, int Patient_Index) {
+    public Patient_Profile(Dashboard_Epimelitis dashboard, Patient patient, int Patient_Index) {
         this.dashboard = dashboard;
+        this.patient = patient;
         this.patient_index = Patient_Index;
         initComponents();
         change_value_msg.setVisible(false);
@@ -315,7 +316,6 @@ public class Patient_Profile extends javax.swing.JFrame {
     private void displayNewVal(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayNewVal
         
         boolean check_change = patient.CheckDocPermissions(dashboard.epimelitis.getAMKA(), "Change");
-        check_change = true;//Gia Debuging
         if(check_change == true){
             patient_amka.setEditable(true);
             patient_name.setEditable(true);
@@ -338,9 +338,10 @@ public class Patient_Profile extends javax.swing.JFrame {
     //Elenxei an epitrepetai h eisagwmenes times kai epeita kanei update ta fields kai tis plhrofories tou asthenh
     private void Ok_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ok_buttonActionPerformed
         //Kaleite Elenxos gia tis Times
-        boolean check =  checkFieldValues();        
+        boolean check =  checkFieldValues();   
         //Kaleite h setPatientInfo(); afou settaroume tis times apo ta fields
         if(check == true){
+            
             int amka = Integer.parseInt(patient_amka.getText());
             int age = Integer.parseInt(patient_age.getText());
             int doc_amka = Integer.parseInt(patient_doctor.getText());
@@ -394,14 +395,15 @@ public class Patient_Profile extends javax.swing.JFrame {
 
      //H synarthsh pou kanei ton elenxo
     public boolean checkFieldValues(){
-        
+     try{
         //Elenxos gia kathe field
-        if(!(patient_amka.getText().matches("[0-9]+") || patient_amka.getText().length()<12)){return false;}//Prepei na einai arithmos me ligotera apo 12 psifia
-        if(!(patient_name.getText().matches("[\\p{L}\\p{Z}]+") || patient_name.getText().length()<=30)){return false;}//Matches Unicode Letters and Whitespaces
-        if(!(Integer.parseInt(patient_age.getText())<= 120 || patient_age.getText().matches("[0-9]+"))){return false;}//Prepei na einai arithmos mikroteros tous 120
-        if(!(patient_history.getText().length()<1000)){return false;}//Elenxos gia to Istoriko
-        if(!(patient_conditions.getText().length()<1000)){return false;}//Elenxos gia ta Conditions
-        return true;
+        if(!(patient_amka.getText().matches("[0-9]+")) || patient_amka.getText().length()>12){return false;}//Prepei na einai arithmos me ligotera apo 12 psifia
+        if(!(patient_name.getText().matches("[\\p{L}\\p{Z}]+")) || patient_name.getText().length()>=30){return false;}//Matches Unicode Letters and Whitespaces
+        if(!(patient_age.getText().matches("[0-9]+"))){return false;}//Prepei na einai arithmos mikroteros tous 120
+        if(patient_history.getText().length()>1000){return false;}//Elenxos gia to Istoriko
+        if(patient_conditions.getText().length()>1000){return false;}//Elenxos gia ta Conditions
+        return true;}
+     catch(java.lang.NumberFormatException e){return false;}
     }
     
     //Methodo pou settarei ta dedomena tou asthenh sta pedia tou parathyrou
