@@ -8,10 +8,12 @@ import java.util.ArrayList;
 public class HeadDoctor extends Doctor{
     
     public static final String rank = "Head Doctor"; //panta tha einai head doctor
-    private String supervisedClinic; //kliniki poy epilvepei
-    private ArrayList <Doctor> supervised_doctors = new ArrayList <Doctor>(); //giatrous poy epivlepei
+    private String supervisedClinic =" "; //kliniki poy epilvepei
+    private ArrayList <Doctor> supervised_doctors = new ArrayList <Doctor>(100); //giatrous poy epivlepei
     
-    //constructor
+    //Constructors
+    public HeadDoctor(){}
+    
     public HeadDoctor (int amka, String name, String speciality, Clinic doc_clinic, String sprv_clinic, ArrayList <Doctor> sprv_doc){
         super (amka, name, speciality, doc_clinic);
         supervisedClinic = sprv_clinic;
