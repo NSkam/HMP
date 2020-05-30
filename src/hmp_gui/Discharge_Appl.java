@@ -102,7 +102,7 @@ public class Discharge_Appl extends javax.swing.JFrame {
         create_appl_button.setText("Δημιουργία Αίτησης");
         create_appl_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                create_appl_buttonCreateApplication(evt);
+                CreateApplication(evt);
             }
         });
 
@@ -220,16 +220,23 @@ public class Discharge_Appl extends javax.swing.JFrame {
     }//GEN-LAST:event_exit_buttonActionPerformed
     
     //Kanei save to Application
-    private void create_appl_buttonCreateApplication(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_create_appl_buttonCreateApplication
-            save_appl();
+    private void CreateApplication(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateApplication
+            int index = amka_combo_box.getSelectedIndex();
+            if(dashboard.epimelitis.getAMKA() == dashboard.epimelitis.getClinic().getPatientList().get(index).getSupervisedBy().getAMKA()){
+            save_appl(index);
             dashboard.Appl_history.updateAppHistory(this.discharge_application);
-            //notifyReception();/**********************************************************/
             String application_str = "ID: " + this.discharge_application.getID()+ " " + "Ημερομηνία: " + this.discharge_application.getDate() + " " + "Υποβλήθηκε από: " + this.discharge_application.getDoctor().getName() + " Κατάστηση: " +this.discharge_application.getStatus() + " Είδος: "+ this.discharge_application.getType();
             dashboard.setEnabled(true);
             javax.swing.DefaultListModel<String> application_jlist_model = (javax.swing.DefaultListModel<String>)dashboard.getAppl_List().getModel();
             application_jlist_model.addElement(application_str);
-            dispose();
-    }//GEN-LAST:event_create_appl_buttonCreateApplication
+            dispose();}
+            else{       
+           Conditional_Message display_error_msg = new Conditional_Message(this);
+           display_error_msg.triggerMsg("<html>ΣΦΑΛΜΑ: <br> Δεν επιτρέπεται η έκδοση εξιτηρίου...</html>");
+           display_error_msg.setVisible(true);
+           this.dashboard.setEnabled(true);
+           dispose();}
+    }//GEN-LAST:event_CreateApplication
     
    
     //Allazei automata ta ypoloipa fields analoga me ti epilegete
@@ -252,8 +259,8 @@ public class Discharge_Appl extends javax.swing.JFrame {
     }//GEN-LAST:event_amka_combo_boxActionPerformed
   
     //Etoimazei to application gia na prosthehei sto istoriko
-    public void save_appl(){    
-        int index = amka_combo_box.getSelectedIndex();
+    public void save_appl(int index){    
+
         int amka = Integer.parseInt(amka_combo_box.getItemAt(index));
         int age = Integer.parseInt(patient_age.getText());
         String status = dashboard.epimelitis.getClinic().getPatientList().get(index).getStatus();

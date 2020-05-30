@@ -2,7 +2,7 @@ package data;
 
 /**
  *
- * @author Alastor
+ * @author Nikolaos Skamnelos
  * 
  * Klash gia to Iatriko Prosopiko
  */
