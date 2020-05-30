@@ -23,14 +23,13 @@ public class Clinic {
     private ArrayList<Application>Application_list = new ArrayList<Application>(200); //lista aithsewn
     
     //Constructors
+    public Clinic(){}
     public Clinic(String name, int num_of_patients, int head_doctor, int num_staff){
         this.name = name;
         this.num_of_patients = num_of_patients;
         this.head_doctor = head_doctor;
         this.num_staff = num_staff;
     }
-    
-    public Clinic(){}
     
     //getters kai setters
     public ArrayList<Doctor> getPersonnel(){
@@ -101,7 +100,7 @@ public class Clinic {
     // epistrefei lisa eisitiriwn
     public ArrayList<Application> getAdmissionApps(){
         ArrayList<Application>Admission_list = null; //arxikopoioyme lista me admission me null
-        for (int i = 0; i<= Application_list.size(); i++){
+        for (int i = 0; i< Application_list.size(); i++){
             if(( Application_list.get(i).getType()) == "Αίτηση Εισιτηρίου"){ // an o typos ths aithshs = eisitirio
                 Admission_list = new ArrayList<Application>(); //ftiakse lista 
                 Admission_list.add(Application_list.get(i)); //prosthese to antikeimeno
@@ -113,7 +112,7 @@ public class Clinic {
     //epistrefei lista eksithriwn, antistoixa me panw
     public ArrayList<Application> getDischargeApps(){
         ArrayList<Application>Discharge_list = null;
-        for (int i = 0; i<= Application_list.size(); i++){
+        for (int i = 0; i< Application_list.size(); i++){
             if(( Application_list.get(i).getType()) == "Αίτηση Εξιτηρίου"){
                 Discharge_list = new ArrayList<Application>();
                 Discharge_list.add(Application_list.get(i));

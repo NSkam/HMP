@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package hmp_gui;
 import data.*;
 import java.util.ArrayList;
@@ -11,11 +6,12 @@ import java.util.ArrayList;
  *
  * @author Nikolaos Skamnelos & Thodoris Tomadakis
  */
+
 public class Dashboard_Headdoc extends javax.swing.JFrame {
     HeadDoctor HeadDoctor = new HeadDoctor();
     ArrayList<String> JOnCall_list_str = new ArrayList<String>(200);
     ArrayList<String> Application_JList_Str = new ArrayList<String>(200);
-    Clinic Clinic1 = new Clinic("Xeirourgikh", 200, 1234567, 200);
+    Clinic Clinic1 = new Clinic("Αιματολογική", 200, 1234567, 200); //dummy dedomena
     
     
     
@@ -23,8 +19,8 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
      * Creates new form Dashboard_Headdoc
      */
     public Dashboard_Headdoc() {
-        initComponents();
-        Settings();
+        //Settings();
+        initComponents();  
     }
     
     /**
@@ -52,6 +48,8 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         OnCallList_J_Pane = new javax.swing.JScrollPane();
         OnCallList_J = new javax.swing.JList<>();
         this.InitOnCalllList();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 204, 255));
@@ -183,6 +181,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         on_call.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Εφημερίες Κλινικής ");
 
         OnCallList_J.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
@@ -194,6 +193,15 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         }
         OnCallList_J_Pane.setViewportView(OnCallList_J);
 
+        jButton1.setText("Ορισμός Εφημερίας");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Έξοδος");
+
         javax.swing.GroupLayout on_callLayout = new javax.swing.GroupLayout(on_call);
         on_call.setLayout(on_callLayout);
         on_callLayout.setHorizontalGroup(
@@ -202,17 +210,26 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(on_callLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(OnCallList_J_Pane, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE))
-                .addContainerGap(490, Short.MAX_VALUE))
+                    .addGroup(on_callLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, on_callLayout.createSequentialGroup()
+                            .addComponent(jButton1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2))
+                        .addComponent(OnCallList_J_Pane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(446, Short.MAX_VALUE))
         );
         on_callLayout.setVerticalGroup(
             on_callLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(on_callLayout.createSequentialGroup()
-                .addGap(97, 97, 97)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(OnCallList_J_Pane, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(438, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(OnCallList_J_Pane, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(on_callLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(413, Short.MAX_VALUE))
         );
 
         Dashboard_tabs.addTab("<html>Διαχείριση<br> Εφημεριών</html>", on_call);
@@ -265,18 +282,21 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     //Otan ginete logout kanei clear to token pou deixnei to eidos xrhsth
-        private void clearTokens(){ 
+    private void clearTokens(){ 
         Login.headdoc_counter = false;
-}
-        //Logout Function
+    }
+    
+    //Logout Function
     private void logout_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_buttonActionPerformed
-
         clearTokens();
         dispose();
         Login login_page = new Login();
         login_page.setVisible(true);
-
     }//GEN-LAST:event_logout_buttonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     private void Dashboard_tabsStateChanged(javax.swing.event.ChangeEvent evt) {                                            
         if(Dashboard_tabs.getSelectedIndex()==6) 
@@ -285,11 +305,14 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
             }
     }  
     
+    /*****
     private void createNewAppl(java.awt.event.ActionEvent evt) {                               
            Available_Applications available_applications_window = new Available_Applications(this);
            available_applications_window.setVisible(true);
            this.setEnabled(false);
-    }   
+    }
+    *****/
+    
     //Kanei display tis efhmeries
     public void displayOnCallList(){
         OnCallList_J_Pane.setVisible(true);
@@ -301,19 +324,21 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         return this.OnCallList_J;
     }
     
+    /******
     public void Settings(){
         OnCallList_J_Pane.setVisible(false);
         OnCallList_J.setVisible(false);
     }
+    ******/
     
     //Gia na paroume tis efhmeries ths klinikhs
     public void InitOnCalllList(){
         
-        OnCall OnCall_1 = new OnCall("01/02/2020", 1234, Clinic1.getClinicName(), 1);//Dhmiourgia antikeimenwn 5 efhmeriwn
-        OnCall OnCall_2 = new OnCall("01/03/2020", 12345,Clinic1.getClinicName(), 1);
+        OnCall OnCall_1 = new OnCall("01/02/2020", 1234, Clinic1.getClinicName(), 1);//Dhmiourgia 5 dummy efhmeriwn
+        OnCall OnCall_2 = new OnCall("01/03/2020", 1235,Clinic1.getClinicName(), 1);
         OnCall OnCall_3 = new OnCall("02/03/2020", 1234, Clinic1.getClinicName(), 2);
-        OnCall OnCall_4 = new OnCall("20/02/2020", 12345,Clinic1.getClinicName(), 2);
-        OnCall OnCall_5 = new OnCall("03/04/2020", 123456,Clinic1.getClinicName(), 1);   
+        OnCall OnCall_4 = new OnCall("20/02/2020", 1235,Clinic1.getClinicName(), 2);
+        OnCall OnCall_5 = new OnCall("03/04/2020", 1237,Clinic1.getClinicName(), 1);   
         ArrayList<OnCall> TempOnCall = new ArrayList <OnCall>(10);//prosorini lista gia efhmeries
         TempOnCall.add(OnCall_1); //prostheotume sth prosorini lista tis efhemeries
         TempOnCall.add(OnCall_2);
@@ -321,22 +346,29 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         TempOnCall.add(OnCall_4);
         TempOnCall.add(OnCall_5);
         int j = 0 ;//counter
-        for (int i = 0; i<5; i++){//checkarume an oi efhmeries sumpeftoun kai an oxi tis prosthetume sth lista ths klinikhs
-            if (Clinic1.checkOnCallDate(TempOnCall.get(i).getOnCallDate(),TempOnCall.get(i+1).getOnCallDate())){
-                    Clinic1.getOnCallList().add(TempOnCall.get(i));
-                    j++;
+        for (int i = 0; i<TempOnCall.size(); i++){//checkarume an oi efhmeries sumpeftoun kai an oxi tis prosthetume sth lista ths klinikhs
+            if (i<(TempOnCall.size()-1)){
+                if (Clinic1.checkOnCallDate(TempOnCall.get(i).getOnCallDate(),TempOnCall.get(i+1).getOnCallDate())){
+                        Clinic1.getOnCallList().add(TempOnCall.get(i));
+                        j++;
+                }
+            }else{
+                Clinic1.getOnCallList().add(TempOnCall.get(i)); //gia thn teleutaia efhmeria
+                j++;
             }
         }
         /**********************************/
         //Ftiaxnoume to List pou tha kanei display tis Efhmeries sto JList twn Aithsewn
          JOnCall_list_str .clear();
          for(int i=0 ; i<j; i++){
-             this.JOnCall_list_str.add("Ημερομηνία: " + Clinic1.getOnCallList().get(i).getOnCallDate()+ "\t" + "ΑΜΚΑ Γιατρού: " + Clinic1.getOnCallList().get(i).getAMKAOnCall() + "\t" + "Κλινική: " + Clinic1.getClinicName() + "\t" + "Αριθμός Εφημερίας: " + Clinic1.getOnCallList().get(i).getNum_OnCall());
+             this.JOnCall_list_str.add("Ημερομηνία: " + Clinic1.getOnCallList().get(i).getOnCallDate()+ "   " + "ΑΜΚΑ Γιατρού: " + Clinic1.getOnCallList().get(i).getAMKAOnCall() + "   " + "Κλινική: " + Clinic1.getClinicName() + "   " + "Αριθμός Εφημερίας: " + Clinic1.getOnCallList().get(i).getNum_OnCall());
          }
     }
-        /**
+    
+    /**
      * @param args the command line arguments
      */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -379,6 +411,8 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
     private javax.swing.JPanel applications;
     private javax.swing.JPanel clinic_info;
     private javax.swing.JPanel day_offs;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton logout_button;
     private javax.swing.JPanel on_call;

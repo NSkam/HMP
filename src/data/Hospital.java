@@ -51,7 +51,7 @@ public class Hospital {
     //epistrefei krevatia klinikwn
     public String[][] getAvailableClinicBeds(){
         String [][] ClinicBeds = new String[Clinics_list.size()][1]; //pinakas me grammes ises me plithos twn klinikwn kai 1 sthlh
-        for (int i = 0; i<=Clinics_list.size(); i++)
+        for (int i = 0; i<Clinics_list.size(); i++)
             ClinicBeds[i][0] = String.valueOf(Clinics_list.get(i).getNumOfBeds()); // vazume se kathe grammi ton arithmo twn krevatiwn ws String
         return ClinicBeds;
     }
