@@ -4,16 +4,33 @@
  * and open the template in the editor.
  */
 package hmp_gui;
+import java.util.ArrayList;
+import data.Doctor;
+import data.Clinic;
+import data.Patient;
 
 /**
  *
  * @author Nikos
  */
 public class Personnel_Addition_Gramateia extends javax.swing.JFrame {
-
+//Orismos metablhtwn
+    
+    private String name1;
+    private String speciality1;
+    private int amka1;
+    private Clinic c;
     /**
      * Creates new form Personnel_Addition_Gramateia
      */
+    ArrayList<Doctor> doc = new ArrayList();
+    ArrayList<Patient> pat = new ArrayList();
+    
+    public Personnel_Addition_Gramateia(ArrayList<Patient> p,ArrayList<Doctor> d) {
+        this.doc = d;
+        this.pat = p;
+        initComponents();
+    }
     public Personnel_Addition_Gramateia() {
         initComponents();
     }
@@ -52,14 +69,29 @@ public class Personnel_Addition_Gramateia extends javax.swing.JFrame {
 
         Label_amka.setText("ΑΜΚΑ:");
 
-        name.setText("Enter Name...");
+        name.setText("Enter Name...(PRESS ENTER after)");
+        name.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nameFocusGained(evt);
+            }
+        });
         name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameActionPerformed(evt);
             }
         });
 
-        amka.setText("Enter AMKA...");
+        amka.setText("Enter AMKA...(PRESS ENTER after)");
+        amka.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                amkaFocusGained(evt);
+            }
+        });
+        amka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                amkaActionPerformed(evt);
+            }
+        });
 
         ADD_Personnel.setText("Προσθήκη Προσωπικού");
         ADD_Personnel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -73,7 +105,12 @@ public class Personnel_Addition_Gramateia extends javax.swing.JFrame {
         Label_speciality.setMinimumSize(new java.awt.Dimension(44, 14));
         Label_speciality.setPreferredSize(new java.awt.Dimension(44, 14));
 
-        speciality.setText("Enter Speciality...");
+        speciality.setText("Enter Speciality...(PRESS ENTER after)");
+        speciality.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                specialityFocusGained(evt);
+            }
+        });
         speciality.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 specialityActionPerformed(evt);
@@ -85,7 +122,12 @@ public class Personnel_Addition_Gramateia extends javax.swing.JFrame {
         Label_clinic.setMinimumSize(new java.awt.Dimension(44, 14));
         Label_clinic.setPreferredSize(new java.awt.Dimension(44, 14));
 
-        clinic.setText("Enter Clinic...");
+        clinic.setText("Enter Clinic...(PRESS ENTER after)");
+        clinic.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                clinicFocusGained(evt);
+            }
+        });
         clinic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clinicActionPerformed(evt);
@@ -147,7 +189,7 @@ public class Personnel_Addition_Gramateia extends javax.swing.JFrame {
                     .addComponent(Label_clinic, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
                 .addComponent(ADD_Personnel)
-                .addGap(0, 23, Short.MAX_VALUE))
+                .addGap(0, 32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -158,32 +200,56 @@ public class Personnel_Addition_Gramateia extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 30, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
-        // TODO add your handling code here:
+        name1 = name.getText();
     }//GEN-LAST:event_nameActionPerformed
 
     private void specialityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_specialityActionPerformed
-        // TODO add your handling code here:
+        speciality1 = speciality.getText();
     }//GEN-LAST:event_specialityActionPerformed
 
     private void clinicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clinicActionPerformed
-        // TODO add your handling code here:
+        Clinic cl = new Clinic(clinic.getText(),9999,-9999,9999);
+        this.c = cl;
     }//GEN-LAST:event_clinicActionPerformed
 
     private void ADD_PersonnelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ADD_PersonnelMouseClicked
-    Dashboard_Gramateia dashboard_gra = new Dashboard_Gramateia();
+        Doctor dr = new Doctor(amka1,name1,speciality1,c);
+        doc.add(dr);
+        Dashboard_Gramateia dashboard_gra = new Dashboard_Gramateia(pat,doc);
         dashboard_gra.setVisible(true);
         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_ADD_PersonnelMouseClicked
+
+    private void amkaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amkaActionPerformed
+        amka1 = Integer.parseInt(amka.getText());
+    }//GEN-LAST:event_amkaActionPerformed
+
+    private void amkaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_amkaFocusGained
+     amka.selectAll();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_amkaFocusGained
+
+    private void nameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nameFocusGained
+     name.selectAll();
+     // TODO add your handling code here:
+    }//GEN-LAST:event_nameFocusGained
+
+    private void specialityFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_specialityFocusGained
+     speciality.selectAll();   // TODO add your handling code here:
+    }//GEN-LAST:event_specialityFocusGained
+
+    private void clinicFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_clinicFocusGained
+     clinic.selectAll();
+     // TODO add your handling code here:
+    }//GEN-LAST:event_clinicFocusGained
 
     /**
      * @param args the command line arguments

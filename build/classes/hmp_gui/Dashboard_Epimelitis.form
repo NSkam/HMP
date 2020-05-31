@@ -295,6 +295,7 @@
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="this.InitPatientList();"/>
                             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="         //Update Default List Model for the Jlist&#xa;        javax.swing.DefaultListModel&lt;String&gt; patient_jlist_model = (javax.swing.DefaultListModel&lt;String&gt;)Patient_Jlist.getModel();&#xa;        for(int x=0;x&lt;JList_Str.size();x++){&#xa;            patient_jlist_model.addElement(JList_Str.get(x));&#xa;        }"/>
+                            <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Dashboard_Epimelitis_Patient_Jlist"/>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>
                         </Component>

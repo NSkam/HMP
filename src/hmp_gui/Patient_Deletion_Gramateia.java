@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package hmp_gui;
+import data.Patient;
+import data.Doctor;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,6 +17,13 @@ public class Patient_Deletion_Gramateia extends javax.swing.JFrame {
     /**
      * Creates new form Patient_Deletion_Gramateia
      */
+    ArrayList<Patient> pat = new ArrayList();
+    ArrayList<Doctor> doc = new ArrayList();
+    public Patient_Deletion_Gramateia(ArrayList<Patient> p,ArrayList<Doctor> d) {
+        this.doc = d;
+        this.pat = p;
+        initComponents();
+    }
     public Patient_Deletion_Gramateia() {
         initComponents();
     }
@@ -39,6 +49,14 @@ public class Patient_Deletion_Gramateia extends javax.swing.JFrame {
 
         Label_Patient_List.setText("Λίστα Ασθενών");
 
+        Patient_List_Grammateia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Patient_List_Grammateia.setModel(new javax.swing.DefaultListModel<String>());
+        {
+            javax.swing.DefaultListModel<String> pList = (javax.swing.DefaultListModel<String>)Patient_List_Grammateia.getModel();
+            for (int i=0;i<pat.size();i++){
+                pList.addElement(pat.get(i).getName());
+            }
+        }
         jScrollPane1.setViewportView(Patient_List_Grammateia);
 
         DELETE_Patient.setText("Διαγραφή στοιχείων ασθενή");
@@ -101,10 +119,13 @@ public class Patient_Deletion_Gramateia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+//otan patietai to koumpi "diagrafh stoixeiwn as8enh"
     private void DELETE_PatientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DELETE_PatientMouseClicked
- Dashboard_Gramateia dashboard_gra = new Dashboard_Gramateia();
- dashboard_gra.setVisible(true);
- dispose();
+        //int SelIndex = Patient_List_Grammateia.getSelectedIndex();
+        pat.remove(Patient_List_Grammateia.getSelectedIndex());
+        Dashboard_Gramateia dashboard_gra = new Dashboard_Gramateia(pat,doc);
+        dashboard_gra.setVisible(true);
+        dispose();
     }//GEN-LAST:event_DELETE_PatientMouseClicked
 
     private void DELETE_PatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DELETE_PatientActionPerformed

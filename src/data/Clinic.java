@@ -29,6 +29,10 @@ public class Clinic {
     public ArrayList<Doctor> getPersonnel(){
         return this.personnel_list;
     }
+    
+    public String getName(){
+        return this.name;
+    }
     public int getNumStaff(){
         return this.num_staff;
     }

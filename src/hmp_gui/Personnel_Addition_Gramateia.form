@@ -28,10 +28,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="30" max="32767" attributes="0"/>
-          </Group>
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -111,7 +108,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                   <Component id="ADD_Personnel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="23" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="32" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -143,16 +140,21 @@
         </Component>
         <Component class="javax.swing.JTextField" name="name">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Enter Name..."/>
+            <Property name="text" type="java.lang.String" value="Enter Name...(PRESS ENTER after)"/>
           </Properties>
           <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="nameFocusGained"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nameActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="amka">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Enter AMKA..."/>
+            <Property name="text" type="java.lang.String" value="Enter AMKA...(PRESS ENTER after)"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="amkaFocusGained"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="amkaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="ADD_Personnel">
           <Properties>
@@ -178,9 +180,10 @@
         </Component>
         <Component class="javax.swing.JTextField" name="speciality">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Enter Speciality..."/>
+            <Property name="text" type="java.lang.String" value="Enter Speciality...(PRESS ENTER after)"/>
           </Properties>
           <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="specialityFocusGained"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="specialityActionPerformed"/>
           </Events>
         </Component>
@@ -200,9 +203,10 @@
         </Component>
         <Component class="javax.swing.JTextField" name="clinic">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Enter Clinic..."/>
+            <Property name="text" type="java.lang.String" value="Enter Clinic...(PRESS ENTER after)"/>
           </Properties>
           <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="clinicFocusGained"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clinicActionPerformed"/>
           </Events>
         </Component>

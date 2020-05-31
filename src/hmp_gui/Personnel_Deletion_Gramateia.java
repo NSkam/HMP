@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 package hmp_gui;
+import data.Patient;
+import data.Doctor;
+import java.util.ArrayList;
+
+
 
 /**
  *
@@ -14,6 +19,13 @@ public class Personnel_Deletion_Gramateia extends javax.swing.JFrame {
     /**
      * Creates new form Personnel_Deletion_Gramateia
      */
+    ArrayList<Patient> pat = new ArrayList();
+    ArrayList<Doctor> doc = new ArrayList();
+    public Personnel_Deletion_Gramateia(ArrayList<Patient> p, ArrayList<Doctor> d) {
+        this.pat = p;
+        this.doc = d;
+        initComponents();
+    }
     public Personnel_Deletion_Gramateia() {
         initComponents();
     }
@@ -39,6 +51,13 @@ public class Personnel_Deletion_Gramateia extends javax.swing.JFrame {
 
         Label_Personnel_List.setText("Λίστα Προσωπικού");
 
+        Personnel_List_Grammateia.setModel(new javax.swing.DefaultListModel<String>());
+        {
+            javax.swing.DefaultListModel<String> dList = (javax.swing.DefaultListModel<String>)Personnel_List_Grammateia.getModel();
+            for (int i=0; i<doc.size(); i++){
+                dList.addElement(doc.get(i).getName());
+            }
+        }
         jScrollPane1.setViewportView(Personnel_List_Grammateia);
 
         DELETE_Personnel.setText("Διαγραφή στοιχείων προσωπικού");
@@ -93,9 +112,10 @@ public class Personnel_Deletion_Gramateia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void DELETE_PersonnelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DELETE_PersonnelMouseClicked
-Dashboard_Gramateia dashboard_gra = new Dashboard_Gramateia();
-dashboard_gra.setVisible(true);
- dispose();
+        doc.remove(Personnel_List_Grammateia.getSelectedIndex());
+        Dashboard_Gramateia dashboard_gra = new Dashboard_Gramateia(pat,doc);
+        dashboard_gra.setVisible(true);
+        dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_DELETE_PersonnelMouseClicked
 
