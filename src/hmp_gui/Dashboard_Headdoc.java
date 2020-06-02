@@ -8,20 +8,32 @@ import java.util.ArrayList;
  */
 
 public class Dashboard_Headdoc extends javax.swing.JFrame {
+    
+            
+  
     HeadDoctor HeadDoctor = new HeadDoctor();
     ArrayList<String> JOnCall_list_str = new ArrayList<String>(200);
     ArrayList<String> Application_JList_Str = new ArrayList<String>(200);
-    Clinic Clinic1 = new Clinic("Αιματολογική", 200, 1234567, 200); //dummy dedomena
-    
-    
-    
+    Clinic Clinic1 = new Clinic("Αιματολογική", 200, 1234567, 200); //dummy dedomena  
+    Doctor d1 = new Doctor(1234, "Οικονόμου" , "Χειρουργός", Clinic1); //dummy dedomena gia gitrous
+    Doctor d2 = new Doctor(1235, "Καραπάλου" , "Χειρουργός", Clinic1);
+    Doctor d3 = new Doctor(1237, "Γιαννέλου" , "Χειρουργός", Clinic1);
+    OnCall OnCall_1 = new OnCall("01/02/2020", d1.getAMKA(), Clinic1.getClinicName(), 1, d1);//Dhmiourgia 5 dummy efhmeriwn
+    OnCall OnCall_2 = new OnCall("01/03/2020", d2.getAMKA(), Clinic1.getClinicName(), 1, d2);
+    OnCall OnCall_3 = new OnCall("02/03/2020", d1.getAMKA(), Clinic1.getClinicName(), 2, d1);
+    OnCall OnCall_4 = new OnCall("20/02/2020", d2.getAMKA(), Clinic1.getClinicName(), 2, d2);
+    OnCall OnCall_5 = new OnCall("03/04/2020", d3.getAMKA(), Clinic1.getClinicName(), 1, d3); 
+    ArrayList<OnCall> TempOnCall = new ArrayList <OnCall>(10);//prosorini lista gia efhmeries
+    ArrayList<Doctor> TempDoc = new ArrayList <Doctor>(10); //prosorini lista gia giatrous
+
+     
     /**
      * Creates new form Dashboard_Headdoc
      */
     public Dashboard_Headdoc() {
         //Settings();
         initComponents();  
-    }
+   }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,7 +61,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         OnCallList_J = new javax.swing.JList<>();
         this.InitOnCalllList();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 204, 255));
@@ -200,7 +212,12 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Έξοδος");
+        jButton3.setText("Έξοδος");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout on_callLayout = new javax.swing.GroupLayout(on_call);
         on_call.setLayout(on_callLayout);
@@ -211,10 +228,10 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
                 .addGroup(on_callLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(on_callLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, on_callLayout.createSequentialGroup()
+                        .addGroup(on_callLayout.createSequentialGroup()
                             .addComponent(jButton1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2))
+                            .addComponent(jButton3))
                         .addComponent(OnCallList_J_Pane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(446, Short.MAX_VALUE))
         );
@@ -228,7 +245,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(on_callLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton3))
                 .addContainerGap(413, Short.MAX_VALUE))
         );
 
@@ -295,8 +312,16 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
     }//GEN-LAST:event_logout_buttonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        Enhmerwsh_Efhmerias ef1 = new Enhmerwsh_Efhmerias(this);
+        ef1.setVisible(true);
+        this.setEnabled(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+                                 
+        Dashboard_tabs.setSelectedIndex(0);
+    
+    }//GEN-LAST:event_jButton3ActionPerformed
     
     private void Dashboard_tabsStateChanged(javax.swing.event.ChangeEvent evt) {                                            
         if(Dashboard_tabs.getSelectedIndex()==6) 
@@ -324,27 +349,34 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         return this.OnCallList_J;
     }
     
+    public javax.swing.JTabbedPane returnTabs(){
+        return  Dashboard_tabs;   
+    }
     /******
     public void Settings(){
         OnCallList_J_Pane.setVisible(false);
         OnCallList_J.setVisible(false);
     }
     ******/
-    
-    //Gia na paroume tis efhmeries ths klinikhs
-    public void InitOnCalllList(){
-        
-        OnCall OnCall_1 = new OnCall("01/02/2020", 1234, Clinic1.getClinicName(), 1);//Dhmiourgia 5 dummy efhmeriwn
-        OnCall OnCall_2 = new OnCall("01/03/2020", 1235,Clinic1.getClinicName(), 1);
-        OnCall OnCall_3 = new OnCall("02/03/2020", 1234, Clinic1.getClinicName(), 2);
-        OnCall OnCall_4 = new OnCall("20/02/2020", 1235,Clinic1.getClinicName(), 2);
-        OnCall OnCall_5 = new OnCall("03/04/2020", 1237,Clinic1.getClinicName(), 1);   
-        ArrayList<OnCall> TempOnCall = new ArrayList <OnCall>(10);//prosorini lista gia efhmeries
+    public ArrayList<OnCall> returnOnCalls(){//prosthetei se prosorini lista efhmeriwn kai thn epistrefei       
         TempOnCall.add(OnCall_1); //prostheotume sth prosorini lista tis efhemeries
         TempOnCall.add(OnCall_2);
         TempOnCall.add(OnCall_3);
         TempOnCall.add(OnCall_4);
         TempOnCall.add(OnCall_5);
+        return TempOnCall;
+    }
+    
+    public ArrayList<Doctor> returnDocList(){
+        Clinic1.getPersonnel().add(d1);
+        Clinic1.getPersonnel().add(d2);
+        Clinic1.getPersonnel().add(d3);
+        return Clinic1.getPersonnel();
+    }
+    
+    //Gia na paroume tis efhmeries ths klinikhs
+    public void InitOnCalllList(){
+        this.returnOnCalls();     
         int j = 0 ;//counter
         for (int i = 0; i<TempOnCall.size(); i++){//checkarume an oi efhmeries sumpeftoun kai an oxi tis prosthetume sth lista ths klinikhs
             if (i<(TempOnCall.size()-1)){
@@ -361,7 +393,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         //Ftiaxnoume to List pou tha kanei display tis Efhmeries sto JList twn Aithsewn
          JOnCall_list_str .clear();
          for(int i=0 ; i<j; i++){
-             this.JOnCall_list_str.add("Ημερομηνία: " + Clinic1.getOnCallList().get(i).getOnCallDate()+ "   " + "ΑΜΚΑ Γιατρού: " + Clinic1.getOnCallList().get(i).getAMKAOnCall() + "   " + "Κλινική: " + Clinic1.getClinicName() + "   " + "Αριθμός Εφημερίας: " + Clinic1.getOnCallList().get(i).getNum_OnCall());
+             this.JOnCall_list_str.add("Ημερομηνία: " + Clinic1.getOnCallList().get(i).getOnCallDate()+ "   " + "Όνομα Γιατρού: " + Clinic1.getOnCallList().get(i).getOnCallDoc() + "    "+  "ΑΜΚΑ Γιατρού: " + Clinic1.getOnCallList().get(i).getAMKAOnCall() + "   " + "Κλινική: " + Clinic1.getClinicName() + "   " + "Αριθμός Εφημερίας: " + Clinic1.getOnCallList().get(i).getNum_OnCall());
          }
     }
     
@@ -412,7 +444,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
     private javax.swing.JPanel clinic_info;
     private javax.swing.JPanel day_offs;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton logout_button;
     private javax.swing.JPanel on_call;
