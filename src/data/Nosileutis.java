@@ -23,4 +23,39 @@ public class Nosileutis {
         this.clinic = clinic;
         this.supervised_by = supervised_by;
        }
+    
+    public String getName(){
+        return this.name;
+    }
+    public void setName(String name){
+        this.name = name;
+    }
+    
+    public int getAmka(){
+        return this.amka;
+    }
+    public void setAmka(int amka){
+        this.amka  = amka;
+    }
+    
+    public Clinic getClinic(){
+        return this.clinic;
+    }
+    public void setClinic(Clinic clinic){
+        this.clinic = clinic;
+    }
+    
+    public String getClinicName(){
+        return this.clinic.getName();
+    }
+    
+    public Doctor getSupervisedBy(){
+        return this.supervised_by;
+    }
+    public void setSupervisedBy(Doctor doc){
+        this.supervised_by = doc;
+    }
+    public String getDocName(){
+        return this.supervised_by.getName();
+    }
     }

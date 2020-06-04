@@ -24,9 +24,6 @@ public class Nosileutis_options extends javax.swing.JFrame {
         initComponents();
     }
     
-    public void isOpened(){
-        
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,6 +67,11 @@ public class Nosileutis_options extends javax.swing.JFrame {
 
         ChatRoom.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         ChatRoom.setText("Ηλεκτρονική Συζήτηση");
+        ChatRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChatRoomActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout user_infoLayout = new javax.swing.GroupLayout(user_info);
         user_info.setLayout(user_infoLayout);
@@ -115,8 +117,9 @@ public class Nosileutis_options extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosed
 
     private void PatProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatProfileActionPerformed
-        //Patient_Profile pp = new Patient_Profile();
-        
+        dispose();
+        Nosileutis_PatProfile np = new Nosileutis_PatProfile(pat);
+        np.setVisible(true);
     }//GEN-LAST:event_PatProfileActionPerformed
 
     private void PatMedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatMedicineActionPerformed
@@ -124,6 +127,12 @@ public class Nosileutis_options extends javax.swing.JFrame {
         Nosileutis_Farmaka nf = new Nosileutis_Farmaka(pat);   
         nf.setVisible(true);
     }//GEN-LAST:event_PatMedicineActionPerformed
+
+    private void ChatRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChatRoomActionPerformed
+        dispose();
+        Nosileutis_Giatros_Chat ngc = new Nosileutis_Giatros_Chat();
+        ngc.setVisible(true);
+    }//GEN-LAST:event_ChatRoomActionPerformed
 
     /**
      * @param args the command line arguments

@@ -32,4 +32,8 @@ public class Clinic {
     public int getNumStaff(){
         return this.num_staff;
     }
+    
+    public String getName(){
+        return this.name;
+    }
 }
