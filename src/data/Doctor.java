@@ -51,4 +51,8 @@ public class Doctor extends MedicalStaff {
     public Clinic getClinic(){
         return this.doc_clinic;
     }
-}
+    
+    public String getSpeciality(){
+        return speciality;
+    }
+}   

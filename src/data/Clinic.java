@@ -74,7 +74,6 @@ public class Clinic {
             return false;
         }
     }
-        
     
     //prosthetei sth lista efhmeriwn
     public void updateOnCallList(String cdate, int amka, Doctor d){
