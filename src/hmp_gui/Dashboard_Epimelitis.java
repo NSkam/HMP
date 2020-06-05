@@ -1,16 +1,11 @@
 package hmp_gui;
 
-import java.sql.*;  
 import java.util.ArrayList;
-import java.util.Arrays;
 import data.Epimelitis;
-import data.Clinic;
 import data.Patient;
 import data.Doctor;
 import data.Application;
 import data.Application_History;
-import java.text.SimpleDateFormat;  
-
 
 
 /**
@@ -26,11 +21,12 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         ArrayList<String> Application_JList_Str = new ArrayList<String>(200);
     /**
      * Creates new form Dashboard
+     * @param epimelitis
      */
-    public Dashboard_Epimelitis() {
+    public Dashboard_Epimelitis(Epimelitis epimelitis) {
+        this.epimelitis=epimelitis;
         initComponents();
-        Settings();
-        this.getAmkaDB(); 
+        Settings();     
     }
 
     /**
@@ -58,8 +54,8 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         Patient_Jlist = new javax.swing.JList<>();
         this.InitPatientList();
         SelectPatButton = new javax.swing.JButton();
-        permission_error_msg = new javax.swing.JLabel();
-        permission_error_msg.setVisible(false);
+        select_patient_msg = new javax.swing.JLabel();
+        select_patient_msg.setVisible(false);
         select_patient_label = new javax.swing.JLabel();
         clinic_info = new javax.swing.JPanel();
         eidik_comments = new javax.swing.JPanel();
@@ -180,11 +176,6 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
 
         Patient_Jlist.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         Patient_Jlist.setModel(new javax.swing.DefaultListModel<String>());
-        //Update Default List Model for the Jlist
-        javax.swing.DefaultListModel<String> patient_jlist_model = (javax.swing.DefaultListModel<String>)Patient_Jlist.getModel();
-        for(int x=0;x<Patient_JList_Str.size();x++){
-            patient_jlist_model.addElement(Patient_JList_Str.get(x));
-        }
         Patient_Scroll.setViewportView(Patient_Jlist);
 
         SelectPatButton.setText("Επιλογή");
@@ -194,10 +185,10 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
             }
         });
 
-        permission_error_msg.setBackground(new java.awt.Color(102, 153, 255));
-        permission_error_msg.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        permission_error_msg.setForeground(new java.awt.Color(255, 0, 0));
-        permission_error_msg.setText("<html>Δεν έχετε άδεια να δείτε τα στοιχεία αυτού του Ασθενή... <br>Επιλέξτε κάποιον άλλον.</html>");
+        select_patient_msg.setBackground(new java.awt.Color(102, 153, 255));
+        select_patient_msg.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        select_patient_msg.setForeground(new java.awt.Color(255, 0, 0));
+        select_patient_msg.setText("<html>Παρακαλώ επιλέξτε κάποιον Ασθενή.</html>");
 
         select_patient_label.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         select_patient_label.setForeground(new java.awt.Color(255, 255, 255));
@@ -215,7 +206,7 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
                     .addComponent(select_patient_label)
                     .addGroup(patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(patient_listLayout.createSequentialGroup()
-                            .addComponent(permission_error_msg, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(select_patient_msg, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(SelectPatButton))
                         .addComponent(Patient_Scroll, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE)))
@@ -224,14 +215,14 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         patient_listLayout.setVerticalGroup(
             patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patient_listLayout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
+                .addContainerGap(60, Short.MAX_VALUE)
                 .addComponent(select_patient_label)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Patient_Scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(SelectPatButton)
-                    .addComponent(permission_error_msg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(select_patient_msg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25))
         );
 
@@ -349,14 +340,15 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
 
     //Otan patiete to koumpi pairnei to Selected Value apo th lista kai kanei checkDocPermisions()
     private void SelectPatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectPatButtonActionPerformed
+    try{
        int Pat_Jlist_Index = Patient_Jlist.getSelectedIndex();
        Patient patient = epimelitis.getClinic().getPatientList().get(Pat_Jlist_Index);
-       boolean can_check = patient.CheckDocPermissions(patient.getSupervisedBy().getAMKA(),"Check");
+       boolean can_check = patient.CheckDocPermissions(epimelitis.getAMKA(),"Check");
        //An isxuei dhmiourgise to parathyro patient_profile, kane set to info tou patient sta pedia
        //kai kane to parathyro visible, alliws kane display error message.
        if (can_check){
-           patient = patient.getPatientInfo();//***************************************
-           Patient_Profile PatientProfile = new Patient_Profile(epimelitis.getAMKA(),this,patient,Pat_Jlist_Index);
+           patient = patient.getPatientInfo();
+           Patient_Profile PatientProfile = new Patient_Profile(this,patient,Pat_Jlist_Index);
            PatientProfile.ShowPatientInfo(patient);
            PatientProfile.setVisible(true);
            this.setEnabled(false);
@@ -367,6 +359,10 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
            display_error_msg.setVisible(true);
            this.setEnabled(false);
        }
+    }
+    catch(java.lang.ArrayIndexOutOfBoundsException e){
+        select_patient_msg.setVisible(true);
+        }
     }//GEN-LAST:event_SelectPatButtonActionPerformed
 
     private void createNewAppl(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createNewAppl
@@ -374,14 +370,11 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
            available_applications_window.setVisible(true);
            this.setEnabled(false);
     }//GEN-LAST:event_createNewAppl
+
     
-    //Gia na paroume to Amka tou giatrou*************************************
-    public void getAmkaDB(){
-       epimelitis.setAMKA(1234567);
-    }
-    
-    //Gia na paroume to Application List tou giatrou
+    //Test DATA
     public void InitApplList(){
+        /////////////Test DATA//////////////
         /**********************************/
         Application appl1 =new Application(epimelitis,Application.Type.admission_appl);
         Application appl2 =new Application(epimelitis,Application.Type.admission_appl);
@@ -396,24 +389,21 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         Appl_history.getApplHistory().add(appl5);
         Appl_history.getApplHistory().add(appl6);
         /**********************************/
-        //Ftiaxnoume to List pou tha kanei display sto Application Scroll kai List
-         Application_JList_Str.clear();
-         for(int i=0 ; i<Appl_history.getApplHistory().size();i++){
-             this.Application_JList_Str.add("ID: " + Appl_history.getApplHistory().get(i).getID()+ " " + "Ημερομηνία: " + Appl_history.getApplHistory().get(i).getDate() + " " + "Υποβλήθηκε από: " + Appl_history.getApplHistory().get(i).getDoctor().getName() + " Κατάστηση: " +Appl_history.getApplHistory().get(i).getStatus() + " Είδος: "+ Appl_history.getApplHistory().get(i).getType());
-         }
     }
     
-    //Gia na paroume to Patient List tou giatrou
+    //Test DATA
     public void InitPatientList(){
-        
+        //////////////////Test DATA////////////////////
         /********************************************/
         ArrayList<Patient> tempArray= new ArrayList<Patient>(200);
-      
+        
         Doctor d1 = new Doctor();
-        Patient p1 = new Patient(1, "BOB1", 12, "Thanatos1", "Death1", d1, Patient.status_enum.very_bad);
-        Patient p2 = new Patient(2, "BOB2", 13, "Thanatos2", "Death2", d1, Patient.status_enum.very_bad);
-        Patient p3 = new Patient(3, "BOB3", 14, "Thanatos3", "Death3", d1, Patient.status_enum.very_bad);
-        Patient p4 = new Patient(4, "BOB4", 15, "Thanatos5", "Death4", d1, Patient.status_enum.very_bad);
+        Doctor d2 = new Doctor(123, "Κωστής", "Ψυχίατρος", epimelitis.getClinic());
+        epimelitis.getClinic().getPersonnel().add(d2);
+        Patient p1 = new Patient(1, "BOB A", 12, "Thanatos1", "Death1", epimelitis, Patient.status_enum.very_bad);
+        Patient p2 = new Patient(2, "BOB B", 13, "Thanatos2", "Death2", epimelitis, Patient.status_enum.very_bad);
+        Patient p3 = new Patient(3, "BOB C", 14, "Thanatos3", "Death3", d2, Patient.status_enum.very_bad);
+        Patient p4 = new Patient(4, "BOB D", 15, "Thanatos5", "Death4", d1, Patient.status_enum.very_bad);
                 
         tempArray.add(p1);
         tempArray.add(p2);
@@ -423,26 +413,36 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         epimelitis.getClinic().getPatientList().add(p2);
         epimelitis.getClinic().getPatientList().add(p3);
         epimelitis.getClinic().getPatientList().add(p4);
-        /************************************************/
         
        epimelitis.setPatientList(tempArray);
-       //Ftiaxnoume to List pou tha kanei display sto Patient Scroll kai List
-       Patient_JList_Str.clear();
-         for(int i=0 ; i<epimelitis.getPatientList().size();i++){
-         this.Patient_JList_Str.add("AMKA: " + epimelitis.getClinic().getPatientList().get(i).getAmka()+ "        " + "Name: " + epimelitis.getClinic().getPatientList().get(i).getName());
-         }
+       /************************************************/
+
     }
     
-    //Kanei Display to Patient Menu
+    //Kanei Display to Patient Menu kai ti lista asthenwn tis klinikhs
     public void displayPatListMenu(){
+        //Prosthetoume ta stoixeia sto model tis patient_list
+        javax.swing.DefaultListModel<String> patient_jlist_model = (javax.swing.DefaultListModel<String>)this.Patient_Jlist.getModel();
+        patient_jlist_model.clear();
+         for(int i=0 ; i<epimelitis.getClinic().getPatientList().size();i++){
+         patient_jlist_model.addElement("AMKA: " + epimelitis.getClinic().getPatientList().get(i).getAmka()+ "        " + "Name: " + epimelitis.getClinic().getPatientList().get(i).getName());
+         }
+        
+         //Emfanizoume ta stoixeia
         Patient_Jlist.setVisible(true);
         Patient_Scroll.setVisible(true);
-        permission_error_msg.setVisible(false);
+        select_patient_msg.setVisible(false);
         
     }
     
     //Kanei Display to Application Menu
     public void displayAppMenu(){
+        //Prosthetoume ta stoixeia sto model tis Appl_List
+        javax.swing.DefaultListModel<String> application_jlist_model = (javax.swing.DefaultListModel<String>)this.getAppl_List().getModel();
+         application_jlist_model.clear();
+         for(int i=0 ; i<Appl_history.getApplHistory().size();i++){
+             application_jlist_model.addElement("ID: " + Appl_history.getApplHistory().get(i).getID()+ " " + "Ημερομηνία: " + Appl_history.getApplHistory().get(i).getDate() + " " + "Υποβλήθηκε από: " + Appl_history.getApplHistory().get(i).getDoctor().getName() + " Κατάστηση: " +Appl_history.getApplHistory().get(i).getStatus() + " Είδος: "+ Appl_history.getApplHistory().get(i).getType());
+         }
         Appl_Scroll.setVisible(true);
         Appl_List.setVisible(true);
     }
@@ -459,7 +459,7 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
     public void Settings(){
         Patient_Scroll.setVisible(false);
         Patient_Jlist.setVisible(false);
-        permission_error_msg.setVisible(false);
+        select_patient_msg.setVisible(false);
         Appl_Scroll.setVisible(false);
         Appl_List.setVisible(false);
     }
@@ -493,9 +493,7 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-               new Dashboard_Epimelitis().setVisible(true);  
-            }
+            public void run() {}
         });
     }
 
@@ -515,10 +513,10 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
     private javax.swing.JPanel eidik_comments;
     private javax.swing.JButton logout_button;
     private javax.swing.JPanel patient_list;
-    private javax.swing.JLabel permission_error_msg;
     private javax.swing.JButton select_appl_button;
     private javax.swing.JLabel select_appl_label;
     private javax.swing.JLabel select_patient_label;
+    private javax.swing.JLabel select_patient_msg;
     private javax.swing.JPanel user_info;
     // End of variables declaration//GEN-END:variables
 
