@@ -1,23 +1,64 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package hmp_gui;
+import data.*;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 /**
  *
- * @author Nikolaos Skamnelos
+ * @author Nikolaos Skamnelos & Thodoris Tomadakis
  */
+
 public class Dashboard_Headdoc extends javax.swing.JFrame {
+    
+            
+    /**************     TEST DATA     ***************/
+    private Clinic Clinic1 = new Clinic("Παθολογική", 200, 1600, 200); //test data gia klinikh
+    Doctor d1 = new Doctor(1234, "Γιώργος Οικονόμου" , "Χειρουργός", Clinic1); //test data gia giatrous
+    Doctor d2 = new Doctor(1235, "Αγγελική Παπαδοπούλου" , "Ενδοκρινολόγος", Clinic1);
+    Doctor d3 = new Doctor(1237, "Νίκος Σηφάκης" , "Παθολόγος", Clinic1);
+    Patient p1 = new Patient(1100, "Ιωάννης Χρίστου", 14, "Κανένα προυπάρχον νόσημα", "Σχετικά καλά", d3, Patient.status_enum.good); //test data gia astheneis
+    Patient p2 = new Patient(1101, "Λεωνίδας Νικολάου", 15, "Διαβήτης τύπου Α", "Πολύ καλά", d2, Patient.status_enum.good);
+    Patient p3 = new Patient(1103, "Μάριος Χρηστίδης", 45, "Κανένα προυπάρχον νόσημα", "Άσχημα", d3, Patient.status_enum.bad);
+    Patient p4 = new Patient(1104, "Ελένη Μακρή", 61, "Ζάχαρο", "Πολύ άσχημα", d2, Patient.status_enum.very_bad);
+    Patient p5 = new Patient(1105, "Μαρία Λυμπέρη", 11, "Κανένα προυπάρχον νόσημα", "Εξαιρετικά", d3, Patient.status_enum.excellent);
+    Patient p6 = new Patient(1106, "Κώσταντίνος Κυρίτσης", 12, "Καρκίνος στους λεμφαδένες", "Επικείμενος θάνατος", d1, Patient.status_enum.life_threatening);
+    Patient p7 = new Patient(1107, "Αλέξανδρος Βήρας", 13, "Κανένα προυπάρχον νόσημα", "Εξαιρετικά", d3, Patient.status_enum.excellent);
+    Patient p8 = new Patient(1108, "Παναγιώτης Ασωπός", 27, "Υψηλή πίεση, Υψηλή χοληστερίνη", "Πολύ άσχημα", d1, Patient.status_enum.very_bad);
+    Patient p9 = new Patient(1109, "Ελεθυθέριος Αναστασίου", 37, "Κανένα προυπάρχον νόσημα", "Πολύ καλά", d3, Patient.status_enum.good);
+    Patient p10 = new Patient(1109, "Χριστίνα Πάλλα", 75, "Μη επαρκείς πληροφορίες", "Επικείμενος θάνατος", d1, Patient.status_enum.life_threatening);
+    OnCall OnCall_1 = new OnCall("01/02/2020", d1.getAMKA(), Clinic1.getClinicName(), 1, d1);// test data gia efhmeries 
+    OnCall OnCall_2 = new OnCall("01/03/2020", d2.getAMKA(), Clinic1.getClinicName(), 1, d2);
+    OnCall OnCall_3 = new OnCall("02/03/2020", d1.getAMKA(), Clinic1.getClinicName(), 2, d1);
+    OnCall OnCall_4 = new OnCall("20/02/2020", d2.getAMKA(), Clinic1.getClinicName(), 2, d2);
+    OnCall OnCall_5 = new OnCall("03/04/2020", d3.getAMKA(), Clinic1.getClinicName(), 1, d3); 
+    Admission_Application adm1 = new Admission_Application (d3,Application.Type.admission_appl,p1); //test data gia admissions
+    Admission_Application adm2 = new Admission_Application (d2,Application.Type.admission_appl,p2);
+    Admission_Application adm3 = new Admission_Application (d3,Application.Type.admission_appl,p3);
+    Admission_Application adm4 = new Admission_Application (d2,Application.Type.admission_appl,p4);
+    Admission_Application adm5 = new Admission_Application (d3,Application.Type.admission_appl,p5);
+    Discharge_Application dis1 = new Discharge_Application (d1,Application.Type.discharge_appl,p6); //test data gia discharges
+    Discharge_Application dis2 = new Discharge_Application (d3,Application.Type.discharge_appl,p7);
+    Discharge_Application dis3 = new Discharge_Application (d1,Application.Type.discharge_appl,p8);
+    Discharge_Application dis4 = new Discharge_Application (d3,Application.Type.discharge_appl,p9);
+    Discharge_Application dis5 = new Discharge_Application (d1,Application.Type.discharge_appl,p10);
+    ArrayList<OnCall> TempOnCall = new ArrayList <OnCall>(200);//prosorini lista gia efhmeries
+    ArrayList<Doctor> TempDoc = new ArrayList <Doctor>(200); //prosorini lista gia giatrous
+    ArrayList<String> tempAdmissJ = new ArrayList<String>(200); //lista eisitiriwn poy tha emfanizetai
+    ArrayList<String> tempDischJ = new ArrayList<String>(200); //lista eksitiriwn poy tha emfanizetai
+    ArrayList<String> JOnCall_list_str = new ArrayList<String>(200); //lista efhmeriwn poy tha emfanizetai
+    HeadDoctor HeadDoctor1 = new HeadDoctor();
 
     /**
      * Creates new form Dashboard_Headdoc
      */
     public Dashboard_Headdoc() {
         initComponents();
-    }
-
+   }
+    
+    public Clinic getClinic(){ //epistrefei th klinikh tou dashboard
+        return this.Clinic1;    
+    } 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,16 +75,35 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         Dashboard_tabs = new javax.swing.JTabbedPane();
         user_info = new javax.swing.JPanel();
         applications = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        eisitiria = new javax.swing.JList<>();
+        this.InitAdmList();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        eksitiria = new javax.swing.JList<>();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jList5 = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         patient_list = new javax.swing.JPanel();
-        on_call = new javax.swing.JPanel();
         day_offs = new javax.swing.JPanel();
         supplies = new javax.swing.JPanel();
         clinic_info = new javax.swing.JPanel();
+        on_call = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        OnCallList_J_Pane = new javax.swing.JScrollPane();
+        OnCallList_J = new javax.swing.JList<>();
+        this.InitOnCalllList();
+        jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 204, 255));
         setLocationByPlatform(true);
-        setPreferredSize(new java.awt.Dimension(695, 477));
 
         Dashboard_Layer.setBackground(new java.awt.Color(153, 204, 255));
         Dashboard_Layer.setForeground(new java.awt.Color(153, 204, 255));
@@ -60,7 +120,9 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         Button_Panel.setLayout(Button_PanelLayout);
         Button_PanelLayout.setHorizontalGroup(
             Button_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(logout_button, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+            .addGroup(Button_PanelLayout.createSequentialGroup()
+                .addComponent(logout_button, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         Button_PanelLayout.setVerticalGroup(
             Button_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,7 +144,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         );
         user_infoLayout.setVerticalGroup(
             user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 466, Short.MAX_VALUE)
+            .addGap(0, 519, Short.MAX_VALUE)
         );
 
         Dashboard_tabs.addTab("<html>Πληροφορίες<br>&nbsp;&nbsp;&nbsp; Χρήστη</html>", user_info);
@@ -90,15 +152,87 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         applications.setBackground(new java.awt.Color(153, 204, 255));
         applications.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Αιτήσεις Κλινικής");
+
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
+
+        eisitiria.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        eisitiria.setModel(new javax.swing.DefaultListModel<String>());
+        //Update Default List Model for the Jlist
+        javax.swing.DefaultListModel<String> admis_jlist_model = (javax.swing.DefaultListModel<String>)eisitiria.getModel();
+        for(int x=0; x<tempAdmissJ.size();x++){
+            admis_jlist_model.addElement(tempAdmissJ.get(x));
+        }
+        jScrollPane4.setViewportView(eisitiria);
+
+        jTabbedPane1.addTab("Αιτήσεις εισιτηρίων", jScrollPane4);
+
+        eksitiria.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        jScrollPane3.setViewportView(eksitiria);
+
+        jTabbedPane1.addTab("Αιτήσεις εξιτηρίων", jScrollPane3);
+
+        jList5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        jScrollPane5.setViewportView(jList5);
+
+        jTabbedPane1.addTab("<html>Αιτήσεις για εξέταση<br>&nbsp;&nbsp;&nbsp; σε άλλη κλινική</html>", jScrollPane5);
+
+        jList2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        jScrollPane2.setViewportView(jList2);
+
+        jTabbedPane1.addTab("<html>Αιτήσεις μεταφοράς σε <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; άλλη κλινική</html>", jScrollPane2);
+
+        jButton4.setText("Επιλογή αίτησης");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Έξοδος");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout applicationsLayout = new javax.swing.GroupLayout(applications);
         applications.setLayout(applicationsLayout);
         applicationsLayout.setHorizontalGroup(
             applicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(applicationsLayout.createSequentialGroup()
+                .addGroup(applicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(applicationsLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel2))
+                    .addGroup(applicationsLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(applicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, applicationsLayout.createSequentialGroup()
+                                .addComponent(jButton4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton5))
+                            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
         applicationsLayout.setVerticalGroup(
             applicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 466, Short.MAX_VALUE)
+            .addGroup(applicationsLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addGroup(applicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jButton5))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
         Dashboard_tabs.addTab("Αιτήσεις", applications);
@@ -114,26 +248,10 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         );
         patient_listLayout.setVerticalGroup(
             patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 466, Short.MAX_VALUE)
+            .addGap(0, 519, Short.MAX_VALUE)
         );
 
         Dashboard_tabs.addTab("<html>Πληροφορίες<br>&nbsp;&nbsp;&nbsp; Ασθενών</html>", patient_list);
-
-        on_call.setBackground(new java.awt.Color(153, 204, 255));
-        on_call.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-
-        javax.swing.GroupLayout on_callLayout = new javax.swing.GroupLayout(on_call);
-        on_call.setLayout(on_callLayout);
-        on_callLayout.setHorizontalGroup(
-            on_callLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        on_callLayout.setVerticalGroup(
-            on_callLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 466, Short.MAX_VALUE)
-        );
-
-        Dashboard_tabs.addTab("<html>Διαχείριση<br> Εφημεριών</html>", on_call);
 
         day_offs.setBackground(new java.awt.Color(153, 204, 255));
         day_offs.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
@@ -146,7 +264,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         );
         day_offsLayout.setVerticalGroup(
             day_offsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 466, Short.MAX_VALUE)
+            .addGap(0, 519, Short.MAX_VALUE)
         );
 
         Dashboard_tabs.addTab("<html>Διαχείριση<br>&nbsp;&nbsp;Άδειων</html>", day_offs);
@@ -157,11 +275,11 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         supplies.setLayout(suppliesLayout);
         suppliesLayout.setHorizontalGroup(
             suppliesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 608, Short.MAX_VALUE)
+            .addGap(0, 731, Short.MAX_VALUE)
         );
         suppliesLayout.setVerticalGroup(
             suppliesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 468, Short.MAX_VALUE)
+            .addGap(0, 521, Short.MAX_VALUE)
         );
 
         Dashboard_tabs.addTab("<html>Διαχείριση <br>Ιατρικών<br> Προμηθειών</hmtl>", supplies);
@@ -177,20 +295,96 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         );
         clinic_infoLayout.setVerticalGroup(
             clinic_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 466, Short.MAX_VALUE)
+            .addGap(0, 519, Short.MAX_VALUE)
         );
 
         Dashboard_tabs.addTab("<html>Πληροφορίες<br>&nbsp;&nbsp;&nbsp;&nbsp; Κλινικής</html>", clinic_info);
+
+        on_call.setBackground(new java.awt.Color(153, 204, 255));
+        on_call.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Εφημερίες Κλινικής ");
+
+        OnCallList_J.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        OnCallList_J.setModel(new javax.swing.DefaultListModel<String>());
+        //Update Default List Model for the Jlist
+        javax.swing.DefaultListModel<String> oncall_jlist_model = (javax.swing.DefaultListModel<String>)OnCallList_J.getModel();
+        for(int x=0; x<JOnCall_list_str.size();x++){
+            oncall_jlist_model.addElement(JOnCall_list_str.get(x));
+        }
+        OnCallList_J_Pane.setViewportView(OnCallList_J);
+
+        jButton1.setText("Προσθήκη νέας εφημερίας");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Έξοδος");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Επιλογή εφημερίας για ενημέωση");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout on_callLayout = new javax.swing.GroupLayout(on_call);
+        on_call.setLayout(on_callLayout);
+        on_callLayout.setHorizontalGroup(
+            on_callLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(on_callLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(on_callLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(on_callLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(on_callLayout.createSequentialGroup()
+                            .addComponent(jButton1)
+                            .addGap(44, 44, 44)
+                            .addComponent(jButton2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3))
+                        .addComponent(OnCallList_J_Pane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(157, Short.MAX_VALUE))
+        );
+        on_callLayout.setVerticalGroup(
+            on_callLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(on_callLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel1)
+                .addGap(26, 26, 26)
+                .addComponent(OnCallList_J_Pane, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(on_callLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addContainerGap(172, Short.MAX_VALUE))
+        );
+
+        Dashboard_tabs.addTab("<html>Διαχείριση<br> Εφημεριών</html>", on_call);
 
         javax.swing.GroupLayout Tab_PanelLayout = new javax.swing.GroupLayout(Tab_Panel);
         Tab_Panel.setLayout(Tab_PanelLayout);
         Tab_PanelLayout.setHorizontalGroup(
             Tab_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Dashboard_tabs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
+            .addGroup(Tab_PanelLayout.createSequentialGroup()
+                .addComponent(Dashboard_tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 818, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 133, Short.MAX_VALUE))
         );
         Tab_PanelLayout.setVerticalGroup(
             Tab_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Dashboard_tabs, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(Tab_PanelLayout.createSequentialGroup()
+                .addComponent(Dashboard_tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         Dashboard_Layer.setLayer(Button_Panel, 2);
@@ -202,50 +396,186 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
             Dashboard_LayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Dashboard_LayerLayout.createSequentialGroup()
                 .addComponent(Button_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 605, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(Dashboard_LayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Tab_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(Dashboard_LayerLayout.createSequentialGroup()
+                    .addComponent(Tab_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         Dashboard_LayerLayout.setVerticalGroup(
             Dashboard_LayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Dashboard_LayerLayout.createSequentialGroup()
-                .addGap(0, 450, Short.MAX_VALUE)
+                .addGap(0, 503, Short.MAX_VALUE)
                 .addComponent(Button_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(Dashboard_LayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Tab_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(Dashboard_LayerLayout.createSequentialGroup()
+                    .addComponent(Tab_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Dashboard_Layer)
+            .addComponent(Dashboard_Layer, javax.swing.GroupLayout.PREFERRED_SIZE, 819, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Dashboard_Layer)
+            .addComponent(Dashboard_Layer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     //Otan ginete logout kanei clear to token pou deixnei to eidos xrhsth
-        private void clearTokens(){ 
+    private void clearTokens(){ 
         Login.headdoc_counter = false;
-}
-        //Logout Function
+    }
+    
+    //Logout Function
     private void logout_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_buttonActionPerformed
-
         clearTokens();
         dispose();
         Login login_page = new Login();
         login_page.setVisible(true);
-
     }//GEN-LAST:event_logout_buttonActionPerformed
 
+    //Dhmiourgei neo parathuro gia tis efhmeries
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Enhmerwsh_Efhmerias ef1 = new Enhmerwsh_Efhmerias(this);
+        ef1.setVisible(true);
+        this.setEnabled(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    //otan patietai eksodos sth selida twn efhmeriwn, paei sthn arxikh selida tou profil
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Dashboard_tabs.setSelectedIndex(0);    
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      if (!(OnCallList_J.isSelectionEmpty())){ //an exei epilegei efhmeria
+        int oncall_index = OnCallList_J.getSelectedIndex(); //pare to index toy jlist
+        OnCall oc1 = Clinic1.getOnCallList().get(oncall_index); ///dhmiourgise nea efhmeria
+        Enhmerwsh_Yparxoysas_Efhmerias en1 = new Enhmerwsh_Yparxoysas_Efhmerias(this, oc1, oncall_index); //dhmiourghse neo parathiro gia enhmerwsh efhmeria me ta parapanw orismata
+        en1.ShowOnCallInfo(oc1); //emfanise ta stoixeia ths efhmerias sto neo parathiro
+        en1.setVisible(true);
+        this.setEnabled(false);
+      }else{//an den exei epilegei efhmeria 
+        Conditional_Message con1 = new Conditional_Message(this);
+        con1.triggerMsg("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Πρέπει να επιλέξετε μια εφημερία!</html>");
+        con1.setVisible(true);
+        this.setEnabled(false);
+      }
+          
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        Dashboard_tabs.setSelectedIndex(0); 
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        if (!(eisitiria.isSelectionEmpty())||!(eksitiria.isSelectionEmpty())){ //an exei epilegei aithsh
+            int eis_index = eisitiria.getSelectedIndex();
+            int eks_index = eksitiria.getSelectedIndex();    //pare to index toy jlist
+        }else{//an den exei aithsh
+            Conditional_Message con1 = new Conditional_Message(this);
+            con1.triggerMsg("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Πρέπει να επιλέξετε μια αίτηση!</html>");
+            con1.setVisible(true);
+            this.setEnabled(false);
+        }
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+
+    }//GEN-LAST:event_jTabbedPane1StateChanged
+     
+    /*****
+    private void createNewAppl(java.awt.event.ActionEvent evt) {                               
+           Available_Applications available_applications_window = new Available_Applications(this);
+           available_applications_window.setVisible(true);
+           this.setEnabled(false);
+    }
+    *****/
+       
+    //Epistrefei thn OnCallList_J
+    public javax.swing.JList<String> getOnCall_list(){
+        return this.OnCallList_J;
+    }
+    
+    //Epistrefei ta tabs tou parathirou
+    public javax.swing.JTabbedPane returnTabs(){
+        return  Dashboard_tabs;   
+    }
+    
+    //prosthetei tis efhmeries sthn prosorini lista poy ftiaksame kai epistrefei th lista
+    public ArrayList<OnCall> returnOnCalls(){      
+        TempOnCall.add(OnCall_1); 
+        TempOnCall.add(OnCall_2);
+        TempOnCall.add(OnCall_3);
+        TempOnCall.add(OnCall_4);
+        TempOnCall.add(OnCall_5);
+        return TempOnCall;
+    }
+    
+    //prosthetei tous giatrous sthn prosorini lista poy ftiaksame kai epistrefei th lista
+    public ArrayList<Doctor> returnDocList(){
+        Clinic1.getPersonnel().add(d1);
+        Clinic1.getPersonnel().add(d2);
+        Clinic1.getPersonnel().add(d3);
+        return Clinic1.getPersonnel();
+    }
+    
+    //Gia na paroume tis efhmeries ths klinikhs
+    public void InitOnCalllList(){
+        this.returnOnCalls();     
+        Clinic1.getOnCallList().add(TempOnCall.get(0));
+        int j = 1 ;//counter
+        for (int i = 1; i<TempOnCall.size(); i++){//checkarume an oi efhmeries sumpeftoun kai an oxi tis prosthetume sth lista ths klinikhs
+                if (Clinic1.checkOnCallDate(TempOnCall.get(i).getOnCallDate(),TempOnCall.get(i-1).getOnCallDate())){ //elexgoume an oi hmeromhnies sumpeftoun, h methodos einai sth klash headdoc
+                        Clinic1.getOnCallList().add(TempOnCall.get(i)); //an den sumpeftun, tis prosthetw sth lista
+                        j++; //to counter einai gia thn jlist
+                }
+        }
+        //Ftiaxnoume to List pou tha kanei display tis Efhmeries sto JList twn Aithsewn
+         JOnCall_list_str .clear(); //katharizw prwta th jlist
+         for(int i=0 ; i<j; i++){ //auto poy tha emfanistei
+             this.JOnCall_list_str.add("Ημερομηνία: " + Clinic1.getOnCallList().get(i).getOnCallDate()+ "   " + "Όνομα Γιατρού: " + Clinic1.getOnCallList().get(i).getOnCallDoc() + "    "+  "ΑΜΚΑ Γιατρού: " + Clinic1.getOnCallList().get(i).getAMKAOnCall() + "   " + "Κλινική: " + Clinic1.getClinicName() + "   " + "Αριθμός Εφημερίας: " + Clinic1.getOnCallList().get(i).getNum_OnCall());
+         }
+    }
+    
+    public void InitAdmList(){
+        ArrayList<Admission_Application> tempAdms = new ArrayList<Admission_Application>(200); 
+        tempAdms.add(adm1);
+        tempAdms.add(adm2);
+        tempAdms.add(adm3);
+        tempAdms.add(adm4);
+        tempAdms.add(adm5);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        tempAdmissJ.clear();
+        for (int i=0; i<tempAdms.size(); i++){
+            this.tempAdmissJ.add("ID Αίτησης: " + tempAdms.get(i).getID() +"    " + "Υποβλήθηκε από: " + tempAdms.get(i).getDoctor().getName() + "    " + "Ημερομηνία: " + formatter.format(tempAdms.get(i).getDate()) + "    " + "Ασθενής: " + tempAdms.get(i).getPatient().getName() + "   " + "Κατάσταση: " + tempAdms.get(i).getStatus());
+        }
+        
+    }
+    
+    public void InitDisList(){
+        ArrayList<Discharge_Application> tempDis = new ArrayList<Discharge_Application>(200);
+        tempDis.add(dis1);
+        tempDis.add(dis2);
+        tempDis.add(dis3);
+        tempDis.add(dis4);
+        tempDis.add(dis5);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        tempDischJ.clear();
+        for (int i=0; i<tempDischJ.size(); i++){
+            this.tempDischJ.add("ID Αίτησης: " + tempDis.get(i).getID() +"    " + "Υποβλήθηκε από: " + tempDis.get(i).getDoctor().getName() + "    " + "Ημερομηνία: " + formatter.format(tempDis.get(i).getDate()) + "    " + "Ασθενής: " + tempDis.get(i).getPatient().getName() + "    " + "Κατάσταση: " + tempDis.get(i).getStatus());            
+        }
+    }
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -277,15 +607,32 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Button_Panel;
     private javax.swing.JLayeredPane Dashboard_Layer;
     private javax.swing.JTabbedPane Dashboard_tabs;
+    private javax.swing.JList<String> OnCallList_J;
+    private javax.swing.JScrollPane OnCallList_J_Pane;
     private javax.swing.JPanel Tab_Panel;
     private javax.swing.JPanel applications;
     private javax.swing.JPanel clinic_info;
     private javax.swing.JPanel day_offs;
+    private javax.swing.JList<String> eisitiria;
+    private javax.swing.JList<String> eksitiria;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JList<String> jList2;
+    private javax.swing.JList<String> jList5;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton logout_button;
     private javax.swing.JPanel on_call;
     private javax.swing.JPanel patient_list;

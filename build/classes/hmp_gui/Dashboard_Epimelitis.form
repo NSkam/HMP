@@ -207,16 +207,14 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="select_appl_label" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="create_new_appl" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="select_appl_button" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="Appl_Scroll" min="-2" pref="503" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="create_new_appl" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="281" max="-2" attributes="0"/>
+                                      <Component id="select_appl_button" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="Appl_Scroll" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace pref="57" max="32767" attributes="0"/>
                           </Group>
@@ -276,6 +274,7 @@
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="this.InitApplList();"/>
                             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="         //Update Default List Model for the Jlist&#xa;        javax.swing.DefaultListModel&lt;String&gt; application_jlist_model = (javax.swing.DefaultListModel&lt;String&gt;)Appl_List.getModel();&#xa;        for(int x=0;x&lt;Application_JList_Str.size();x++){&#xa;            application_jlist_model.addElement(Application_JList_Str.get(x));&#xa;        }"/>
+                            <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Dashboard_Epimelitis_Appl_List"/>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>
                         </Component>
