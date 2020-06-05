@@ -30,8 +30,7 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
     public Dashboard_Epimelitis() {
         initComponents();
         Settings();
-        this.getAmkaDB();
-        
+        this.getAmkaDB(); 
     }
 
     /**

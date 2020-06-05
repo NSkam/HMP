@@ -6,11 +6,7 @@
 package hmp_gui;
 import java.util.ArrayList;
 import data.*;
-import java.text.ParseException;
 import java.util.Calendar;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
-
 /**
  *
  * @author Thodoris Tomadakis
@@ -48,75 +44,7 @@ public class Enhmerwsh_Efhmerias extends javax.swing.JFrame{
         }                    
     }
     
-    public String Spinner1(){// pairnei thn timh toy jspinner1, epistrefei 01 an bei mh egkurh timh (pros to paron)
-        try {
-            jSpinner1.commitEdit();
-        } catch (ParseException e) {e.printStackTrace();}
-        javax.swing.SpinnerNumberModel s11 = (javax.swing.SpinnerNumberModel)this.jSpinner1.getModel();
-        int tempValue = (Integer)s11.getValue();
-        if (tempValue <=0 || tempValue > 30){
-            Conditional_Message con1 = new Conditional_Message(this);
-            con1.triggerMsg("Η ημέρα που επιλέξατε δεν είναι έγκυρη");
-            con1.setVisible(true);
-            this.setEnabled(false);
-        }
-        String temp=" ";
-        if (tempValue>0 && tempValue <=30){
-            switch (tempValue){
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                  String s1 = String.valueOf(0);
-                  String s2 = String.valueOf(tempValue);
-                  temp = s1.concat(s2);
-                  break;
-                default:
-                  temp = String.valueOf(tempValue);
-            }
-            return temp;
-        }else return "error";
-    }
     
-    public String Spinner2(){ //pairnei thn timh toy jspinner2
-        try {
-            jSpinner2.commitEdit();
-        } catch (ParseException e) {e.printStackTrace();}
-        javax.swing.SpinnerNumberModel s12 = (javax.swing.SpinnerNumberModel)this.jSpinner2.getModel();
-        int tempValue = (Integer)s12.getValue();
-        if (tempValue <=0 || tempValue > 12){
-            Conditional_Message con1 = new Conditional_Message(this);
-            con1.triggerMsg("O μήνας που επιλέξατε δεν είναι έγκυρος");
-            con1.setVisible(true);
-            this.setEnabled(false);
-        }
-        String temp=" ";
-        if (tempValue>0 && tempValue <=12){
-            switch (tempValue){
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                  String s1 = String.valueOf(0);
-                  String s2 = String.valueOf(tempValue);
-                  temp = s1.concat(s2);
-                  break;
-                default:
-                  temp = String.valueOf(tempValue);
-            }
-            return temp;
-        }else return "error";
-    }
     /*
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -134,19 +62,15 @@ public class Enhmerwsh_Efhmerias extends javax.swing.JFrame{
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         change_value_msg = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        SpinnerNumberModel s11 = new SpinnerNumberModel(1, 1, 30, 1);
-        jSpinner1 = new JSpinner(s11);
         change_value_msg1 = new javax.swing.JLabel();
         change_value_msg2 = new javax.swing.JLabel();
-        jSpinner2 = new javax.swing.JSpinner();
-        SpinnerNumberModel s12 = new SpinnerNumberModel(1, 1, 12, 1);
-        jSpinner2 = new JSpinner(s12);
+        Hmera = new javax.swing.JComboBox<>();
+        Mhnas = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Enhmerwsh_Efhmerias.setBackground(new java.awt.Color(153, 204, 255));
-        Enhmerwsh_Efhmerias.setBorder(javax.swing.BorderFactory.createTitledBorder("Ενημέρωση εφημερίας"));
+        Enhmerwsh_Efhmerias.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Προσθήκη εφημερίας", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -167,7 +91,7 @@ public class Enhmerwsh_Efhmerias extends javax.swing.JFrame{
             }
         });
 
-        jButton1.setText("Ορισμός Εφημερίας");
+        jButton1.setText("Προσθήκη εφημερίας");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -181,13 +105,21 @@ public class Enhmerwsh_Efhmerias extends javax.swing.JFrame{
             }
         });
 
-        change_value_msg.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        change_value_msg.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        change_value_msg.setForeground(new java.awt.Color(255, 255, 255));
         change_value_msg.setText("Ημέρα:");
 
+        change_value_msg1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        change_value_msg1.setForeground(new java.awt.Color(255, 255, 255));
         change_value_msg1.setText("Επιλέξτε τα στοιχεία που επιθυμείτε:");
 
-        change_value_msg2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        change_value_msg2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        change_value_msg2.setForeground(new java.awt.Color(255, 255, 255));
         change_value_msg2.setText("Μήνας:");
+
+        Hmera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30" }));
+
+        Mhnas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
 
         javax.swing.GroupLayout Enhmerwsh_EfhmeriasLayout = new javax.swing.GroupLayout(Enhmerwsh_Efhmerias);
         Enhmerwsh_Efhmerias.setLayout(Enhmerwsh_EfhmeriasLayout);
@@ -200,22 +132,22 @@ public class Enhmerwsh_Efhmerias extends javax.swing.JFrame{
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(Enhmerwsh_EfhmeriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(change_value_msg1)
-                    .addGroup(Enhmerwsh_EfhmeriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(Enhmerwsh_EfhmeriasLayout.createSequentialGroup()
+                    .addGroup(Enhmerwsh_EfhmeriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Enhmerwsh_EfhmeriasLayout.createSequentialGroup()
                             .addComponent(jButton1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton2))
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Enhmerwsh_EfhmeriasLayout.createSequentialGroup()
-                            .addComponent(change_value_msg, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(change_value_msg2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(351, Short.MAX_VALUE))
+                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(change_value_msg1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE))
+                    .addGroup(Enhmerwsh_EfhmeriasLayout.createSequentialGroup()
+                        .addComponent(change_value_msg)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Hmera, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(change_value_msg2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Mhnas, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(340, Short.MAX_VALUE))
         );
         Enhmerwsh_EfhmeriasLayout.setVerticalGroup(
             Enhmerwsh_EfhmeriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,13 +155,14 @@ public class Enhmerwsh_Efhmerias extends javax.swing.JFrame{
                 .addGap(75, 75, 75)
                 .addComponent(change_value_msg1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Enhmerwsh_EfhmeriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(change_value_msg)
-                    .addComponent(change_value_msg2)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(Enhmerwsh_EfhmeriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(Enhmerwsh_EfhmeriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(change_value_msg)
+                        .addComponent(change_value_msg2))
+                    .addComponent(Hmera)
+                    .addComponent(Mhnas))
+                .addGap(22, 22, 22)
                 .addGroup(Enhmerwsh_EfhmeriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -237,7 +170,7 @@ public class Enhmerwsh_Efhmerias extends javax.swing.JFrame{
                 .addGroup(Enhmerwsh_EfhmeriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(244, Short.MAX_VALUE))
+                .addContainerGap(241, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -250,7 +183,7 @@ public class Enhmerwsh_Efhmerias extends javax.swing.JFrame{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Enhmerwsh_Efhmerias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 2, Short.MAX_VALUE))
         );
 
         pack();
@@ -260,20 +193,21 @@ public class Enhmerwsh_Efhmerias extends javax.swing.JFrame{
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.dashboard.setEnabled(true);
         dispose();
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    //to jcombobox gia tis efhmeries, arxikopoeitai post creation
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
        
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+// elegxos an borei na prostehei h efhmeria, epistrefei true an borei    
 public boolean addToHDJList(ArrayList<OnCall> e, int amka, String cdate){ //kanei update ton pinaka tou HeadDoc_Dashboard
     boolean bool = false;
-    e = dashboard.Clinic1.getOnCallList();
-    int k = 0;
-    int j = 0;
+    e = dashboard.getClinic().getOnCallList(); //pernume thn oncall list
+    int k = 0; //metrhths gia diaforetikes hmeromnies
+    int j = 0; //metrhths gia diaforetikes efhmeries tou idiou atomoy
     for (int i = 0; i<e.size(); i++){
-        if (dashboard.Clinic1.checkOnCallDate(e.get(i).getOnCallDate(),cdate)){
+        if (dashboard.getClinic().checkOnCallDate(e.get(i).getOnCallDate(),cdate)){ //elegxoyme an sumpeftei h efhmeria
             k++;
         }
         if (amka == e.get(i).getAMKAOnCall()){
@@ -281,52 +215,51 @@ public boolean addToHDJList(ArrayList<OnCall> e, int amka, String cdate){ //kane
         }
     }
     
-    ArrayList<Doctor> tempDocList = dashboard.returnDocList();
-    String name =" ";
+    ArrayList<Doctor> tempDocList = dashboard.returnDocList(); //pernume th lista giatrwn apo to headdoc_dashboard
+    String name =" "; //prosorini arxikopoihsh
     Doctor d1 = null;
     for (int i = 0; i < tempDocList.size(); i++){
-        if (amka == tempDocList.get(i).getAMKA()){
+        if (amka == tempDocList.get(i).getAMKA()){//apo to amka, vruskume to onoma
             name = tempDocList.get(i).getName();
-            d1 = new Doctor (amka, name, tempDocList.get(i).getSpeciality(), dashboard.Clinic1);
+            d1 = new Doctor (amka, name, tempDocList.get(i).getSpeciality(), dashboard.getClinic()); //arxikopoihsh neou adikeimenoy giatrou
         }
     }
-    if (k == (e.size())){
+    if (k == (e.size())){//an kamia efhmeia de sumpeftei me authi pou thelume na prosthesume
         bool = true;
-        if (j==0){
-            OnCall tempOC = new OnCall(cdate, amka, dashboard.Clinic1.getClinicName(), j, d1); 
+        if (j==0){//an to atomo den exei kamia efhmeria
+            OnCall tempOC = new OnCall(cdate, amka, dashboard.getClinic().getClinicName(), j, d1); //arxikopoihsh neas efhmerias
+            e.add(tempOC);//thn prostheto sti lista efhmeriwn ths kliniks
+            dashboard.JOnCall_list_str.add("Ημερομηνία: " + cdate + "   " + "Όνομα Γιατρού: " + name + "    " +  "ΑΜΚΑ Γιατρού: " + amka + "   " + "Κλινική: " + dashboard.getClinic().getClinicName() + "   " + "Αριθμός Εφημερίας: " + 1); //to string poy prostithetai sto jlist tou headdoc_dashboard
+        }else{// ta idia me panw me mony diafora oti to j auksanetai kata 1 gia th nea efhmeria
+            OnCall tempOC = new OnCall(cdate, amka, dashboard.getClinic().getClinicName(), j+1 , d1); 
             e.add(tempOC);
-            dashboard.JOnCall_list_str.add("Ημερομηνία: " + cdate + "   " + "Όνομα Γιατρού: " + name + "    " +  "ΑΜΚΑ Γιατρού: " + amka + "   " + "Κλινική: " + dashboard.Clinic1.getClinicName() + "   " + "Αριθμός Εφημερίας: " + 1);
-        }else{
-            OnCall tempOC = new OnCall(cdate, amka, dashboard.Clinic1.getClinicName(), j+1 , d1); 
-            e.add(tempOC);
-            dashboard.JOnCall_list_str.add("Ημερομηνία: " + cdate + "   " + "Όνομα Γιατρού: " + name + "    " +  "ΑΜΚΑ Γιατρού: " + amka + "   " + "Κλινική: " + dashboard.Clinic1.getClinicName() + "   " + "Αριθμός Εφημερίας: " + (j+1));
+            dashboard.JOnCall_list_str.add("Ημερομηνία: " + cdate + "   " + "Όνομα Γιατρού: " + name + "    " +  "ΑΜΚΑ Γιατρού: " + amka + "   " + "Κλινική: " + dashboard.getClinic().getClinicName() + "   " + "Αριθμός Εφημερίας: " + (j+1));
         }
-        return bool;
+        return bool; //epistrepse true
     }else return bool;
 }
 
-    //
+    //prosthiki ths efhmeria sto jlist tou headdoc_dashboard
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String temp1 = this.Spinner1(); // pairnoyme tis times twn jspinners
-        String temp2 = this.Spinner2();
+        String temp1 = Hmera.getItemAt(Hmera.getSelectedIndex()); // pairnoyme tis times apo ta jcombo
+        String temp2 = Mhnas.getItemAt(Mhnas.getSelectedIndex());
         int year = Calendar.getInstance().get(Calendar.YEAR); //pairnoyme to xrono
-        String tempDate = temp1 + "/" + temp2 + "/" + String.valueOf(year); //thetume tin imeromhnia opws tin exoume sto formatter tou cli
+        String tempDate = temp1 + "/" + temp2 + "/" + String.valueOf(year); //thetume tin imeromhnia opws tin exoume sto formatter tou clinic
         
-        //oi times tha einai panta egkures giati to periorizei to model
+        //oi times tha einai panta egkures afou tis epilegei apo to jcombobox
         String tempS = jComboBox1.getItemAt(jComboBox1.getSelectedIndex()); //briskoyme to amka tis epiloghs toy jcombo
         String tempAMKA = tempS.substring(tempS.lastIndexOf(":")+2, (tempS.length()));//dhmiourgoume substring gia na to kanume auto
         int intAMKA = Integer.parseInt(tempAMKA); //kanume to amka int 
         if (this.addToHDJList(dashboard.returnOnCalls(), intAMKA, tempDate)){//kalume gia to update toy pinaka 
             javax.swing.DefaultListModel<String>  oncall_jlist_model = (javax.swing.DefaultListModel<String>)dashboard.getOnCall_list().getModel(); //pernume to modelo ths jlist toy dashboard_headdoc
             oncall_jlist_model.addElement(dashboard.JOnCall_list_str.get(dashboard.JOnCall_list_str.size()-1));//edw ginetai h orath enhmerwsh tis listas 
-        } else{
-            Conditional_Message con1 = new Conditional_Message(this);
-            con1.triggerMsg("Δώστε νέα ημερομήνια, η εφημερία υπάρχει ήδη στη λίστα");
+        }else{
+            Conditional_Message con1 = new Conditional_Message(this); //dhmiourgoyme minima error
+            con1.triggerMsg("<html>Η εφημερία που επιχειρήσατε να προσθέσετε υπάρχει ήδη στη λίστα. Παρακαλώ δώστε νέα ημερομηνία.</html>"); //to minima 
             con1.setVisible(true);
             this.setEnabled(false);
-        }       
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -362,6 +295,8 @@ public boolean addToHDJList(ArrayList<OnCall> e, int amka, String cdate){ //kane
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Enhmerwsh_Efhmerias;
+    private javax.swing.JComboBox<String> Hmera;
+    private javax.swing.JComboBox<String> Mhnas;
     private javax.swing.JLabel change_value_msg;
     private javax.swing.JLabel change_value_msg1;
     private javax.swing.JLabel change_value_msg2;
@@ -370,7 +305,5 @@ public boolean addToHDJList(ArrayList<OnCall> e, int amka, String cdate){ //kane
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
     // End of variables declaration//GEN-END:variables
 }
