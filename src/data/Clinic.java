@@ -24,11 +24,12 @@ public class Clinic {
     
     //Constructors
     public Clinic(){}
-    public Clinic(String name, int num_of_patients, int head_doctor, int num_staff){
+    public Clinic(String name, int num_of_patients, int head_doctor, int num_staff, int beds){
         this.name = name;
         this.num_of_patients = num_of_patients;
         this.head_doctor = head_doctor;
         this.num_staff = num_staff;
+        this.num_Beds = beds;
     }
     
     //getters kai setters

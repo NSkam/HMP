@@ -221,6 +221,12 @@
                                           <Component id="jTabbedPane1" alignment="0" min="-2" pref="550" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="DomKlin" min="-2" pref="44" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace pref="169" max="32767" attributes="0"/>
                           </Group>
@@ -233,12 +239,17 @@
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jTabbedPane1" min="-2" pref="266" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel3" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                                  <Component id="DomKlin" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="35" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jButton5" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="126" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -256,13 +267,10 @@
                       </Properties>
                     </Component>
                     <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
-                      <Events>
-                        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jTabbedPane1StateChanged"/>
-                      </Events>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
                       <SubComponents>
-                        <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+                        <Container class="javax.swing.JScrollPane" name="jScrollPane2">
                           <AuxValues>
                             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                           </AuxValues>
@@ -320,6 +328,41 @@
                                     </LineBorder>
                                   </Border>
                                 </Property>
+                                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                  <Connection code="new javax.swing.DefaultListModel&lt;String&gt;()" type="code"/>
+                                </Property>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="this.InitDisList();"/>
+                                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="         //Update Default List Model for the Jlist&#xa;        javax.swing.DefaultListModel&lt;String&gt; dis_jlist_model = (javax.swing.DefaultListModel&lt;String&gt;)eksitiria.getModel();&#xa;        for(int x=0; x&lt;tempDisJ.size();x++){&#xa;            dis_jlist_model.addElement(tempDisJ.get(x));&#xa;        }"/>
+                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                              </AuxValues>
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                        <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+                          <AuxValues>
+                            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                          </AuxValues>
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                              <JTabbedPaneConstraints tabName="&lt;html&gt;&#x391;&#x3b9;&#x3c4;&#x3ae;&#x3c3;&#x3b5;&#x3b9;&#x3c2; &#x3bc;&#x3b5;&#x3c4;&#x3b1;&#x3c6;&#x3bf;&#x3c1;&#x3ac;&#x3c2; &#x3c3;&#x3b5; &lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &#x3ac;&#x3bb;&#x3bb;&#x3b7; &#x3ba;&#x3bb;&#x3b9;&#x3bd;&#x3b9;&#x3ba;&#x3ae;&lt;/html&gt;">
+                                <Property name="tabTitle" type="java.lang.String" value="&lt;html&gt;&#x391;&#x3b9;&#x3c4;&#x3ae;&#x3c3;&#x3b5;&#x3b9;&#x3c2; &#x3bc;&#x3b5;&#x3c4;&#x3b1;&#x3c6;&#x3bf;&#x3c1;&#x3ac;&#x3c2; &#x3c3;&#x3b5; &lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &#x3ac;&#x3bb;&#x3bb;&#x3b7; &#x3ba;&#x3bb;&#x3b9;&#x3bd;&#x3b9;&#x3ba;&#x3ae;&lt;/html&gt;"/>
+                              </JTabbedPaneConstraints>
+                            </Constraint>
+                          </Constraints>
+
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                          <SubComponents>
+                            <Component class="javax.swing.JList" name="mal12">
+                              <Properties>
+                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                    <LineBorder roundedCorners="true">
+                                      <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                                    </LineBorder>
+                                  </Border>
+                                </Property>
                               </Properties>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -357,36 +400,6 @@
                             </Component>
                           </SubComponents>
                         </Container>
-                        <Container class="javax.swing.JScrollPane" name="jScrollPane2">
-                          <AuxValues>
-                            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                          </AuxValues>
-                          <Constraints>
-                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                              <JTabbedPaneConstraints tabName="&lt;html&gt;&#x391;&#x3b9;&#x3c4;&#x3ae;&#x3c3;&#x3b5;&#x3b9;&#x3c2; &#x3bc;&#x3b5;&#x3c4;&#x3b1;&#x3c6;&#x3bf;&#x3c1;&#x3ac;&#x3c2; &#x3c3;&#x3b5; &lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &#x3ac;&#x3bb;&#x3bb;&#x3b7; &#x3ba;&#x3bb;&#x3b9;&#x3bd;&#x3b9;&#x3ba;&#x3ae;&lt;/html&gt;">
-                                <Property name="tabTitle" type="java.lang.String" value="&lt;html&gt;&#x391;&#x3b9;&#x3c4;&#x3ae;&#x3c3;&#x3b5;&#x3b9;&#x3c2; &#x3bc;&#x3b5;&#x3c4;&#x3b1;&#x3c6;&#x3bf;&#x3c1;&#x3ac;&#x3c2; &#x3c3;&#x3b5; &lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &#x3ac;&#x3bb;&#x3bb;&#x3b7; &#x3ba;&#x3bb;&#x3b9;&#x3bd;&#x3b9;&#x3ba;&#x3ae;&lt;/html&gt;"/>
-                              </JTabbedPaneConstraints>
-                            </Constraint>
-                          </Constraints>
-
-                          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                          <SubComponents>
-                            <Component class="javax.swing.JList" name="jList2">
-                              <Properties>
-                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                                    <LineBorder roundedCorners="true">
-                                      <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
-                                    </LineBorder>
-                                  </Border>
-                                </Property>
-                              </Properties>
-                              <AuxValues>
-                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                              </AuxValues>
-                            </Component>
-                          </SubComponents>
-                        </Container>
                       </SubComponents>
                     </Container>
                     <Component class="javax.swing.JButton" name="jButton4">
@@ -404,6 +417,22 @@
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
                       </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel3">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="16" style="0"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="&#x391;&#x3c1;&#x3b9;&#x3b8;&#x3bc;&#x3cc;&#x3c2; &#x3b4;&#x3b9;&#x3b1;&#x3b8;&#x3ad;&#x3c3;&#x3b9;&#x3bc;&#x3c9;&#x3bd; &#x3b4;&#x3c9;&#x3bc;&#x3b1;&#x3c4;&#x3af;&#x3c9;&#x3bd; &#x3ba;&#x3bb;&#x3b9;&#x3bd;&#x3b9;&#x3ba;&#x3ae;&#x3c2;:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="DomKlin">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="String s3 = String.valueOf(this.getClinic().getNumOfBeds());&#xd;&#xa;this.getDomKlin().setText(s3);&#xd;&#xa;this.getDomKlin().setEditable(false);"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>

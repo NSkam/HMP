@@ -12,7 +12,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
     
             
     /**************     TEST DATA     ***************/
-    private Clinic Clinic1 = new Clinic("Παθολογική", 200, 1600, 200); //test data gia klinikh
+    private Clinic Clinic1 = new Clinic("Παθολογική", 200, 1600, 200, 200); //test data gia klinikh
     Doctor d1 = new Doctor(1234, "Γιώργος Οικονόμου" , "Χειρουργός", Clinic1); //test data gia giatrous
     Doctor d2 = new Doctor(1235, "Αγγελική Παπαδοπούλου" , "Ενδοκρινολόγος", Clinic1);
     Doctor d3 = new Doctor(1237, "Νίκος Σηφάκης" , "Παθολόγος", Clinic1);
@@ -43,9 +43,12 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
     Discharge_Application dis5 = new Discharge_Application (d1,Application.Type.discharge_appl,p10);
     ArrayList<OnCall> TempOnCall = new ArrayList <OnCall>(200);//prosorini lista gia efhmeries
     ArrayList<Doctor> TempDoc = new ArrayList <Doctor>(200); //prosorini lista gia giatrous
-    ArrayList<String> tempAdmissJ = new ArrayList<String>(200); //lista eisitiriwn poy tha emfanizetai
-    ArrayList<String> tempDischJ = new ArrayList<String>(200); //lista eksitiriwn poy tha emfanizetai
+    ArrayList <Discharge_Application> tempDis = new ArrayList <Discharge_Application> (200); //prosorini lista gia discharge aithseis 
+    ArrayList <Admission_Application> tempAdms = new ArrayList <Admission_Application> (200); //prosorini lista gia admission aithseis
+    ArrayList<String> tempAdmissJ = new ArrayList <String>(200); //lista eisitiriwn poy tha emfanizetai
+    ArrayList<String> tempDisJ = new ArrayList <String>(200); //lista eksitiriwn poy tha emfanizetai
     ArrayList<String> JOnCall_list_str = new ArrayList<String>(200); //lista efhmeriwn poy tha emfanizetai
+    
     HeadDoctor HeadDoctor1 = new HeadDoctor();
 
     /**
@@ -77,17 +80,23 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         applications = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jScrollPane4 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         eisitiria = new javax.swing.JList<>();
         this.InitAdmList();
         jScrollPane3 = new javax.swing.JScrollPane();
         eksitiria = new javax.swing.JList<>();
+        this.InitDisList();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        mal12 = new javax.swing.JList<>();
         jScrollPane5 = new javax.swing.JScrollPane();
         jList5 = new javax.swing.JList<>();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        DomKlin = new javax.swing.JTextField();
+        String s3 = String.valueOf(this.getClinic().getNumOfBeds());
+        this.getDomKlin().setText(s3);
+        this.getDomKlin().setEditable(false);
         patient_list = new javax.swing.JPanel();
         day_offs = new javax.swing.JPanel();
         supplies = new javax.swing.JPanel();
@@ -156,12 +165,6 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Αιτήσεις Κλινικής");
 
-        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jTabbedPane1StateChanged(evt);
-            }
-        });
-
         eisitiria.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         eisitiria.setModel(new javax.swing.DefaultListModel<String>());
         //Update Default List Model for the Jlist
@@ -169,24 +172,30 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         for(int x=0; x<tempAdmissJ.size();x++){
             admis_jlist_model.addElement(tempAdmissJ.get(x));
         }
-        jScrollPane4.setViewportView(eisitiria);
+        jScrollPane2.setViewportView(eisitiria);
 
-        jTabbedPane1.addTab("Αιτήσεις εισιτηρίων", jScrollPane4);
+        jTabbedPane1.addTab("Αιτήσεις εισιτηρίων", jScrollPane2);
 
         eksitiria.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        eksitiria.setModel(new javax.swing.DefaultListModel<String>());
+        //Update Default List Model for the Jlist
+        javax.swing.DefaultListModel<String> dis_jlist_model = (javax.swing.DefaultListModel<String>)eksitiria.getModel();
+        for(int x=0; x<tempDisJ.size();x++){
+            dis_jlist_model.addElement(tempDisJ.get(x));
+        }
         jScrollPane3.setViewportView(eksitiria);
 
         jTabbedPane1.addTab("Αιτήσεις εξιτηρίων", jScrollPane3);
+
+        mal12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        jScrollPane4.setViewportView(mal12);
+
+        jTabbedPane1.addTab("<html>Αιτήσεις μεταφοράς σε <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; άλλη κλινική</html>", jScrollPane4);
 
         jList5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         jScrollPane5.setViewportView(jList5);
 
         jTabbedPane1.addTab("<html>Αιτήσεις για εξέταση<br>&nbsp;&nbsp;&nbsp; σε άλλη κλινική</html>", jScrollPane5);
-
-        jList2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        jScrollPane2.setViewportView(jList2);
-
-        jTabbedPane1.addTab("<html>Αιτήσεις μεταφοράς σε <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; άλλη κλινική</html>", jScrollPane2);
 
         jButton4.setText("Επιλογή αίτησης");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -201,6 +210,10 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Αριθμός διαθέσιμων δωματίων κλινικής:");
 
         javax.swing.GroupLayout applicationsLayout = new javax.swing.GroupLayout(applications);
         applications.setLayout(applicationsLayout);
@@ -218,7 +231,12 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
                                 .addComponent(jButton4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton5))
-                            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(applicationsLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(DomKlin, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(169, Short.MAX_VALUE))
         );
         applicationsLayout.setVerticalGroup(
@@ -228,11 +246,15 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(27, 27, 27)
+                .addGroup(applicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DomKlin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(applicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
                     .addComponent(jButton5))
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addGap(70, 70, 70))
         );
 
         Dashboard_tabs.addTab("Αιτήσεις", applications);
@@ -462,13 +484,13 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         this.setEnabled(false);
       }else{//an den exei epilegei efhmeria 
         Conditional_Message con1 = new Conditional_Message(this);
-        con1.triggerMsg("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Πρέπει να επιλέξετε μια εφημερία!</html>");
+        con1.triggerMsg("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Πρέπει να επιλέξετε μια εφημερία!</html>");
         con1.setVisible(true);
         this.setEnabled(false);
-      }
-          
+      }     
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    
+    //otan patietai eksodos sth selida twn aithsewn, paei sthn arxikh selida tou profil 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         Dashboard_tabs.setSelectedIndex(0); 
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -476,28 +498,29 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if (!(eisitiria.isSelectionEmpty())||!(eksitiria.isSelectionEmpty())){ //an exei epilegei aithsh
             int eis_index = eisitiria.getSelectedIndex();
-            int eks_index = eksitiria.getSelectedIndex();    //pare to index toy jlist
+            int eks_index = eksitiria.getSelectedIndex();   //pare to index toy jlist
+            if ((eis_index!=-1) && (jTabbedPane1.getSelectedIndex()==0)){
+                Admission_Application app1 = tempAdms.get(eis_index);
+                Parathiro_Aithsewn pa1 = new Parathiro_Aithsewn(this, app1, eis_index);
+                pa1.ShowAppAdmInfo(app1);
+                pa1.setVisible(true);
+                this.setEnabled(false);
+            }else if((eks_index!=-1) && (jTabbedPane1.getSelectedIndex()==1)){
+               Discharge_Application app2 = tempDis.get(eks_index);
+               Parathiro_Aithsewn pa2 = new Parathiro_Aithsewn(this, app2, eks_index);
+               pa2.ShowAppDisInfo(app2);
+               pa2.setVisible(true);
+               this.setEnabled(false); 
+            }
         }else{//an den exei aithsh
             Conditional_Message con1 = new Conditional_Message(this);
-            con1.triggerMsg("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Πρέπει να επιλέξετε μια αίτηση!</html>");
+            con1.triggerMsg("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Πρέπει να επιλέξετε μια αίτηση!</html>");
             con1.setVisible(true);
             this.setEnabled(false);
         }
         
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
-
-    }//GEN-LAST:event_jTabbedPane1StateChanged
-     
-    /*****
-    private void createNewAppl(java.awt.event.ActionEvent evt) {                               
-           Available_Applications available_applications_window = new Available_Applications(this);
-           available_applications_window.setVisible(true);
-           this.setEnabled(false);
-    }
-    *****/
-       
+            
     //Epistrefei thn OnCallList_J
     public javax.swing.JList<String> getOnCall_list(){
         return this.OnCallList_J;
@@ -506,6 +529,9 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
     //Epistrefei ta tabs tou parathirou
     public javax.swing.JTabbedPane returnTabs(){
         return  Dashboard_tabs;   
+    }
+    public javax.swing.JTabbedPane returnTabsAit(){
+        return  jTabbedPane1;   
     }
     
     //prosthetei tis efhmeries sthn prosorini lista poy ftiaksame kai epistrefei th lista
@@ -544,33 +570,53 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
          }
     }
     
-    public void InitAdmList(){
-        ArrayList<Admission_Application> tempAdms = new ArrayList<Admission_Application>(200); 
-        tempAdms.add(adm1);
-        tempAdms.add(adm2);
-        tempAdms.add(adm3);
-        tempAdms.add(adm4);
-        tempAdms.add(adm5);
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        tempAdmissJ.clear();
-        for (int i=0; i<tempAdms.size(); i++){
-            this.tempAdmissJ.add("ID Αίτησης: " + tempAdms.get(i).getID() +"    " + "Υποβλήθηκε από: " + tempAdms.get(i).getDoctor().getName() + "    " + "Ημερομηνία: " + formatter.format(tempAdms.get(i).getDate()) + "    " + "Ασθενής: " + tempAdms.get(i).getPatient().getName() + "   " + "Κατάσταση: " + tempAdms.get(i).getStatus());
-        }
-        
-    }
     
-    public void InitDisList(){
-        ArrayList<Discharge_Application> tempDis = new ArrayList<Discharge_Application>(200);
+    public ArrayList<Discharge_Application> returnTempDis(){
         tempDis.add(dis1);
         tempDis.add(dis2);
         tempDis.add(dis3);
         tempDis.add(dis4);
         tempDis.add(dis5);
+        return tempDis;
+    }
+    
+    public ArrayList<Admission_Application> returnTempAdms(){
+        tempAdms.add(adm1);
+        tempAdms.add(adm2);
+        tempAdms.add(adm3);
+        tempAdms.add(adm4);
+        tempAdms.add(adm5); 
+        return tempAdms;
+    }
+    
+    public void InitDisList(){
+        this.returnTempDis();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        tempDischJ.clear();
-        for (int i=0; i<tempDischJ.size(); i++){
-            this.tempDischJ.add("ID Αίτησης: " + tempDis.get(i).getID() +"    " + "Υποβλήθηκε από: " + tempDis.get(i).getDoctor().getName() + "    " + "Ημερομηνία: " + formatter.format(tempDis.get(i).getDate()) + "    " + "Ασθενής: " + tempDis.get(i).getPatient().getName() + "    " + "Κατάσταση: " + tempDis.get(i).getStatus());            
+        tempDisJ.clear();
+        for (int i=0; i<tempDis.size(); i++){
+            this.tempDisJ.add("ID Αίτησης: " + tempDis.get(i).getID() +"    " + "Υποβλήθηκε από: " + tempDis.get(i).getDoctor().getName() + "    " + "Ημερομηνία: " + formatter.format(tempDis.get(i).getDate()) + "    " + "Ασθενής: " + tempDis.get(i).getPatient().getName() + "    " + "Κατάσταση: " + tempDis.get(i).getStatus());     
         }
+    }
+        
+    public void InitAdmList(){
+        this.returnTempAdms();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        tempAdmissJ.clear();
+        for (int i=0; i<tempAdms.size(); i++){
+            this.tempAdmissJ.add("ID Αίτησης: " + tempAdms.get(i).getID() +"    " + "Υποβλήθηκε από: " + tempAdms.get(i).getDoctor().getName() + "    " + "Ημερομηνία: " + formatter.format(tempAdms.get(i).getDate()) + "    " + "Ασθενής: " + tempAdms.get(i).getPatient().getName() + "   " + "Κατάσταση: " + tempAdms.get(i).getStatus());
+        }    
+    }
+    
+    public javax.swing.JList<String> getEisitiria(){
+        return this.eisitiria;
+    }
+    
+    public javax.swing.JList<String> getEksitiria(){
+        return this.eksitiria;
+    }
+    
+    public javax.swing.JTextField getDomKlin(){
+        return this.DomKlin;
     }
     /**
      * @param args the command line arguments
@@ -611,6 +657,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
     private javax.swing.JPanel Button_Panel;
     private javax.swing.JLayeredPane Dashboard_Layer;
     private javax.swing.JTabbedPane Dashboard_tabs;
+    private javax.swing.JTextField DomKlin;
     private javax.swing.JList<String> OnCallList_J;
     private javax.swing.JScrollPane OnCallList_J_Pane;
     private javax.swing.JPanel Tab_Panel;
@@ -626,7 +673,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JList<String> jList2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JList<String> jList5;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -634,6 +681,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton logout_button;
+    private javax.swing.JList<String> mal12;
     private javax.swing.JPanel on_call;
     private javax.swing.JPanel patient_list;
     private javax.swing.JPanel supplies;

@@ -5,10 +5,7 @@ package data;
  * @author Nikolaos Skamnelos
  */
 public class Admission_Application extends Application {
-    
-    public final static Type typea = Type.admission_appl;
 
-    
     private Patient admited_patient;//O asthenhs pou eisagetai
     
     //Constructors
