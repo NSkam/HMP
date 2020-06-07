@@ -17,16 +17,15 @@ public class HeadDoctor extends Doctor{
     public HeadDoctor (int amka, String name, String speciality, Clinic doc_clinic, String sprv_clinic, ArrayList <Doctor> sprv_doc){
         super (amka, name, speciality, doc_clinic);
         supervisedClinic = sprv_clinic;
-        for (int i = 0; i<= sprv_doc.size(); i++){ //arxikopoihsh listas giatrwn
-            supervised_doctors.add(i, sprv_doc.get(i));
-        }
+        supervised_doctors = sprv_doc;
+        
     }
     
     //setters 
     
     //prosthetei nea efhmeria
-    public void setOnCall(String cdate, Doctor d){
-        (this.getClinic()).updateOnCallList(cdate, d.getAMKA(), d);
+    public void addOnCall(String cdate, Doctor d){
+        (this.getClinic()).addtoOnCallList(cdate, d.getAMKA(), d);
     }
     
     //enhmerwnei hmeromhnia sugkekrimenhs efhmerias

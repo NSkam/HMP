@@ -9,7 +9,7 @@ import data.*;
 import java.util.Calendar;
 /**
  *
- * @author Thodoris Tomadakis
+ * @author Theodoros Tomadakis
  */
 public class Enhmerwsh_Efhmerias extends javax.swing.JFrame{
 
@@ -29,13 +29,13 @@ public class Enhmerwsh_Efhmerias extends javax.swing.JFrame{
         ArrayList<String>tempOnomaList = new ArrayList<String>(10); //prosorinoi pinakes gia na diasfalisw oti to amka
         ArrayList<String>tempAmkaList = new ArrayList<String>(10); //kai to onoma tha einai unique
         String amka = String.valueOf(TempOCList.get(0).getAMKAOnCall()); //pernw to prwto amka 
-        String onoma = TempOCList.get(0).getOnCallDoc(); //kai to prwto onoma 
+        String onoma = TempOCList.get(0).getOnCallDoc().getName(); //kai to prwto onoma 
         tempOnomaList.add(onoma); // ta prosthetw stous antistoixous pinakes
         tempAmkaList.add(amka);
         this.JComboList.add("Όνομα: " + onoma + "    " + "AMKA: " + amka); //to prosthetw sto jcombo
         for (int i = 1; i<TempOCList.size(); i++){
             amka = String.valueOf(TempOCList.get(i).getAMKAOnCall()); //pernume to epomeno amka kai
-            onoma = TempOCList.get(i).getOnCallDoc(); //onoma twn efhmeriwn 
+            onoma = TempOCList.get(i).getOnCallDoc().getName(); //onoma twn efhmeriwn 
             if ((!tempOnomaList.contains(onoma)) && (!tempAmkaList.contains(amka))){ // elegxoyme an yparxoun ston proswrino pinaka
                 tempOnomaList.add(onoma); //an oxi ta prosthetume 
                 tempAmkaList.add(amka);
@@ -43,7 +43,7 @@ public class Enhmerwsh_Efhmerias extends javax.swing.JFrame{
             }
         }                    
     }
-    
+
     
     /*
      * This method is called from within the constructor to initialize the form.
@@ -85,11 +85,6 @@ public class Enhmerwsh_Efhmerias extends javax.swing.JFrame{
         for(int x=0; x<JComboList.size();x++){
             person_list_model.addElement(JComboList.get(x));
         }
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
 
         jButton1.setText("Προσθήκη εφημερίας");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -195,11 +190,6 @@ public class Enhmerwsh_Efhmerias extends javax.swing.JFrame{
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    //to jcombobox gia tis efhmeries, arxikopoeitai post creation
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-       
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
 // elegxos an borei na prostehei h efhmeria, epistrefei true an borei    
 public boolean addToHDJList(ArrayList<OnCall> e, int amka, String cdate){ //kanei update ton pinaka tou HeadDoc_Dashboard
     boolean bool = false;
@@ -211,7 +201,7 @@ public boolean addToHDJList(ArrayList<OnCall> e, int amka, String cdate){ //kane
             k++;
         }
         if (amka == e.get(i).getAMKAOnCall()){
-            j++;
+            j++; //oi efhmeries poy exei to kathe atomo
         }
     }
     
@@ -227,11 +217,11 @@ public boolean addToHDJList(ArrayList<OnCall> e, int amka, String cdate){ //kane
     if (k == (e.size())){//an kamia efhmeia de sumpeftei me authi pou thelume na prosthesume
         bool = true;
         if (j==0){//an to atomo den exei kamia efhmeria
-            OnCall tempOC = new OnCall(cdate, amka, dashboard.getClinic().getClinicName(), j, d1); //arxikopoihsh neas efhmerias
+            OnCall tempOC = new OnCall(cdate, d1, dashboard.getClinic().getClinicName(), j); //arxikopoihsh neas efhmerias
             e.add(tempOC);//thn prostheto sti lista efhmeriwn ths kliniks
             dashboard.JOnCall_list_str.add("Ημερομηνία: " + cdate + "   " + "Όνομα Γιατρού: " + name + "    " +  "ΑΜΚΑ Γιατρού: " + amka + "   " + "Κλινική: " + dashboard.getClinic().getClinicName() + "   " + "Αριθμός Εφημερίας: " + 1); //to string poy prostithetai sto jlist tou headdoc_dashboard
         }else{// ta idia me panw me mony diafora oti to j auksanetai kata 1 gia th nea efhmeria
-            OnCall tempOC = new OnCall(cdate, amka, dashboard.getClinic().getClinicName(), j+1 , d1); 
+            OnCall tempOC = new OnCall(cdate, d1, dashboard.getClinic().getClinicName(), j+1 ); 
             e.add(tempOC);
             dashboard.JOnCall_list_str.add("Ημερομηνία: " + cdate + "   " + "Όνομα Γιατρού: " + name + "    " +  "ΑΜΚΑ Γιατρού: " + amka + "   " + "Κλινική: " + dashboard.getClinic().getClinicName() + "   " + "Αριθμός Εφημερίας: " + (j+1));
         }
@@ -250,9 +240,13 @@ public boolean addToHDJList(ArrayList<OnCall> e, int amka, String cdate){ //kane
         String tempS = jComboBox1.getItemAt(jComboBox1.getSelectedIndex()); //briskoyme to amka tis epiloghs toy jcombo
         String tempAMKA = tempS.substring(tempS.lastIndexOf(":")+2, (tempS.length()));//dhmiourgoume substring gia na to kanume auto
         int intAMKA = Integer.parseInt(tempAMKA); //kanume to amka int 
-        if (this.addToHDJList(dashboard.returnOnCalls(), intAMKA, tempDate)){//kalume gia to update toy pinaka 
+        if (this.addToHDJList(dashboard.returnOnCalls(), intAMKA, tempDate)){//kalume gia na dume an borume na kanyme update to array list
             javax.swing.DefaultListModel<String>  oncall_jlist_model = (javax.swing.DefaultListModel<String>)dashboard.getOnCall_list().getModel(); //pernume to modelo ths jlist toy dashboard_headdoc
             oncall_jlist_model.addElement(dashboard.JOnCall_list_str.get(dashboard.JOnCall_list_str.size()-1));//edw ginetai h orath enhmerwsh tis listas 
+            Conditional_Message con1 = new Conditional_Message(this);
+            con1.triggerMsg("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Επιτυχία προσθήκης εφημερίας!</html>");
+            con1.setVisible(true);
+            this.setEnabled(false);
         }else{
             Conditional_Message con1 = new Conditional_Message(this); //dhmiourgoyme minima error
             con1.triggerMsg("<html>Η εφημερία που επιχειρήσατε να προσθέσετε υπάρχει ήδη στη λίστα. Παρακαλώ δώστε νέα ημερομηνία.</html>"); //to minima 

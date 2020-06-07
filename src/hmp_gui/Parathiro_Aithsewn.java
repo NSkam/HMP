@@ -4,7 +4,7 @@ import data.*;
 import java.text.SimpleDateFormat;
 /**
  *
- * @author Nikolaos Skamnelos & Theodoros Tomadakis
+ * @author Theodoros Tomadakis
  */
 public class Parathiro_Aithsewn extends javax.swing.JFrame {
     
@@ -14,7 +14,7 @@ public class Parathiro_Aithsewn extends javax.swing.JFrame {
     /**
      * Creates new form Patient_Profile
      */
-    public Parathiro_Aithsewn(Dashboard_Headdoc dashboard, Application application, int appl_index) {
+    public Parathiro_Aithsewn(Dashboard_Headdoc dashboard, Application application, int appl_index) { //arxikopoihsh toy dashboard twn aithsewn
         this.dashboard = dashboard;
         this.appl = application;
         this.app_index = appl_index;
@@ -52,6 +52,9 @@ public class Parathiro_Aithsewn extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         exit_button1 = new javax.swing.JButton();
         exit_button2 = new javax.swing.JButton();
+        exit_button3 = new javax.swing.JButton();
+        exit_button4 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Patient Info");
@@ -176,6 +179,23 @@ public class Parathiro_Aithsewn extends javax.swing.JFrame {
             }
         });
 
+        exit_button3.setText("Αναίρεση έγκρισης ");
+        exit_button3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exit_button3ActionPerformed(evt);
+            }
+        });
+
+        exit_button4.setText("Διόρθωση");
+        exit_button4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exit_button4ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel2.setText("<html>Αν ο αριθμός των κρεβατιών της κλινικής ενημερώνεται με λάθος τρόπο, πατήστε στο πλήκτρο \"Διόρθωση\" και θα μεταβείτε στην καρτέλα των Αιτήσεων.<br> Για να διορθώσετε το σφάλμα, απλά πληκτρολογήστε τον αριθμο που επιθυμείτε, στο πεδίο των διαθέσιμων κρεβατιών.</html> ");
+
         javax.swing.GroupLayout Stoixeia_AitLayout = new javax.swing.GroupLayout(Stoixeia_Ait);
         Stoixeia_Ait.setLayout(Stoixeia_AitLayout);
         Stoixeia_AitLayout.setHorizontalGroup(
@@ -202,8 +222,12 @@ public class Parathiro_Aithsewn extends javax.swing.JFrame {
                     .addGroup(Stoixeia_AitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(Stoixeia_AitLayout.createSequentialGroup()
                             .addComponent(exit_button1)
-                            .addGap(30, 30, 30)
+                            .addGap(18, 18, 18)
                             .addComponent(exit_button2)
+                            .addGap(18, 18, 18)
+                            .addComponent(exit_button3)
+                            .addGap(18, 18, 18)
+                            .addComponent(exit_button4)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(exit_button))
                         .addGroup(Stoixeia_AitLayout.createSequentialGroup()
@@ -213,8 +237,9 @@ public class Parathiro_Aithsewn extends javax.swing.JFrame {
                             .addGap(58, 58, 58)
                             .addGroup(Stoixeia_AitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(cond_scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(patient_cond_label)))))
-                .addContainerGap(180, Short.MAX_VALUE))
+                                .addComponent(patient_cond_label))))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Stoixeia_AitLayout.setVerticalGroup(
             Stoixeia_AitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,8 +280,12 @@ public class Parathiro_Aithsewn extends javax.swing.JFrame {
                 .addGroup(Stoixeia_AitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(exit_button)
                     .addComponent(exit_button1)
-                    .addComponent(exit_button2))
-                .addContainerGap(89, Short.MAX_VALUE))
+                    .addComponent(exit_button2)
+                    .addComponent(exit_button3)
+                    .addComponent(exit_button4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
         );
 
         javax.swing.GroupLayout Parath_AithsewnLayout = new javax.swing.GroupLayout(Parath_Aithsewn);
@@ -292,46 +321,48 @@ public class Parathiro_Aithsewn extends javax.swing.JFrame {
     
     //gia egkrish aithshs
     private void exit_button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_button1ActionPerformed
-        if (dashboard.returnTabsAit().getSelectedIndex() == 0){
-            if(dashboard.getClinic().getNumOfBeds()>=1 && !(appl.getStatus().equals("Approved"))){
+        if (dashboard.returnTabsAit().getSelectedIndex() == 0){ //an to jtabbed pane einai stis aithseis eisitiriou
+            if(dashboard.getClinic().getNumOfBeds()>=1 && !(appl.getStatus().equals("Approved"))){ //an ta krevatia tis klinikis einai perissotera toy 1 kai h aithsh den einai approved
                 appl.setStatus(Application.Status_enum.approved); //thetume thn katastash ths aithshs ws egkekrimenh
-                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");    
-                String s1 = "ID Αίτησης: " + appl.getID() +"    " + "Υποβλήθηκε από: " + appl.getDoctor().getName() + "    " + "Ημερομηνία: " + formatter.format(appl.getDate()) + "    " + "Ασθενής: " + dashboard.returnTempAdms().get(app_index).getPatient().getName() + "    " + "Κατάσταση: " + appl.getStatus();     
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy"); //formatter gia date 
+                String s1 = "ID Αίτησης: " + appl.getID() +"    " + "Υποβλήθηκε από: " + appl.getDoctor().getName() + "    " + "Ημερομηνία: " + formatter.format(appl.getDate()) + "    " + "Ασθενής: " + dashboard.returnTempAdms().get(app_index).getPatient().getName() + "    " + "Κατάσταση: " + appl.getStatus(); //string gia thn enhmerwsh toy jlist    
                 javax.swing.DefaultListModel<String>  admis_jlist_model = (javax.swing.DefaultListModel<String>)dashboard.getEisitiria().getModel(); //pernume to modelo ths jlist twn aithsewn eisithrioy toy dashboard_headdoc
                 admis_jlist_model.set(this.app_index,s1); //thetume to string pou dhmiourhsame
-                String s2 = String.valueOf(dashboard.getClinic().getNumOfBeds() - 1);
-                dashboard.getClinic().setNumOfBeds(Integer.parseInt(s2));
-                dashboard.getDomKlin().setText(s2);
+                String s2 = String.valueOf(Integer.parseInt(dashboard.getDomKlin().getText()) - 1); //string gia ta krevatia 
+                dashboard.getClinic().setNumOfBeds(Integer.parseInt(s2)); //enhmerwnoyme ton arithmo twn krevatiwn
+                dashboard.getDomKlin().setText(s2); //settarume to kenurio string ston arithmo twn krevatiwn
                 Conditional_Message con1 = new Conditional_Message(this);
                 con1.triggerMsg("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Επιτυχία έγκρισης αίτησης!</html>");
                 con1.setVisible(true);
                 this.setEnabled(false);
-            }else if(appl.getStatus().equals("Approved")){
+            }else if(appl.getStatus().equals("Approved")){ //an h aithsh einai approved
                 Conditional_Message con1 = new Conditional_Message(this);
                 con1.triggerMsg("<html>Η αίτηση έχει ήδη εγκριθεί!</html>");
                 con1.setVisible(true);
                 this.setEnabled(false);
-            }else{
-                appl.setStatus(Application.Status_enum.rejected);
+            }else{ //an den arkrun ta krevatia ths klinikhs 
+                appl.setStatus(Application.Status_enum.rejected); //kane thn aithsh rejected
                 Conditional_Message con1 = new Conditional_Message(this);
-                con1.triggerMsg("<html>Αποτυχία έγκρισης αίτησης. Δεν υπάρχουν διαθέσιμες θέσεις στην κλινική!</html>");
+                con1.triggerMsg("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Αποτυχία έγκρισης αίτησης. Δεν υπάρχουν διαθέσιμες θέσεις στην κλινική!</html>");
                 con1.setVisible(true);
                 this.setEnabled(false);
             }
-        }else if(dashboard.returnTabsAit().getSelectedIndex() == 1){
-            if(!(appl.getStatus().equals("Approved"))){
+        }else if(dashboard.returnTabsAit().getSelectedIndex() == 1){ //an h aithsh einai eksithrioy
+            if(!(appl.getStatus().equals("Approved"))){ //an den einai approved
                 appl.setStatus(Application.Status_enum.approved); //thetume thn katastash ths aithshs ws egkekrimenh
                 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");    
-                String s1 = "ID Αίτησης: " + appl.getID() +"    " + "Υποβλήθηκε από: " + appl.getDoctor().getName() + "    " + "Ημερομηνία: " + formatter.format(appl.getDate()) + "    " + "Ασθενής: " + dashboard.returnTempDis().get(app_index).getPatient().getName() + "    " + "Κατάσταση: " + appl.getStatus();     
+                String s1 = "ID Αίτησης: " + appl.getID() +"    " + "Υποβλήθηκε από: " + appl.getDoctor().getName() + "    " + "Ημερομηνία: " + formatter.format(appl.getDate()) + "    " + "Ασθενής: " + dashboard.returnTempDis().get(app_index).getPatient().getName() + "    " + "Κατάσταση: " + appl.getStatus();  //string gia thn enhmerwsh toy jlist   
                 javax.swing.DefaultListModel<String>  dis_jlist_model = (javax.swing.DefaultListModel<String>)dashboard.getEksitiria().getModel(); //pernume to modelo ths jlist twn aithsewn eksithrioy toy dashboard_headdoc
                 dis_jlist_model.set(this.app_index,s1); //thetume to string pou dhmiourhsame
+                String s2 = String.valueOf(Integer.parseInt(dashboard.getDomKlin().getText()) + 1); //string gia ta krevatia 
+                dashboard.getDomKlin().setText(s2); //settarume to kenurio string ston arithmo twn krevatiw
                 Conditional_Message con1 = new Conditional_Message(this);
                 con1.triggerMsg("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Επιτυχία έγκρισης αίτησης!</html>");
                 con1.setVisible(true);
                 this.setEnabled(false);
-            }else if(appl.getStatus().equals("Approved")){
+            }else if(appl.getStatus().equals("Approved")){ //an h aithsh einai approved
                 Conditional_Message con1 = new Conditional_Message(this);
-                con1.triggerMsg("<html>Η αίτηση έχει ήδη εγκριθεί!</html>");
+                con1.triggerMsg("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Η αίτηση έχει ήδη εγκριθεί!</html>");
                 con1.setVisible(true);
                 this.setEnabled(false);
             }
@@ -340,26 +371,26 @@ public class Parathiro_Aithsewn extends javax.swing.JFrame {
 
     //gia aporripsh aithshs
     private void exit_button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_button2ActionPerformed
-        if (dashboard.returnTabsAit().getSelectedIndex() == 0){
-            if(!(appl.getStatus().equals("Rejected"))){
-                appl.setStatus(Application.Status_enum.rejected);
+        if (dashboard.returnTabsAit().getSelectedIndex() == 0){ //an to jtabbed pane einai stis aithseis eisirioy
+            if(!(appl.getStatus().equals("Rejected"))){ //an den einai rejected
+                appl.setStatus(Application.Status_enum.rejected); //kanth rejected
                 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy"); 
-                String s1 = "ID Αίτησης: " + appl.getID() +"    " + "Υποβλήθηκε από: " + appl.getDoctor().getName() + "    " + "Ημερομηνία: " + formatter.format(appl.getDate()) + "    " + "Ασθενής: " + dashboard.returnTempAdms().get(app_index).getPatient().getName() + "    " + "Κατάσταση: " + appl.getStatus();     
+                String s1 = "ID Αίτησης: " + appl.getID() +"    " + "Υποβλήθηκε από: " + appl.getDoctor().getName() + "    " + "Ημερομηνία: " + formatter.format(appl.getDate()) + "    " + "Ασθενής: " + dashboard.returnTempAdms().get(app_index).getPatient().getName() + "    " + "Κατάσταση: " + appl.getStatus();  //string gia to jlist   
                 javax.swing.DefaultListModel<String>  admis_jlist_model = (javax.swing.DefaultListModel<String>)dashboard.getEisitiria().getModel(); //pernume to modelo ths jlist twn aithsewn eisithrioy toy dashboard_headdoc
                 admis_jlist_model.set(this.app_index,s1); //thetume to string pou dhmiourhsame
                 Conditional_Message con1 = new Conditional_Message(this);
                 con1.triggerMsg("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Επιτυχία απόρριψης αίτησης!</html>");
                 con1.setVisible(true);
                 this.setEnabled(false);
-            }else{
+            }else{ //an h aithsh eixei hdh aporriftei
                 Conditional_Message con1 = new Conditional_Message(this);
-                con1.triggerMsg("<html>Η αίτηση έχει ήδη απορριφθεί!</html>");
+                con1.triggerMsg("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Η αίτηση έχει ήδη απορριφθεί!</html>");
                 con1.setVisible(true);
                 this.setEnabled(false);
             }
-        }else if (dashboard.returnTabsAit().getSelectedIndex() == 1){
-            if(!(appl.getStatus().equals("Rejected"))){
-                appl.setStatus(Application.Status_enum.rejected);
+        }else if (dashboard.returnTabsAit().getSelectedIndex() == 1){ //an to jtabbed pane einai stis aithseis eksitirioy
+            if(!(appl.getStatus().equals("Rejected"))){ //an den einai rejected h aithsh 
+                appl.setStatus(Application.Status_enum.rejected); //kanth rejected
                 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy"); 
                 String s1 = "ID Αίτησης: " + appl.getID() +"    " + "Υποβλήθηκε από: " + appl.getDoctor().getName() + "    " + "Ημερομηνία: " + formatter.format(appl.getDate()) + "    " + "Ασθενής: " + dashboard.returnTempDis().get(app_index).getPatient().getName() + "    " + "Κατάσταση: " + appl.getStatus();     
                 javax.swing.DefaultListModel<String>  dis_jlist_model = (javax.swing.DefaultListModel<String>)dashboard.getEksitiria().getModel(); //pernume to modelo ths jlist twn aithsewn eksithrioy toy dashboard_headdoc
@@ -368,7 +399,7 @@ public class Parathiro_Aithsewn extends javax.swing.JFrame {
                 con1.triggerMsg("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Επιτυχία απόρριψης αίτησης!</html>");
                 con1.setVisible(true);
                 this.setEnabled(false);
-            }else{
+            }else{//an h aithsh einai hdh rejected
                 Conditional_Message con1 = new Conditional_Message(this);
                 con1.triggerMsg("<html>Η αίτηση έχει ήδη απορριφθεί!</html>");
                 con1.setVisible(true);
@@ -376,8 +407,50 @@ public class Parathiro_Aithsewn extends javax.swing.JFrame {
             }
         }              
     }//GEN-LAST:event_exit_button2ActionPerformed
-
-    //Methodos pou settarei ta dedomena ths aithshs admission sta pedia tou parathyrou
+    
+    //gia anairesh egkrishs
+    private void exit_button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_button3ActionPerformed
+        if ((dashboard.returnTabsAit().getSelectedIndex() == 0) && (appl.getStatus().equals("Approved"))){ //an h aithsh einai eisitiriou kai einai approved
+            appl.setStatus(Application.Status_enum.in_progress); //kanume thn aithsh in progress pali 
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy"); 
+            String s1 = "ID Αίτησης: " + appl.getID() +"    " + "Υποβλήθηκε από: " + appl.getDoctor().getName() + "    " + "Ημερομηνία: " + formatter.format(appl.getDate()) + "    " + "Ασθενής: " + dashboard.returnTempAdms().get(app_index).getPatient().getName() + "    " + "Κατάσταση: " + appl.getStatus();  //string gia to jlist   
+            javax.swing.DefaultListModel<String>  admis_jlist_model = (javax.swing.DefaultListModel<String>)dashboard.getEisitiria().getModel(); //pernume to modelo ths jlist twn aithsewn eisithrioy toy dashboard_headdoc
+            admis_jlist_model.set(this.app_index,s1); //thetume to string pou dhmiourhsame
+            String s2 = String.valueOf(Integer.parseInt(dashboard.getDomKlin().getText()) + 1); //string gia ta krevatia 
+            dashboard.getDomKlin().setText(s2); //settarume to kenurio string ston arithmo twn krevatiw
+            Conditional_Message con1 = new Conditional_Message(this);
+            con1.triggerMsg("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Επιτυχία αναίρεσης έγκρισης!</html>");
+            con1.setVisible(true);
+            this.setEnabled(false);
+        }else if ((dashboard.returnTabsAit().getSelectedIndex() == 1) && (appl.getStatus().equals("Approved"))){ //an h aithsh einai eksitiriou kai einai approved
+            appl.setStatus(Application.Status_enum.in_progress); //kanume thn aithsh in progress pali 
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy"); 
+            String s1 = "ID Αίτησης: " + appl.getID() +"    " + "Υποβλήθηκε από: " + appl.getDoctor().getName() + "    " + "Ημερομηνία: " + formatter.format(appl.getDate()) + "    " + "Ασθενής: " + dashboard.returnTempDis().get(app_index).getPatient().getName() + "    " + "Κατάσταση: " + appl.getStatus();     
+            javax.swing.DefaultListModel<String>  dis_jlist_model = (javax.swing.DefaultListModel<String>)dashboard.getEksitiria().getModel(); //pernume to modelo ths jlist twn aithsewn eksithrioy toy dashboard_headdoc
+            dis_jlist_model.set(this.app_index,s1); //thetume to string pou dhmiourhsame
+            String s2 = String.valueOf(Integer.parseInt(dashboard.getDomKlin().getText()) - 1); //string gia ta krevatia 
+            dashboard.getDomKlin().setText(s2); //settarume to kenurio string ston arithmo twn krevatiw
+            Conditional_Message con1 = new Conditional_Message(this);
+            con1.triggerMsg("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Επιτυχία αναίρεσης έγκρισης!</html>");
+            con1.setVisible(true);
+            this.setEnabled(false);
+        }else if(!(appl.getStatus().equals("Approved"))){ //an h aithsh den einai egkekrimenh
+            Conditional_Message con1 = new Conditional_Message(this);
+            con1.triggerMsg("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Αδυναμία αναίρεσης, η αίτηση δεν είναι εγκεκριμένη!</html>");
+            con1.setVisible(true);
+            this.setEnabled(false);
+        }
+    }//GEN-LAST:event_exit_button3ActionPerformed
+    
+    //diorthwsh krevatiwn klinikhs
+    private void exit_button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_button4ActionPerformed
+        this.dashboard.setEnabled(true);
+        dispose();
+        dashboard.getDomKlin().setEditable(true);
+    }//GEN-LAST:event_exit_button4ActionPerformed
+    
+    
+    //Methodos pou settarei ta dedomena ths aithshs eisitirioy sta pedia tou parathyrou
     public void ShowAppAdmInfo(Admission_Application app){
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             id.setText(Integer.toString(app.getID()));
@@ -389,7 +462,7 @@ public class Parathiro_Aithsewn extends javax.swing.JFrame {
             patient_conditions.setText(app.getPatient().getConditions());
     }
     
-    //Methodos pou settarei ta dedomena ths aithshs admission sta pedia tou parathyrou
+    //Methodos pou settarei ta dedomena ths aithshs eksitirioy sta pedia tou parathyrou
     public void ShowAppDisInfo(Discharge_Application app){
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         id.setText(Integer.toString(app.getID()));
@@ -447,10 +520,13 @@ public class Parathiro_Aithsewn extends javax.swing.JFrame {
     private javax.swing.JButton exit_button;
     private javax.swing.JButton exit_button1;
     private javax.swing.JButton exit_button2;
+    private javax.swing.JButton exit_button3;
+    private javax.swing.JButton exit_button4;
     private javax.swing.JScrollPane history_scroll;
     private javax.swing.JTextArea hmnia;
     private javax.swing.JTextArea id;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextArea name;
     private javax.swing.JLabel patient_cond_label;
     private javax.swing.JTextArea patient_conditions;

@@ -5,7 +5,7 @@ import java.util.Calendar;
 
 /**
  *
- * @author Thodoris Tomadakis
+ * @author Theodoros Tomadakis
  */
 
 public class Enhmerwsh_Yparxoysas_Efhmerias extends javax.swing.JFrame {
@@ -22,11 +22,11 @@ public class Enhmerwsh_Yparxoysas_Efhmerias extends javax.swing.JFrame {
     }
     
     //sunarthsh gia na emfanisume ta stoixeia ths efhmerias sto parathiro
-    public void ShowOnCallInfo(OnCall oc1){      
+    public void ShowOnCallInfo(OnCall oc1){ //settarei ola ta text fields   
         String amka = Integer.toString(oc1.getAMKAOnCall());
         hm.setText(oc1.getOnCallDate());
         amka11.setText(amka);
-        onoma.setText(oc1.getOnCallDoc());
+        onoma.setText(oc1.getOnCallDoc().getName());
         klin.setText(dashboard.getClinic().getClinicName());
         ar.setText(Integer.toString(oc1.getNum_OnCall()));
     }
@@ -260,9 +260,13 @@ public class Enhmerwsh_Yparxoysas_Efhmerias extends javax.swing.JFrame {
         }else{ //an h hmeromhnia poy dothike einai diaforetiki apo auti poy ipirxe
             if(k == e.size()){ //an h hmeromhnia ths neas efhmerias, de sumpeftei me kamia allh
                 oc1.setOnCallDate(tempDate); //thetume thn nea hmeromhnia stin efhmeria
-                String s1 = "Ημερομηνία: " + tempDate + "   " + "Όνομα Γιατρού: " + oc1.getOnCallDoc() + "    " +  "ΑΜΚΑ Γιατρού: " + oc1.getAMKAOnCall() + "   " + "Κλινική: " + dashboard.getClinic().getClinicName() + "   " + "Αριθμός Εφημερίας: " + oc1.getNum_OnCall(); //to string pou thelume na thesume sto jlist tou dieuthinti
+                String s1 = "Ημερομηνία: " + tempDate + "   " + "Όνομα Γιατρού: " + oc1.getOnCallDoc().getName() + "    " +  "ΑΜΚΑ Γιατρού: " + oc1.getAMKAOnCall() + "   " + "Κλινική: " + dashboard.getClinic().getClinicName() + "   " + "Αριθμός Εφημερίας: " + oc1.getNum_OnCall(); //to string pou thelume na thesume sto jlist tou dieuthinti
                 javax.swing.DefaultListModel<String>  oncall_jlist_model = (javax.swing.DefaultListModel<String>)dashboard.getOnCall_list().getModel(); //pernume to modelo ths jlist toy dashboard_headdoc
                 oncall_jlist_model.set(this.oncall_index,s1); //thetume to string pou dhmiourhsame
+                Conditional_Message con1 = new Conditional_Message(this);
+                con1.triggerMsg("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Επιτυχία ενημέρωσης εφημερίας!</html>");
+                con1.setVisible(true);
+                this.setEnabled(false);
             }else{//an h hmeromhnia sumpeftei tote 
                 Conditional_Message con1 = new Conditional_Message(this); //dhmiourgoyme neo mhnyma
                 con1.triggerMsg("<html>Η νέα ημερομηνία που επιλέξατε υπάρχει ήδη στη λίστα εφημεριών. Παρακαλώ δώστε νέα ημερομηνία.</html>");

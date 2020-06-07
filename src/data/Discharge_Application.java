@@ -8,8 +8,6 @@ public class Discharge_Application extends Application {
         
     private Patient discharged_patient;//O asthenhs pou pairnei e3itirio
     
-    public final static Type typed = Type.discharge_appl;
-    
     //Constructors
     public Discharge_Application(){super();}
     
