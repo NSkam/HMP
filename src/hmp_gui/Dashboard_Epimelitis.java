@@ -42,6 +42,16 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         Tab_Panel = new javax.swing.JPanel();
         Dashboard_tabs = new javax.swing.JTabbedPane();
         user_info = new javax.swing.JPanel();
+        ep_name = new javax.swing.JLabel();
+        ep_amka = new javax.swing.JLabel();
+        ep_speciality = new javax.swing.JLabel();
+        ep_clinic = new javax.swing.JLabel();
+        ep_rank = new javax.swing.JLabel();
+        amka_field = new javax.swing.JTextArea();
+        name_field = new javax.swing.JTextArea();
+        speciality_field = new javax.swing.JTextArea();
+        clinic_field = new javax.swing.JTextArea();
+        rank_field = new javax.swing.JTextArea();
         applications = new javax.swing.JPanel();
         select_appl_label = new javax.swing.JLabel();
         Appl_Scroll = new javax.swing.JScrollPane();
@@ -100,16 +110,109 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         user_info.setBackground(new java.awt.Color(153, 204, 255));
         user_info.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
+        ep_name.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ep_name.setForeground(new java.awt.Color(255, 255, 255));
+        ep_name.setText("Ονοματεπώνυμο:");
+
+        ep_amka.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ep_amka.setForeground(new java.awt.Color(255, 255, 255));
+        ep_amka.setText("AMKA:");
+
+        ep_speciality.setBackground(new java.awt.Color(255, 255, 255));
+        ep_speciality.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ep_speciality.setForeground(new java.awt.Color(255, 255, 255));
+        ep_speciality.setText("Ειδικότητα:");
+
+        ep_clinic.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ep_clinic.setForeground(new java.awt.Color(255, 255, 255));
+        ep_clinic.setText("Κλινική:");
+
+        ep_rank.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ep_rank.setForeground(new java.awt.Color(255, 255, 255));
+        ep_rank.setText("Βαθμός:");
+
+        amka_field.setEditable(false);
+        amka_field.setColumns(20);
+        amka_field.setRows(5);
+
+        name_field.setEditable(false);
+        name_field.setColumns(20);
+        name_field.setRows(5);
+
+        speciality_field.setEditable(false);
+        speciality_field.setColumns(20);
+        speciality_field.setRows(5);
+
+        clinic_field.setEditable(false);
+        clinic_field.setColumns(20);
+        clinic_field.setRows(5);
+
+        rank_field.setEditable(false);
+        rank_field.setColumns(20);
+        rank_field.setRows(5);
+
         javax.swing.GroupLayout user_infoLayout = new javax.swing.GroupLayout(user_info);
         user_info.setLayout(user_infoLayout);
         user_infoLayout.setHorizontalGroup(
             user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(user_infoLayout.createSequentialGroup()
+                .addGroup(user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(user_infoLayout.createSequentialGroup()
+                        .addGroup(user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(ep_speciality)
+                            .addComponent(ep_amka)
+                            .addComponent(ep_name))
+                        .addGap(18, 18, 18)
+                        .addGroup(user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(speciality_field, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(amka_field, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(name_field, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(user_infoLayout.createSequentialGroup()
+                        .addGroup(user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(user_infoLayout.createSequentialGroup()
+                                .addGap(116, 116, 116)
+                                .addComponent(ep_rank))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, user_infoLayout.createSequentialGroup()
+                                .addGap(106, 106, 106)
+                                .addComponent(ep_clinic)))
+                        .addGap(18, 18, 18)
+                        .addGroup(user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(clinic_field)
+                            .addComponent(rank_field, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
+
+        user_infoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {amka_field, clinic_field, name_field, rank_field, speciality_field});
+
         user_infoLayout.setVerticalGroup(
             user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+            .addGroup(user_infoLayout.createSequentialGroup()
+                .addContainerGap(95, Short.MAX_VALUE)
+                .addGroup(user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ep_amka, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(name_field, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ep_name, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(amka_field, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(speciality_field, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ep_speciality, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ep_clinic, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(clinic_field, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(rank_field, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(ep_rank, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(173, 173, 173))
         );
+
+        user_infoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {amka_field, clinic_field, name_field, rank_field, speciality_field});
+
+        user_infoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {ep_amka, ep_clinic, ep_name, ep_rank, ep_speciality});
 
         Dashboard_tabs.addTab("<html>Πληροφορίες<br>&nbsp;&nbsp;&nbsp; Χρήστη</html>", user_info);
 
@@ -462,6 +565,11 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         select_patient_msg.setVisible(false);
         Appl_Scroll.setVisible(false);
         Appl_List.setVisible(false);
+        amka_field.setText(Integer.toString(this.epimelitis.getAMKA()));
+        name_field.setText(this.epimelitis.getName());
+        speciality_field.setText(this.epimelitis.getSpeciality());
+        clinic_field.setText((this.epimelitis.getClinicName()));
+        rank_field.setText(Character.toString(this.epimelitis.getRank()));
     }
     /**
      * @param args the command line arguments
@@ -507,16 +615,26 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
     private javax.swing.JScrollPane Patient_Scroll;
     private javax.swing.JButton SelectPatButton;
     private javax.swing.JPanel Tab_Panel;
+    private javax.swing.JTextArea amka_field;
     private javax.swing.JPanel applications;
+    private javax.swing.JTextArea clinic_field;
     private javax.swing.JPanel clinic_info;
     private javax.swing.JButton create_new_appl;
     private javax.swing.JPanel eidik_comments;
+    private javax.swing.JLabel ep_amka;
+    private javax.swing.JLabel ep_clinic;
+    private javax.swing.JLabel ep_name;
+    private javax.swing.JLabel ep_rank;
+    private javax.swing.JLabel ep_speciality;
     private javax.swing.JButton logout_button;
+    private javax.swing.JTextArea name_field;
     private javax.swing.JPanel patient_list;
+    private javax.swing.JTextArea rank_field;
     private javax.swing.JButton select_appl_button;
     private javax.swing.JLabel select_appl_label;
     private javax.swing.JLabel select_patient_label;
     private javax.swing.JLabel select_patient_msg;
+    private javax.swing.JTextArea speciality_field;
     private javax.swing.JPanel user_info;
     // End of variables declaration//GEN-END:variables
 

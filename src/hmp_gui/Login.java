@@ -265,6 +265,7 @@ public class Login extends javax.swing.JFrame {
                //////////Test DATA/////////
                /**************************/
                Clinic p_clinic = new Clinic();
+               p_clinic.setClinicName("Ψηχιατρική");
                Epimelitis epimelitis = new Epimelitis(123456, "Χρήστος", "Ψυχίατρος", p_clinic , 'A', 20);
                p_clinic.getPersonnel().add(epimelitis);
                /**************************/

@@ -19,4 +19,9 @@ public class Epimelitis extends Doctor {
         this.rank = rank;
         this.num_of_eidik=num_eidik;
     }
+    
+    //getters
+    public char getRank(){
+        return this.rank;
+    }
 }
