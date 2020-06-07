@@ -35,7 +35,7 @@ public class Enhmerwsh_Efhmerias extends javax.swing.JFrame{
         this.JComboList.add("Όνομα: " + onoma + "    " + "AMKA: " + amka); //to prosthetw sto jcombo
         for (int i = 1; i<TempOCList.size(); i++){
             amka = String.valueOf(TempOCList.get(i).getAMKAOnCall()); //pernume to epomeno amka kai
-            onoma = TempOCList.get(i).getOnCallDoc().getName(); //onoma twn efhmeriwn 
+            onoma = TempOCList.get(i).getOnCallDoc().getName(); //onoma giatrwn twn efhmeriwn 
             if ((!tempOnomaList.contains(onoma)) && (!tempAmkaList.contains(amka))){ // elegxoyme an yparxoun ston proswrino pinaka
                 tempOnomaList.add(onoma); //an oxi ta prosthetume 
                 tempAmkaList.add(amka);

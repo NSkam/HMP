@@ -16,6 +16,11 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
     Doctor d1 = new Doctor(1234, "Γιώργος Οικονόμου" , "Χειρουργός", Clinic1); //TEST DATA gia giatrous
     Doctor d2 = new Doctor(1235, "Αγγελική Παπαδοπούλου" , "Ενδοκρινολόγος", Clinic1);
     Doctor d3 = new Doctor(1237, "Νίκος Σηφάκης" , "Παθολόγος", Clinic1);
+    Nosileutis n1 = new Nosileutis(1200,"Νίκος Ευσταθίου", Clinic1,d1); //TEST DATA gia nosileutes
+    Nosileutis n2 = new Nosileutis(1201,"Ευάγγελος Μιχαήλ", Clinic1,d2);
+    Nosileutis n3 = new Nosileutis(1202,"Μαρία Αθανασοπούλου", Clinic1,d3);
+    Nosileutis n4 = new Nosileutis(1203,"Μαρία Γιαννίτση", Clinic1,d1);
+    Nosileutis n5 = new Nosileutis(1204,"Χρήστος Χρήστου", Clinic1,d2);
     Patient p1 = new Patient(1100, "Ιωάννης Χρίστου", 14, "Κανένα προυπάρχον νόσημα", "Σχετικά καλά", d3, Patient.status_enum.good); //TEST DATA gia astheneis
     Patient p2 = new Patient(1101, "Λεωνίδας Νικολάου", 15, "Διαβήτης τύπου Α", "Πολύ καλά", d2, Patient.status_enum.good);
     Patient p3 = new Patient(1102, "Μάριος Χρηστίδης", 45, "Κανένα προυπάρχον νόσημα", "Άσχημα", d3, Patient.status_enum.bad);
@@ -26,11 +31,11 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
     Patient p8 = new Patient(1107, "Παναγιώτης Ασωπός", 27, "Υψηλή πίεση, Υψηλή χοληστερίνη", "Πολύ άσχημα", d1, Patient.status_enum.very_bad);
     Patient p9 = new Patient(1108, "Ελεθυθέριος Αναστασίου", 37, "Κανένα προυπάρχον νόσημα", "Πολύ καλά", d3, Patient.status_enum.good);
     Patient p10 = new Patient(1109, "Χριστίνα Πάλλα", 75, "Μη επαρκείς πληροφορίες", "Επικείμενος θάνατος", d1, Patient.status_enum.life_threatening);
-    OnCall OnCall_1 = new OnCall("01/02/2020", d1, Clinic1.getClinicName(), 1); //TEST DATA gia efhmeries 
-    OnCall OnCall_2 = new OnCall("01/03/2020", d2, Clinic1.getClinicName(), 1);
-    OnCall OnCall_3 = new OnCall("02/03/2020", d1, Clinic1.getClinicName(), 2);
-    OnCall OnCall_4 = new OnCall("20/02/2020", d2, Clinic1.getClinicName(), 2);
-    OnCall OnCall_5 = new OnCall("03/04/2020", d3, Clinic1.getClinicName(), 1); 
+    OnCall OnCall_1 = new OnCall("01/07/2020", d1, Clinic1.getClinicName(), 1); //TEST DATA gia efhmeries 
+    OnCall OnCall_2 = new OnCall("02/07/2020", d2, Clinic1.getClinicName(), 1);
+    OnCall OnCall_3 = new OnCall("03/07/2020", d1, Clinic1.getClinicName(), 2);
+    OnCall OnCall_4 = new OnCall("04/07/2020", d2, Clinic1.getClinicName(), 2);
+    OnCall OnCall_5 = new OnCall("05/07/2020", d3, Clinic1.getClinicName(), 1); 
     Admission_Application adm1 = new Admission_Application (d3,Application.Type.admission_appl,p1); //TEST DATA gia aithseis eisithriwn
     Admission_Application adm2 = new Admission_Application (d2,Application.Type.admission_appl,p2);
     Admission_Application adm3 = new Admission_Application (d3,Application.Type.admission_appl,p3);
@@ -50,7 +55,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
     ArrayList<String> JOnCall_list_str = new ArrayList<String>(200); //lista efhmeriwn poy tha emfanizetai
     ArrayList<String> JComboList1 = new ArrayList<String>(200); //prosorini lista gia to jcombo giatrwn
     ArrayList<String> JComboList2 = new ArrayList<String>(200); //prosorini lista gia to jcombo asthenwn
-    ArrayList<Patient> PatientList = new ArrayList<Patient>(200); //prosorini lista gia astheneis
+    ArrayList<String> JComboList3 = new ArrayList<String>(200); //prosorini lista gia to jcombo nosileutwn
     HeadDoctor HD = new HeadDoctor (1600, "Πέτρος Δημόπουλος", "Χειρουργός", this.getClinic(), this.getClinic().getClinicName(), this.returnDocList()); //TEST DATA
     /**
      * Creates new form Dashboard_Headdoc
@@ -104,6 +109,9 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         this.epAstheneis();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        this.epNosileutes();
+        jLabel7 = new javax.swing.JLabel();
         applications = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -217,7 +225,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Επιβλ/νοι Ιατροί:");
+        jLabel4.setText("Επ. Ιατροί:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<String>());
         javax.swing.DefaultComboBoxModel<String> giatroi_list_model = (javax.swing.DefaultComboBoxModel<String>)jComboBox1.getModel();
@@ -227,13 +235,23 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Επιβλ/νοι Ασθενείς:");
+        jLabel6.setText("Επ. Ασθενείς:");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<String>());
         javax.swing.DefaultComboBoxModel<String> asth_list_model = (javax.swing.DefaultComboBoxModel<String>)jComboBox2.getModel();
         for(int x=0; x<JComboList2.size();x++){
             asth_list_model.addElement(JComboList2.get(x));
         }
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<String>());
+        javax.swing.DefaultComboBoxModel<String> nos_list_model = (javax.swing.DefaultComboBoxModel<String>)jComboBox3.getModel();
+        for(int x=0; x<JComboList3.size();x++){
+            nos_list_model.addElement(JComboList3.get(x));
+        }
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Eπ. Νοσηλευτές:");
 
         javax.swing.GroupLayout PlirLayout = new javax.swing.GroupLayout(Plir);
         Plir.setLayout(PlirLayout);
@@ -242,18 +260,15 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
             .addGroup(PlirLayout.createSequentialGroup()
                 .addGroup(PlirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PlirLayout.createSequentialGroup()
-                        .addGroup(PlirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PlirLayout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addGroup(PlirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(klin)
-                                    .addComponent(eidik)
-                                    .addComponent(AMKA)
-                                    .addComponent(onomal)))
-                            .addGroup(PlirLayout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(jLabel6)))
+                        .addGap(46, 46, 46)
+                        .addGroup(PlirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(klin)
+                            .addComponent(eidik)
+                            .addComponent(AMKA)
+                            .addComponent(onomal)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel6))
                         .addGap(18, 18, 18)
                         .addGroup(PlirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(klinikh, javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,7 +276,8 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
                             .addComponent(amka, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(onoma, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox3, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(PlirLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel5)))
@@ -293,10 +309,14 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(PlirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(PlirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(PlirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addContainerGap(172, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout Parath_PlirLayout = new javax.swing.GroupLayout(Parath_Plir);
@@ -369,7 +389,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("Έξοδος");
+        jButton5.setText("Επιστροφή στο προφίλ");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -510,7 +530,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Έξοδος");
+        jButton3.setText("Eπιστροφή στο προφίλ");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -744,12 +764,22 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         return TempOnCall;
     }
     
-    //prosthetei tous giatrous sthn prosorini lista poy ftiaksame kai epistrefei th lista
+    //prosthetei tous giatrous sthn lista giatrwn ths klinikhs kai thn epistrefei
     public ArrayList<Doctor> returnDocList(){
         Clinic1.getPersonnel().add(d1);
         Clinic1.getPersonnel().add(d2);
         Clinic1.getPersonnel().add(d3);
         return Clinic1.getPersonnel();
+    }
+    
+    //prosthetei tous nosileutes sth lista nosileutwn ths klinikhs kai thn epistrefei
+    public ArrayList<Nosileutis> returnNosileutes(){
+        Clinic1.getNosileutes().add(n1);
+        Clinic1.getNosileutes().add(n2);
+        Clinic1.getNosileutes().add(n3);
+        Clinic1.getNosileutes().add(n4);
+        Clinic1.getNosileutes().add(n5);
+        return Clinic1.getNosileutes();
     }
     
     //Gia na arxikopoihsoyme tis efhmeries ths klinikhs
@@ -826,22 +856,34 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
     
     //prosthetei toys astheneis sto jcombobox2
     public void epAstheneis(){
-       PatientList.add(p1);
-       PatientList.add(p2);
-       PatientList.add(p3);
-       PatientList.add(p4);
-       PatientList.add(p5);
-       PatientList.add(p6);
-       PatientList.add(p7);
-       PatientList.add(p8);
-       PatientList.add(p9);
-       PatientList.add(p10);
+       Clinic1.getPatientList().add(p1);
+       Clinic1.getPatientList().add(p2);
+       Clinic1.getPatientList().add(p3);
+       Clinic1.getPatientList().add(p4);
+       Clinic1.getPatientList().add(p5);
+       Clinic1.getPatientList().add(p6);
+       Clinic1.getPatientList().add(p7);
+       Clinic1.getPatientList().add(p8);
+       Clinic1.getPatientList().add(p9);
+       Clinic1.getPatientList().add(p10);
        jComboBox1.removeAllItems(); 
-       for (int i = 0; i<PatientList.size(); i++){
-            String amka12 = String.valueOf(PatientList.get(i).getAmka()); //amka twn asthenwn
-            String onoma12 = PatientList.get(i).getName(); //onoma twn asthenwn
+       for (int i = 0; i<Clinic1.getPatientList().size(); i++){
+            String amka12 = String.valueOf(Clinic1.getPatientList().get(i).getAmka()); //amka twn asthenwn
+            String onoma12 = Clinic1.getPatientList().get(i).getName(); //onoma twn asthenwn
             this.JComboList2.add("Όνομα: " + onoma12 + "    " + "AMKA: " + amka12); //to prosthetw sto jcombo
        }
+    }
+    
+    //prosthetei toys nosileutes sto jcombobox3
+    public void epNosileutes(){
+        ArrayList<Nosileutis> e = this.returnNosileutes();
+        jComboBox3.removeAllItems();
+        for (int i = 0; i<e.size(); i++){
+            String amka12 = String.valueOf(e.get(i).getAmka()); //amka twn nosileutwn
+            String onoma12 = e.get(i).getName(); //onoma twn nosileutwn
+            String onoma13 = e.get(i).getDocName();
+            this.JComboList3.add("Όνομα: " + onoma12 + "    " + "AMKA: " + amka12+ "    " + "Επ. Ιατρός: " + onoma13); //to prosthetw sto jcombo
+        }
     }
     
     //epistrefei to text area tou onomatos 
@@ -878,6 +920,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
     public javax.swing.JTextField getDomKlin(){
         return this.DomKlin;
     }
+    
     /**
      * @param args the command line arguments
      */
@@ -940,12 +983,14 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JList<String> jList5;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
