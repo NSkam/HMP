@@ -215,7 +215,7 @@ public class Personnel_Addition_Gramateia extends javax.swing.JFrame {
     }//GEN-LAST:event_specialityActionPerformed
 
     private void clinicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clinicActionPerformed
-        Clinic cl = new Clinic(clinic.getText(),9999,-9999,9999);
+        Clinic cl = new Clinic(clinic.getText(),9999,-9999,9999,9999);
         this.c = cl;
     }//GEN-LAST:event_clinicActionPerformed
 
