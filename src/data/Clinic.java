@@ -41,6 +41,10 @@ public class Clinic {
         return name;
     } 
     
+    public void setClinicName(String name){
+        this.name=name;
+    }
+    
     public ArrayList<Patient> getPatientList(){
         return this.patient_list;
     }
