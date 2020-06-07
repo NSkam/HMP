@@ -2,10 +2,15 @@ package data;
 
 /**
  *
- * @author Alastor
+ * @author Nikolaos Skamnelos
  * 
  * Klash gia to Iatriko Prosopiko
  */
 abstract public class MedicalStaff {
-    abstract public int getAMKA();
+   
+   private int amka;
+   private String name;
+   
+   abstract public int getAMKA();
+   abstract public String getName();
 }

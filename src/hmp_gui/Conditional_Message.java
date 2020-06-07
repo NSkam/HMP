@@ -44,7 +44,7 @@ public class Conditional_Message extends javax.swing.JFrame {
 
         Format_Panel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        Message_Label.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        Message_Label.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout Format_PanelLayout = new javax.swing.GroupLayout(Format_Panel);
         Format_Panel.setLayout(Format_PanelLayout);
