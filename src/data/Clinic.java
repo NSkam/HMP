@@ -48,7 +48,7 @@ public class Clinic {
     public ArrayList<Patient> getPatientList(){
         return this.patient_list;
     }
-    
+
     public int getNumStaff(){
         return this.num_staff;
     }
@@ -130,5 +130,6 @@ public class Clinic {
     // kanei remove aithsh apo lista aithsewn
     public void updateAppList(Application app){
         Application_list.remove(app);        
+
     }
 }
