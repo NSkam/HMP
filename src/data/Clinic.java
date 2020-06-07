@@ -2,7 +2,6 @@ package data;
 import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.time.format.FormatStyle;
 import java.text.ParseException;
 
 /**
@@ -21,6 +20,7 @@ public class Clinic {
     private ArrayList<Doctor>personnel_list = new ArrayList<Doctor>(200); //Lista Prosopikou
     private ArrayList<OnCall>OnCall_list = new ArrayList<OnCall>(200); //lista efhmeriwn
     private ArrayList<Application>Application_list = new ArrayList<Application>(200); //lista aithsewn
+    private ArrayList<Nosileutis> Nos_List = new ArrayList<Nosileutis>(200); //lista nosiletwn
     
     //Constructors
     public Clinic(){}
@@ -65,6 +65,10 @@ public class Clinic {
         return OnCall_list;
     }
     
+    public ArrayList<Nosileutis> getNosileutes(){
+        return Nos_List;
+    }
+    
     //elegxei an sumpeftoun oi imeromhnies twn efhmeriwn
     public boolean checkOnCallDate(String ocdate1, String ocdate2){ //orismata -> 2 hmrnies os string
         try{  
@@ -83,7 +87,7 @@ public class Clinic {
     }
     
     //prosthetei sth lista efhmeriwn
-    public void addtoOnCallList(String cdate, int amka, Doctor d){
+    public void addToOnCallList(String cdate, int amka, Doctor d){
         int j = 0;
         for (int i = 0; i<OnCall_list.size(); i++){
             if ((OnCall_list.get(i)).getAMKAOnCall() == amka){
@@ -92,7 +96,7 @@ public class Clinic {
         }
             
         OnCall oc = new OnCall(cdate,d, this.name, j+1); //neo antikeimeno efhmerias 
-        OnCall_list.add((OnCall_list.size()), oc); // to prosthetoume sth lista
+        OnCall_list.add((OnCall_list.size()-1), oc); // to prosthetoume sth lista
     }
     
     // allazeii thn hmeromhnia sthn efhmeria kapoiou opou index = thesh sth lista efhmeriwn kai j = arithmos efhmerias (borei na min xreiazetai)
@@ -128,7 +132,7 @@ public class Clinic {
     }
     
     // kanei remove aithsh apo lista aithsewn
-    public void updateAppList(Application app){
+    public void removeFromAppList(Application app){
         Application_list.remove(app);        
 
     }
