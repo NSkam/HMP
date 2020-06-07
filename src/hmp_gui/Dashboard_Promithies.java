@@ -5,6 +5,7 @@
  */
 package hmp_gui;
 
+import java.util.ArrayList;
 /**
  *
  * @author Nikolaos Skamnelos
@@ -14,8 +15,25 @@ public class Dashboard_Promithies extends javax.swing.JFrame {
     /**
      * Creates new form Dashboard_Promithies
      */
+    private int available_space;
+    private ArrayList<String> medList = new ArrayList();
+    private ArrayList<String> medEqList = new ArrayList();
+    private ArrayList<String> medQuantityList = new ArrayList();
+    private ArrayList<String> medEqQuantityList = new ArrayList();
+    
     public Dashboard_Promithies() {
+        this.available_space = 2000;
         initComponents();
+        availableSpaceTag.setEditable(false);
+    }
+    public Dashboard_Promithies(int available_space, ArrayList<String> medList,ArrayList<String> medEqList,ArrayList<String> medQuantityList,ArrayList<String> medEqQuantityList) {
+        this.available_space = available_space;
+        this.medList = medList;
+        this.medEqList = medEqList;
+        this.medQuantityList = medQuantityList;
+        this.medEqQuantityList = medEqQuantityList;
+        initComponents();
+        availableSpaceTag.setEditable(false);
     }
 
     /**
@@ -33,6 +51,18 @@ public class Dashboard_Promithies extends javax.swing.JFrame {
         Tab_Panel = new javax.swing.JPanel();
         Dashboard_tabs = new javax.swing.JTabbedPane();
         user_info = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        medicineList = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        medicalEqList = new javax.swing.JList<>();
+        checkMedicine = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        Space = new javax.swing.JLabel();
+        checkMedEquipment = new javax.swing.JButton();
+        availableSpaceTag = new javax.swing.JTextField();
+        Space1 = new javax.swing.JLabel();
+        totalSpaceTag = new javax.swing.JTextField();
         order_appl = new javax.swing.JPanel();
         supplies_info = new javax.swing.JPanel();
 
@@ -72,18 +102,112 @@ public class Dashboard_Promithies extends javax.swing.JFrame {
         user_info.setBackground(new java.awt.Color(153, 204, 255));
         user_info.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
+        medicineList.setModel(new javax.swing.DefaultListModel<String>()
+        );
+        {
+            javax.swing.DefaultListModel<String> ml = (javax.swing.DefaultListModel<String>)medicineList.getModel();
+
+            for(int i=0; i<medList.size();i++){
+                ml.addElement(medList.get(i));
+            }
+        }
+        medicineList.setToolTipText("");
+        jScrollPane1.setViewportView(medicineList);
+
+        medicalEqList.setModel(new javax.swing.DefaultListModel<String>());
+        {
+            javax.swing.DefaultListModel<String> eql = (javax.swing.DefaultListModel<String>)medicalEqList.getModel();
+
+            for(int i=0; i<medEqList.size();i++){
+                eql.addElement(medEqList.get(i));
+            }
+        }
+        medicalEqList.setToolTipText("");
+        jScrollPane2.setViewportView(medicalEqList);
+
+        checkMedicine.setText("Διαχείρηση Αποθεμάτων Αναλώσιμων υλικών");
+        checkMedicine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkMedicineActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Πληροφορίες αναλώσιμων υλικών");
+
+        jLabel2.setText("Πληροφορίες ιατρικού εξοπλισμού");
+
+        Space.setText("Available Space:");
+
+        checkMedEquipment.setText("Διαχείρηση Αποθεμάτων Ιατρικού εξοπλισμού");
+        checkMedEquipment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkMedEquipmentActionPerformed(evt);
+            }
+        });
+
+        availableSpaceTag.setText(Integer.toString(this.available_space));
+
+        Space1.setText("Total Space:");
+
+        totalSpaceTag.setText("2000");
+
         javax.swing.GroupLayout user_infoLayout = new javax.swing.GroupLayout(user_info);
         user_info.setLayout(user_infoLayout);
         user_infoLayout.setHorizontalGroup(
             user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(user_infoLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkMedicine, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGroup(user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkMedEquipment, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, user_infoLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90))
+            .addGroup(user_infoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Space, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(availableSpaceTag, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Space1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(totalSpaceTag, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(98, 98, 98))
         );
         user_infoLayout.setVerticalGroup(
             user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
+            .addGroup(user_infoLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(user_infoLayout.createSequentialGroup()
+                        .addGroup(user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addGap(30, 30, 30)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkMedicine)
+                    .addComponent(checkMedEquipment))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addGroup(user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Space)
+                    .addComponent(availableSpaceTag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Space1)
+                    .addComponent(totalSpaceTag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39))
         );
 
-        Dashboard_tabs.addTab("<html>Πληροφορίες<br>&nbsp;&nbsp;&nbsp; Χρήστη</html>", user_info);
+        Dashboard_tabs.addTab("<html>Προβολή γενικών<br>πληροφοριών του <br>τμήματος</html>", user_info);
 
         order_appl.setBackground(new java.awt.Color(153, 204, 255));
         order_appl.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
@@ -96,7 +220,7 @@ public class Dashboard_Promithies extends javax.swing.JFrame {
         );
         order_applLayout.setVerticalGroup(
             order_applLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
+            .addGap(0, 402, Short.MAX_VALUE)
         );
 
         Dashboard_tabs.addTab("<html>&nbsp;&nbsp;&nbsp;Αιτήσεις<br> Παραγγελίας</html>", order_appl);
@@ -112,16 +236,16 @@ public class Dashboard_Promithies extends javax.swing.JFrame {
         );
         supplies_infoLayout.setVerticalGroup(
             supplies_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
+            .addGap(0, 402, Short.MAX_VALUE)
         );
 
-        Dashboard_tabs.addTab("<html>Πληροφορίες<br>&nbsp;&nbsp;&nbsp; Τμήματος</html>", supplies_info);
+        Dashboard_tabs.addTab("<html>Πληροφορίες<br>&nbsp;&nbsp;&nbsp; Χρήστη</html>", supplies_info);
 
         javax.swing.GroupLayout Tab_PanelLayout = new javax.swing.GroupLayout(Tab_Panel);
         Tab_Panel.setLayout(Tab_PanelLayout);
         Tab_PanelLayout.setHorizontalGroup(
             Tab_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Dashboard_tabs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
+            .addComponent(Dashboard_tabs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 695, Short.MAX_VALUE)
         );
         Tab_PanelLayout.setVerticalGroup(
             Tab_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,14 +261,14 @@ public class Dashboard_Promithies extends javax.swing.JFrame {
             Dashboard_LayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Dashboard_LayerLayout.createSequentialGroup()
                 .addComponent(Button_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 628, Short.MAX_VALUE))
+                .addGap(0, 658, Short.MAX_VALUE))
             .addGroup(Dashboard_LayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(Tab_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Dashboard_LayerLayout.setVerticalGroup(
             Dashboard_LayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Dashboard_LayerLayout.createSequentialGroup()
-                .addGap(0, 374, Short.MAX_VALUE)
+                .addGap(0, 386, Short.MAX_VALUE)
                 .addComponent(Button_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(Dashboard_LayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(Tab_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -177,6 +301,18 @@ public class Dashboard_Promithies extends javax.swing.JFrame {
         login_page.setVisible(true);
 
     }//GEN-LAST:event_logout_buttonActionPerformed
+
+    private void checkMedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMedicineActionPerformed
+        Conditional_Message_Promitheies cmp = new Conditional_Message_Promitheies(available_space,medList,medEqList,medQuantityList,medEqQuantityList);
+        dispose();
+        cmp.setVisible(true);
+    }//GEN-LAST:event_checkMedicineActionPerformed
+
+    private void checkMedEquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMedEquipmentActionPerformed
+        Conditional_Message_Promithies_MedEq cmp = new Conditional_Message_Promithies_MedEq(available_space,medList,medEqList,medQuantityList,medEqQuantityList);
+        dispose();
+        cmp.setVisible(true);
+    }//GEN-LAST:event_checkMedEquipmentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -217,10 +353,22 @@ public class Dashboard_Promithies extends javax.swing.JFrame {
     private javax.swing.JPanel Button_Panel;
     private javax.swing.JLayeredPane Dashboard_Layer;
     private javax.swing.JTabbedPane Dashboard_tabs;
+    private javax.swing.JLabel Space;
+    private javax.swing.JLabel Space1;
     private javax.swing.JPanel Tab_Panel;
+    private javax.swing.JTextField availableSpaceTag;
+    private javax.swing.JButton checkMedEquipment;
+    private javax.swing.JButton checkMedicine;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton logout_button;
+    private javax.swing.JList<String> medicalEqList;
+    private javax.swing.JList<String> medicineList;
     private javax.swing.JPanel order_appl;
     private javax.swing.JPanel supplies_info;
+    private javax.swing.JTextField totalSpaceTag;
     private javax.swing.JPanel user_info;
     // End of variables declaration//GEN-END:variables
 }
