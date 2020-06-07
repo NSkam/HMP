@@ -58,4 +58,4 @@ public class Nosileutis {
     public String getDocName(){
         return this.supervised_by.getName();
     }
-    }
+}

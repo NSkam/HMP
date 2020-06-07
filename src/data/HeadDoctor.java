@@ -25,7 +25,7 @@ public class HeadDoctor extends Doctor{
     
     //prosthetei nea efhmeria
     public void addOnCall(String cdate, Doctor d){
-        (this.getClinic()).addtoOnCallList(cdate, d.getAMKA(), d);
+        (this.getClinic()).addToOnCallList(cdate, d.getAMKA(), d);
     }
     
     //enhmerwnei hmeromhnia sugkekrimenhs efhmerias
