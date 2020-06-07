@@ -51,11 +51,18 @@ public class Doctor extends MedicalStaff {
     public Clinic getClinic(){
         return this.doc_clinic;
     }
+
     public String getClinicName(){
         return this.doc_clinic.getName();
     }
-    
+	
     public String getSpeciality(){
-        return this.speciality;
+        return speciality;
+    }
+  
+    public void setClinic(Clinic clinic){
+        this.doc_clinic = clinic;
+
     }
 }
+

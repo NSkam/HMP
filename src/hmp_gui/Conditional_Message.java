@@ -6,7 +6,7 @@ package hmp_gui;
  */
 public class Conditional_Message extends javax.swing.JFrame {
 
-     private javax.swing.JFrame dashboard = new javax.swing.JFrame();
+     private javax.swing.JFrame dashboard;
     /**
      * Creates new form Conditional_Message
      */
@@ -30,6 +30,7 @@ public class Conditional_Message extends javax.swing.JFrame {
         Message_Label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setLocation(new java.awt.Point(800, 400));
 
         Message_Panel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 153, 255), 4, true));
 
@@ -43,7 +44,7 @@ public class Conditional_Message extends javax.swing.JFrame {
 
         Format_Panel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        Message_Label.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        Message_Label.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout Format_PanelLayout = new javax.swing.GroupLayout(Format_Panel);
         Format_Panel.setLayout(Format_PanelLayout);

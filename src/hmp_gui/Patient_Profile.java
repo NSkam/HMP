@@ -6,14 +6,17 @@ import data.Patient;
  * @author Nikolaos Skamnelos
  */
 public class Patient_Profile extends javax.swing.JFrame {
-
-    Patient patient = new Patient();//O patient
-    private Dashboard_Epimelitis dashboard = new Dashboard_Epimelitis();//Pairnei meso tou constructor thn timh tou prohgounmenou Dashboard
+    
+    private int patient_index;
+    private Patient patient = new Patient();//O patient
+    private Dashboard_Epimelitis dashboard;//Pairnei meso tou constructor thn timh tou prohgounmenou Dashboard
     /**
      * Creates new form Patient_Profile
      */
-    public Patient_Profile(int doctor_amka, Dashboard_Epimelitis dashboard, Patient patient) {
+    public Patient_Profile(Dashboard_Epimelitis dashboard, Patient patient, int Patient_Index) {
         this.dashboard = dashboard;
+        this.patient = patient;
+        this.patient_index = Patient_Index;
         initComponents();
         change_value_msg.setVisible(false);
         Ok_button.setVisible(false);
@@ -53,6 +56,7 @@ public class Patient_Profile extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Patient Info");
+        setLocation(new java.awt.Point(800, 400));
 
         Patient_Profile.setBackground(new java.awt.Color(153, 204, 255));
 
@@ -312,7 +316,6 @@ public class Patient_Profile extends javax.swing.JFrame {
     private void displayNewVal(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayNewVal
         
         boolean check_change = patient.CheckDocPermissions(dashboard.epimelitis.getAMKA(), "Change");
-        check_change = true;//Gia debugging
         if(check_change == true){
             patient_amka.setEditable(true);
             patient_name.setEditable(true);
@@ -325,7 +328,7 @@ public class Patient_Profile extends javax.swing.JFrame {
             Ok_button.setVisible(true);
             change_value_msg.setVisible(true);
         }else{
-            Conditional_Message display_error_msg = new Conditional_Message(this);
+           Conditional_Message display_error_msg = new Conditional_Message(this);
            display_error_msg.triggerMsg("<html>ΣΦΑΛΜΑ: <br> Δεν έχετε άδεια να αλλάξετε τα στοιχεία αυτού του Ασθενή... <br>Επιλέξτε κάποιον άλλον.</html>");
            display_error_msg.setVisible(true);
            this.setEnabled(false);
@@ -335,9 +338,10 @@ public class Patient_Profile extends javax.swing.JFrame {
     //Elenxei an epitrepetai h eisagwmenes times kai epeita kanei update ta fields kai tis plhrofories tou asthenh
     private void Ok_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ok_buttonActionPerformed
         //Kaleite Elenxos gia tis Times
-        boolean check =  checkFieldValues();        
+        boolean check =  checkFieldValues();   
         //Kaleite h setPatientInfo(); afou settaroume tis times apo ta fields
         if(check == true){
+            
             int amka = Integer.parseInt(patient_amka.getText());
             int age = Integer.parseInt(patient_age.getText());
             int doc_amka = Integer.parseInt(patient_doctor.getText());
@@ -364,6 +368,23 @@ public class Patient_Profile extends javax.swing.JFrame {
                     break;
             }
             patient.setPatientInfo(amka, patient_name.getText(), age, patient_history.getText(), patient_conditions.getText(), doc_amka, status);
+            this.dashboard.epimelitis.getClinic().getPatientList().set(patient_index,patient);
+            //Prosthetoumne ton Asthenh sth lista
+            String patient_str = "AMKA: " + patient.getAmka()+ "        " + "Name: " + patient.getName();
+            javax.swing.DefaultListModel<String>  patient_jlist_model = (javax.swing.DefaultListModel<String>)dashboard.getPatient_Jlist().getModel();
+            patient_jlist_model.set(this.patient_index,patient_str);
+           
+            //Epistrefoume sthn prohgoumenh katasthash
+            patient_amka.setEditable(false);
+            patient_name.setEditable(false);
+            patient_age.setEditable(false);
+            patient_doctor.setEditable(false);
+            patient_status.setEnabled(false);
+            patient_history.setEditable(false);
+            patient_conditions.setEditable(false);
+            change_info_button.setVisible(true);
+            Ok_button.setVisible(false);
+            change_value_msg.setVisible(false);
         }
         else{
            Conditional_Message display_error_msg = new Conditional_Message(this);
@@ -374,14 +395,15 @@ public class Patient_Profile extends javax.swing.JFrame {
 
      //H synarthsh pou kanei ton elenxo
     public boolean checkFieldValues(){
-        
+     try{
         //Elenxos gia kathe field
-        if(!(patient_amka.getText().matches("[0-9]") && patient_amka.getText().length()<12)){return false;}//Prepei na einai arithmos me ligotera apo 12 psifia
-        if(!(patient_name.getText().matches("[\\p{L}\\p{Z}]+") && patient_name.getText().length()<=30)){return false;}//Matches Unicode Letters and Whitespaces
-        if(!(Integer.parseInt(patient_age.getText())<= 120 && patient_age.getText().matches("[0-9]+"))){return false;}//Prepei na einai arithmos mikroteros tous 120
-        if(!(patient_history.getText().length()<1000)){return false;}//Elenxos gia to Istoriko
-        if(!(patient_conditions.getText().length()<1000)){return false;}//Elenxos gia ta Conditions
-        return true;
+        if(!(patient_amka.getText().matches("[0-9]+")) || patient_amka.getText().length()>12){return false;}//Prepei na einai arithmos me ligotera apo 12 psifia
+        if(!(patient_name.getText().matches("[\\p{L}\\p{Z}]+")) || patient_name.getText().length()>=30){return false;}//Matches Unicode Letters and Whitespaces
+        if(!(patient_age.getText().matches("[0-9]+"))){return false;}//Prepei na einai arithmos mikroteros tous 120
+        if(patient_history.getText().length()>1000){return false;}//Elenxos gia to Istoriko
+        if(patient_conditions.getText().length()>1000){return false;}//Elenxos gia ta Conditions
+        return true;}
+     catch(java.lang.NumberFormatException e){return false;}
     }
     
     //Methodo pou settarei ta dedomena tou asthenh sta pedia tou parathyrou

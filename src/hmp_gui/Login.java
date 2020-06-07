@@ -1,5 +1,8 @@
 package hmp_gui; 
 
+import data.Clinic;
+import data.Epimelitis;
+
 /**
   * @author Nikolaos Skamnelos
  */
@@ -44,7 +47,7 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("HMP - Log-in");
         setBackground(new java.awt.Color(153, 204, 255));
-        setLocationByPlatform(true);
+        setLocation(new java.awt.Point(800, 400));
         setResizable(false);
 
         Login.setBackground(new java.awt.Color(153, 204, 255));
@@ -259,8 +262,14 @@ public class Login extends javax.swing.JFrame {
                dashboard_hd.setVisible(true);
                break;
            case "epimelitis":
+               //////////Test DATA/////////
+               /**************************/
+               Clinic p_clinic = new Clinic();
+               Epimelitis epimelitis = new Epimelitis(123456, "Χρήστος", "Ψυχίατρος", p_clinic , 'A', 20);
+               p_clinic.getPersonnel().add(epimelitis);
+               /**************************/
                epimelitis_counter = true;
-               Dashboard_Epimelitis dashboard_ep = new Dashboard_Epimelitis(); 
+               Dashboard_Epimelitis dashboard_ep = new Dashboard_Epimelitis(epimelitis); 
                dispose();
                dashboard_ep.setVisible(true);
                break;
