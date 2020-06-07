@@ -20,6 +20,12 @@ public class Available_Applications extends javax.swing.JFrame {
         this.dashboard = dashboard;
         initComponents();
     }
+    
+    public Available_Applications(Dashboard_Headdoc headdoc) {
+        this.dashboard = dashboard;
+        initComponents();
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -8,23 +8,24 @@ import java.util.ArrayList;
 public class HeadDoctor extends Doctor{
     
     public static final String rank = "Head Doctor"; //panta tha einai head doctor
-    private String supervisedClinic; //kliniki poy epilvepei
-    private ArrayList <Doctor> supervised_doctors = new ArrayList <Doctor>(); //giatrous poy epivlepei
+    private String supervisedClinic =" "; //kliniki poy epilvepei
+    private ArrayList <Doctor> supervised_doctors = new ArrayList <Doctor>(100); //giatrous poy epivlepei
     
-    //constructor
+    //Constructors
+    public HeadDoctor(){}
+    
     public HeadDoctor (int amka, String name, String speciality, Clinic doc_clinic, String sprv_clinic, ArrayList <Doctor> sprv_doc){
         super (amka, name, speciality, doc_clinic);
         supervisedClinic = sprv_clinic;
-        for (int i = 0; i<= sprv_doc.size(); i++){ //arxikopoihsh listas giatrwn
-            supervised_doctors.add(i, sprv_doc.get(i));
-        }
+        supervised_doctors = sprv_doc;
+        
     }
     
     //setters 
     
     //prosthetei nea efhmeria
-    public void setOnCall(String cdate, Doctor d){
-        (this.getClinic()).updateOnCallList(cdate, d.getAMKA());
+    public void addOnCall(String cdate, Doctor d){
+        (this.getClinic()).addtoOnCallList(cdate, d.getAMKA(), d);
     }
     
     //enhmerwnei hmeromhnia sugkekrimenhs efhmerias

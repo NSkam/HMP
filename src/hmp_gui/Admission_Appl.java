@@ -208,7 +208,6 @@ public class Admission_Appl extends javax.swing.JFrame {
         if(check == true){
           save_appl();
           dashboard.Appl_history.updateAppHistory(this.admission_application);
-          //notifyReception();/**********************************************************/
           String application_str = "ID: " + this.admission_application.getID()+ " " + "Ημερομηνία: " + this.admission_application.getDate() + " " + "Υποβλήθηκε από: " + this.admission_application.getDoctor().getName() + " Κατάστηση: " +this.admission_application.getStatus() + " Είδος: "+ this.admission_application.getType();
           dashboard.setEnabled(true);
           javax.swing.DefaultListModel<String> application_jlist_model = (javax.swing.DefaultListModel<String>)dashboard.getAppl_List().getModel();
