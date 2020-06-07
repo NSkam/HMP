@@ -7,6 +7,7 @@ package hmp_gui;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.lang.NullPointerException;
 /**
  *
  * @author John
@@ -139,7 +140,6 @@ public class Nosileutis_Giatros_Chat extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void chatFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chatFieldActionPerformed
-        
         sendTextActionPerformed(evt);
     }//GEN-LAST:event_chatFieldActionPerformed
 
@@ -149,11 +149,14 @@ public class Nosileutis_Giatros_Chat extends javax.swing.JFrame {
     }//GEN-LAST:event_chatFieldFocusGained
 
     private void sendTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendTextActionPerformed
-        String msg = chatField.getText();
-        messages.add(msg); 
-        Nosileutis_Giatros_Chat ngc = new Nosileutis_Giatros_Chat(messages);
-        dispose();
-        ngc.setVisible(true);
+        try{
+            String msg = chatField.getText();
+            if (msg.isBlank()) throw new NullPointerException();
+            messages.add(msg); 
+            Nosileutis_Giatros_Chat ngc = new Nosileutis_Giatros_Chat(messages);
+            dispose();
+            ngc.setVisible(true);
+        } catch (java.lang.NullPointerException e){System.out.println("geiaaaaaa");}
          
     }//GEN-LAST:event_sendTextActionPerformed
 

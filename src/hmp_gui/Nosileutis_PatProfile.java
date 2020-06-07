@@ -6,6 +6,7 @@
 package hmp_gui;
 
 import data.Patient;
+import java.util.ArrayList;
 /**
  *
  * @author John

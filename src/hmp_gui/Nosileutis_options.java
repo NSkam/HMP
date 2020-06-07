@@ -6,6 +6,7 @@
 package hmp_gui;
 
 import data.Patient;
+import java.util.ArrayList;
 /**
  *
  * @author John
@@ -17,7 +18,9 @@ public class Nosileutis_options extends javax.swing.JFrame {
      */
     Patient pat = new Patient();
     //Dashboard_Nosileutis dn = new Dashboard_Nosileutis();
-    public Nosileutis_options(){}
+    public Nosileutis_options(){
+        initComponents();
+    }
     public Nosileutis_options(Patient patient) {
         this.pat = patient;
         //this.dn = nosileutis;
@@ -124,7 +127,7 @@ public class Nosileutis_options extends javax.swing.JFrame {
 
     private void PatMedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatMedicineActionPerformed
         dispose();
-        Nosileutis_Farmaka nf = new Nosileutis_Farmaka(pat);   
+        Nosileutis_Farmaka nf = new Nosileutis_Farmaka(pat);
         nf.setVisible(true);
     }//GEN-LAST:event_PatMedicineActionPerformed
 

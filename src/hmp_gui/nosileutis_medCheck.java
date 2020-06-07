@@ -7,6 +7,7 @@ package hmp_gui;
 import data.Patient;
 import data.PatientMedicine;
 import java.util.ArrayList;
+import java.util.Date;
 /**
  *
  * @author John
@@ -17,12 +18,16 @@ public class nosileutis_medCheck extends javax.swing.JFrame {
      * Creates new form nosileutis_medCheck
      */
     private String p,pm;
-    
     private boolean checked;
-    ArrayList<String> kati = new ArrayList(20);
-    public nosileutis_medCheck(String p,String pm) {
+    private ArrayList<String> kati = new ArrayList(20);
+    private ArrayList<String> medTaken = new ArrayList();
+    
+    Date date = new Date();
+    
+    public nosileutis_medCheck(String p,String pm,ArrayList<String> medTaken) {
         this.p = p;
         this.pm = pm;
+        this.medTaken = medTaken;
         initComponents();
         
     }
@@ -69,6 +74,9 @@ public class nosileutis_medCheck extends javax.swing.JFrame {
         question.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         question.setForeground(new java.awt.Color(255, 255, 255));
         question.setText("Ο " + this.p + " έλαβε το φάρμακο " + this.pm + ";");
+        {
+            question.setEditable(false);
+        }
 
         javax.swing.GroupLayout med_infoLayout = new javax.swing.GroupLayout(med_info);
         med_info.setLayout(med_infoLayout);
@@ -114,13 +122,13 @@ public class nosileutis_medCheck extends javax.swing.JFrame {
 
     private void CheckButtonYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckButtonYesActionPerformed
         this.checked = true;
-        System.out.println(pm);
+        this.medTaken.add("Έλαβε το φάρμακο" + "        " + date);
         dispose();
     }//GEN-LAST:event_CheckButtonYesActionPerformed
 
     private void CheckButtonNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckButtonNoActionPerformed
         this.checked = false;
-        System.out.println(p);
+        this.medTaken.add("Δεν έλαβε το φάρμακο" + "        " + date);
         dispose();
     }//GEN-LAST:event_CheckButtonNoActionPerformed
 

@@ -24,10 +24,9 @@ public class Dashboard_Nosileutis extends javax.swing.JFrame {
     Doctor doc = new Doctor(69,"Mpamphs o sougias","Ta kanei ola",c);
     
     ArrayList<String> patList = new ArrayList();
+    
     public Dashboard_Nosileutis() {
         initComponents();
-       
-        
     }
 
     /**
@@ -270,6 +269,7 @@ public class Dashboard_Nosileutis extends javax.swing.JFrame {
         // TODO add your handling code here:
         int Pat_Jlist = Patient_Jlist.getSelectedIndex();
         Patient patient = doc.getPatientList().get(Pat_Jlist);
+        
         dispose();
         Nosileutis_options opts = new Nosileutis_options(patient);
         opts.setVisible(true);
@@ -280,10 +280,9 @@ public class Dashboard_Nosileutis extends javax.swing.JFrame {
     public void InitPatientList(){
         ArrayList<Patient> temp = new ArrayList(200);
         
-        Patient p1 = new Patient(1,"Spuros",43,"Kapote eixe xtupisei to nuxi","parton katw",doc,Patient.status_enum.ok);
+        Patient p1 = new Patient(1,"Spuros",43,"Kapote eixe xtupisei sto odostroma","parton katw",doc,Patient.status_enum.ok);
         Patient p2 = new Patient(2,"Giwrgos",61,"kapote pe8ane","vlepei ton agio petro",doc,Patient.status_enum.bad);
         Patient p3 = new Patient(3,"Giannhs",27,"Na nai kala zwi se mas","den 3erw ti na gra4w edw",doc,Patient.status_enum.good);
-        //Patient p4 = new Patient(123459,"Malaka", 1 ,"patient history","Patient cond",doc, Patient.status_enum.very_bad);
         
         temp.add(p1);
         temp.add(p2);

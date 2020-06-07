@@ -114,6 +114,9 @@
               <Connection code="&quot;&#x39f; &quot; + this.p + &quot; &#x3ad;&#x3bb;&#x3b1;&#x3b2;&#x3b5; &#x3c4;&#x3bf; &#x3c6;&#x3ac;&#x3c1;&#x3bc;&#x3b1;&#x3ba;&#x3bf; &quot; + this.pm + &quot;;&quot;" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="{&#xa;            question.setEditable(false);&#xa;        }"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
