@@ -5,6 +5,11 @@
 
         <group>
 
+            <file>file:/C:/Users/John/Desktop/vlax/src/hmp_gui/Personnel_Deletion_Gramateia.java</file>
+            <file>file:/C:/Users/John/Desktop/vlax/src/hmp_gui/Dashboard_Gramateia.java</file>
+            <file>file:/C:/Users/John/Desktop/vlax/src/data/Clinic.java</file>
+            <file>file:/C:/Users/John/Desktop/vlax/src/data/Doctor.java</file>
+            <file>file:/C:/Users/John/Desktop/vlax/src/hmp_gui/Patient_Deletion_Gramateia.java</file>
             <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP_Debug/src/hmp_gui/Dashboard_Epimelitis.java</file>
             <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP_Debug/src/hmp_gui/Conditional_Message.java</file>
             <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP_Debug/src/hmp_gui/Available_Applications.java</file>
@@ -27,6 +32,7 @@
             <file>file:/C:/Users/John/Desktop/HMP-nikos/src/hmp_gui/Deletion_Promithies_MedEq.java</file>
 
         <group/>
+
 
     </open-files>
 </project-private>
