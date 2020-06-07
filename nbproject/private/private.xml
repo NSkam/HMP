@@ -2,6 +2,31 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+
+        <group>
+
+            <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP_Debug/src/hmp_gui/Dashboard_Epimelitis.java</file>
+            <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP_Debug/src/hmp_gui/Conditional_Message.java</file>
+            <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP_Debug/src/hmp_gui/Available_Applications.java</file>
+            <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP_Debug/src/data/Doctor.java</file>
+            <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP_Debug/src/hmp_gui/Login.java</file>
+            <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP_Debug/src/data/Patient.java</file>
+            <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP_Debug/src/data/Epimelitis.java</file>
+            <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP_Debug/src/data/Clinic.java</file>
+            <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP_Debug/src/hmp_gui/Patient_Profile.java</file>
+            <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP_Debug/src/data/MedicalStaff.java</file>
+            <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP_Debug/src/hmp_gui/Dashboard_Eidik.java</file>
+            <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP_Debug/src/hmp_gui/Discharge_Appl.java</file>
+            <file>file:/D:/Kostis%20Skamnelos/Desktop/HMP_Debug/src/hmp_gui/Admission_Appl.java</file>
+            <file>file:/C:/Users/John/Desktop/HMP-nikos/src/hmp_gui/Addition_Promithies_MedEq.java</file>
+            <file>file:/C:/Users/John/Desktop/HMP-nikos/src/hmp_gui/Conditional_Message_Promitheies.java</file>
+            <file>file:/C:/Users/John/Desktop/HMP-nikos/src/hmp_gui/Deletion_Promithies_Medicine.java</file>
+            <file>file:/C:/Users/John/Desktop/HMP-nikos/src/hmp_gui/Conditional_Message_Promithies_MedEq.java</file>
+            <file>file:/C:/Users/John/Desktop/HMP-nikos/src/hmp_gui/Dashboard_Promithies.java</file>
+            <file>file:/C:/Users/John/Desktop/HMP-nikos/src/hmp_gui/Addition_Promithies_Medicine.java</file>
+            <file>file:/C:/Users/John/Desktop/HMP-nikos/src/hmp_gui/Deletion_Promithies_MedEq.java</file>
+
         <group/>
+
     </open-files>
 </project-private>
