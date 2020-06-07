@@ -6,7 +6,7 @@ package data;
  */
 public class Discharge_Application extends Application {
         
-    private Patient discharged_patient;//O asthenhs pou pairnei e3itirio
+    private Patient discharged_patient = new Patient();//O asthenhs pou pairnei e3itirio
     
     //Constructors
     public Discharge_Application(){super();}

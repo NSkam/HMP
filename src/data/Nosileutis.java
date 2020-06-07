@@ -46,7 +46,7 @@ public class Nosileutis {
     }
     
     public String getClinicName(){
-        return this.clinic.getName();
+        return this.clinic.getClinicName();
     }
     
     public Doctor getSupervisedBy(){

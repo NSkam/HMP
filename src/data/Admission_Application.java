@@ -6,7 +6,7 @@ package data;
  */
 public class Admission_Application extends Application {
 
-    private Patient admited_patient;//O asthenhs pou eisagetai
+    private Patient admited_patient = new Patient();//O asthenhs pou eisagetai
     
     //Constructors
     public Admission_Application(){super();}
