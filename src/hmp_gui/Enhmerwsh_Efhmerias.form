@@ -143,9 +143,6 @@
               <Connection code="new javax.swing.DefaultComboBoxModel&lt;String&gt;()" type="code"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
-          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="this.InitPersonList();"/>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="        javax.swing.DefaultComboBoxModel&lt;String&gt; person_list_model = (javax.swing.DefaultComboBoxModel&lt;String&gt;)jComboBox1.getModel();&#xa;        for(int x=0; x&lt;JComboList.size();x++){&#xa;            person_list_model.addElement(JComboList.get(x));&#xa;        }"/>

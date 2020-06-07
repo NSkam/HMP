@@ -24,11 +24,12 @@ public class Clinic {
     
     //Constructors
     public Clinic(){}
-    public Clinic(String name, int num_of_patients, int head_doctor, int num_staff){
+    public Clinic(String name, int num_of_patients, int head_doctor, int num_staff, int beds){
         this.name = name;
         this.num_of_patients = num_of_patients;
         this.head_doctor = head_doctor;
         this.num_staff = num_staff;
+        this.num_Beds = beds;
     }
     
     //getters kai setters
@@ -76,7 +77,7 @@ public class Clinic {
     }
     
     //prosthetei sth lista efhmeriwn
-    public void updateOnCallList(String cdate, int amka, Doctor d){
+    public void addtoOnCallList(String cdate, int amka, Doctor d){
         int j = 0;
         for (int i = 0; i<OnCall_list.size(); i++){
             if ((OnCall_list.get(i)).getAMKAOnCall() == amka){
@@ -84,7 +85,7 @@ public class Clinic {
             }
         }
             
-        OnCall oc = new OnCall(cdate,amka, name, j+1, d); //neo antikeimeno efhmerias 
+        OnCall oc = new OnCall(cdate,d, this.name, j+1); //neo antikeimeno efhmerias 
         OnCall_list.add((OnCall_list.size()), oc); // to prosthetoume sth lista
     }
     
