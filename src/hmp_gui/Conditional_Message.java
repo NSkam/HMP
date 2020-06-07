@@ -6,7 +6,7 @@ package hmp_gui;
  */
 public class Conditional_Message extends javax.swing.JFrame {
 
-     private javax.swing.JFrame dashboard = new javax.swing.JFrame();
+     private javax.swing.JFrame dashboard;
     /**
      * Creates new form Conditional_Message
      */
@@ -30,6 +30,7 @@ public class Conditional_Message extends javax.swing.JFrame {
         Message_Label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setLocation(new java.awt.Point(800, 400));
 
         Message_Panel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 153, 255), 4, true));
 
@@ -133,6 +134,7 @@ public class Conditional_Message extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Conditional_Message.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

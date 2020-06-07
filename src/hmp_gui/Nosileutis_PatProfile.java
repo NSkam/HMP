@@ -54,6 +54,7 @@ public class Nosileutis_PatProfile extends javax.swing.JFrame {
         ageField = new javax.swing.JTextField();
         supervised_byField = new javax.swing.JTextField();
         statusField = new javax.swing.JTextField();
+        prevWindow = new javax.swing.JButton();
 
         Greetings.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         Greetings.setForeground(new java.awt.Color(255, 255, 255));
@@ -185,6 +186,13 @@ public class Nosileutis_PatProfile extends javax.swing.JFrame {
             }
         });
 
+        prevWindow.setText("Πίσω");
+        prevWindow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prevWindowActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pat_infoLayout = new javax.swing.GroupLayout(pat_info);
         pat_info.setLayout(pat_infoLayout);
         pat_infoLayout.setHorizontalGroup(
@@ -225,7 +233,9 @@ public class Nosileutis_PatProfile extends javax.swing.JFrame {
                 .addGroup(pat_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pat_infoLayout.createSequentialGroup()
                         .addComponent(Greetings2, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(202, 202, 202))
+                        .addGap(89, 89, 89)
+                        .addComponent(prevWindow)
+                        .addGap(40, 40, 40))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pat_infoLayout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(57, 57, 57))))
@@ -233,7 +243,11 @@ public class Nosileutis_PatProfile extends javax.swing.JFrame {
         pat_infoLayout.setVerticalGroup(
             pat_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pat_infoLayout.createSequentialGroup()
-                .addComponent(Greetings2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pat_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Greetings2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pat_infoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(prevWindow)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pat_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameTag, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -301,6 +315,12 @@ public class Nosileutis_PatProfile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_statusFieldActionPerformed
 
+    private void prevWindowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevWindowActionPerformed
+        Dashboard_Nosileutis dn = new Dashboard_Nosileutis();
+        dispose();
+        dn.setVisible(true);
+    }//GEN-LAST:event_prevWindowActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -354,6 +374,7 @@ public class Nosileutis_PatProfile extends javax.swing.JFrame {
     private javax.swing.JPanel pat_info;
     private javax.swing.JList<String> patientHistoryList;
     private javax.swing.JLabel patientHistoryTag;
+    private javax.swing.JButton prevWindow;
     private javax.swing.JTextField statusField;
     private javax.swing.JTextField supervised_byField;
     private javax.swing.JLabel supervised_byTag;

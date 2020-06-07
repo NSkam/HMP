@@ -42,6 +42,7 @@ public class Nosileutis_Giatros_Chat extends javax.swing.JFrame {
         messageBox = new javax.swing.JList<>();
         chatField = new javax.swing.JTextField();
         sendText = new javax.swing.JButton();
+        prevButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,6 +84,13 @@ public class Nosileutis_Giatros_Chat extends javax.swing.JFrame {
             }
         });
 
+        prevButton.setText("Πίσω");
+        prevButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prevButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout chat_panelLayout = new javax.swing.GroupLayout(chat_panel);
         chat_panel.setLayout(chat_panelLayout);
         chat_panelLayout.setHorizontalGroup(
@@ -90,23 +98,30 @@ public class Nosileutis_Giatros_Chat extends javax.swing.JFrame {
             .addGroup(chat_panelLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(chat_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, chat_panelLayout.createSequentialGroup()
                         .addComponent(chatField)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(sendText, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(52, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sendText, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addComponent(prevButton)
+                .addContainerGap())
         );
         chat_panelLayout.setVerticalGroup(
             chat_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(chat_panelLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(chat_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(chat_panelLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(chat_panelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(prevButton)))
                 .addGap(18, 18, 18)
                 .addGroup(chat_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chatField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sendText))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -141,6 +156,12 @@ public class Nosileutis_Giatros_Chat extends javax.swing.JFrame {
         ngc.setVisible(true);
          
     }//GEN-LAST:event_sendTextActionPerformed
+
+    private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
+        Dashboard_Nosileutis dn = new Dashboard_Nosileutis();
+        dispose();
+        dn.setVisible(true);
+    }//GEN-LAST:event_prevButtonActionPerformed
 
     public void initUser(){
         username = "nosileutis";
@@ -185,6 +206,7 @@ public class Nosileutis_Giatros_Chat extends javax.swing.JFrame {
     private javax.swing.JPanel chat_panel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> messageBox;
+    private javax.swing.JButton prevButton;
     private javax.swing.JButton sendText;
     // End of variables declaration//GEN-END:variables
 }
