@@ -156,7 +156,7 @@ public class Nosileutis_Giatros_Chat extends javax.swing.JFrame {
             Nosileutis_Giatros_Chat ngc = new Nosileutis_Giatros_Chat(messages);
             dispose();
             ngc.setVisible(true);
-        } catch (java.lang.NullPointerException e){System.out.println("geiaaaaaa");}
+        } catch (java.lang.NullPointerException e){}
          
     }//GEN-LAST:event_sendTextActionPerformed
 
@@ -167,7 +167,7 @@ public class Nosileutis_Giatros_Chat extends javax.swing.JFrame {
     }//GEN-LAST:event_prevButtonActionPerformed
 
     public void initUser(){
-        username = "nosileutis";
+        username = "Μαρία Αθανασοπούλου";
     }
     /**
      * @param args the command line arguments

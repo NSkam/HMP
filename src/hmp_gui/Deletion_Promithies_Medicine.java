@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.lang.IndexOutOfBoundsException;
 /**
  *
- * @author John
+ * @author Nikos
  */
 public class Deletion_Promithies_Medicine extends javax.swing.JFrame {
 

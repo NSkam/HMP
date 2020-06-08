@@ -565,7 +565,7 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         javax.swing.DefaultListModel<String> application_jlist_model = (javax.swing.DefaultListModel<String>)this.getAppl_List().getModel();
          application_jlist_model.clear();
          for(int i=0 ; i<Appl_history.getApplHistory().size();i++){
-             application_jlist_model.addElement("ID: " + Appl_history.getApplHistory().get(i).getID()+ "    " + "Ημερομηνία: " + date_format.format(Appl_history.getApplHistory().get(i).getDate()) + "    " + "Υποβλήθηκε από: " + Appl_history.getApplHistory().get(i).getDoctor().getName() + "    "+ " Κατάστηση: " +Appl_history.getApplHistory().get(i).getStatus() + "    " + " Είδος: "+ Appl_history.getApplHistory().get(i).getType());
+             application_jlist_model.addElement("ID: " + Appl_history.getApplHistory().get(i).getID()+ "    " + "Ημερομηνία: " + date_format.format(Appl_history.getApplHistory().get(i).getDate()) + "    " + "Υποβλήθηκε από: " + Appl_history.getApplHistory().get(i).getDoctor().getName() + "    "+ "Κατάστηση: " +Appl_history.getApplHistory().get(i).getStatus() + "    " + "Είδος: "+ Appl_history.getApplHistory().get(i).getType());
          }
         Appl_Scroll.setVisible(true);
         Appl_List.setVisible(true);

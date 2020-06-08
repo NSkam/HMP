@@ -10,7 +10,7 @@ import data.MedEquipment;
 
 /**
  *
- * @author John
+ * @author Nikos
  */
 public class Supplies_Department {
     private String medicine;

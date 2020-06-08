@@ -125,7 +125,7 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="{&#xa;        javax.swing.DefaultListModel&lt;String&gt; pl = (javax.swing.DefaultListModel&lt;String&gt;)pat_list.getModel();&#xa;        for (int i=0;i&lt;medList.size();i++){&#xa;            pl.addElement(medList.get(i));&#xa;            pl.addElement(&quot;&quot;);&#xa;            if (medTaken.size() != 0) {&#xa;                pl.addElement(medTaken.get(i));&#xa;            }&#xa;        }&#xa;    }"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="{&#xa;        javax.swing.DefaultListModel&lt;String&gt; pl = (javax.swing.DefaultListModel&lt;String&gt;)pat_list.getModel();&#xa;        for (int i=0;i&lt;medList.size();i++){&#xa;            pl.addElement(medList.get(i));&#xa;            pl.addElement(&quot;&quot;);&#xa;            //if (medTaken.size() != 0) {&#xa;                pl.addElement(medTaken.get(i));&#xa;            //}&#xa;        }&#xa;    }"/>
                 <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="this.InitMeds();"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>

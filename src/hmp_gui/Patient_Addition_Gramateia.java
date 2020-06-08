@@ -19,8 +19,8 @@ private String patient_history1;
 private String patient_cond1;
 private int doc_amka1;
 
-ArrayList<Patient> pat = new ArrayList();
-ArrayList<Doctor> doc = new ArrayList();
+private ArrayList<Patient> pat = new ArrayList();
+private ArrayList<Doctor> doc = new ArrayList();
     /**
      * Creates new form Patient_Addition_Gramateia
      */

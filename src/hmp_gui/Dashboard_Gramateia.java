@@ -9,18 +9,18 @@ import data.Doctor;
 import java.util.ArrayList;
 /**
  *
- * @author Nikolaos Skamnelos
+ * @author Nikos
  */
 public class Dashboard_Gramateia extends javax.swing.JFrame {
 
     /**
      * Creates new form Dashboard_Gramateia
      */
-    ArrayList<String> Patient_List = new ArrayList();
-    ArrayList<String> Doctor_List = new ArrayList();
+    private ArrayList<String> Patient_List = new ArrayList();
+    private ArrayList<String> Doctor_List = new ArrayList();
     Doctor doc = new Doctor();
-    ArrayList<Patient> pat = new ArrayList();
-    ArrayList<Doctor> dr = new ArrayList();
+    private ArrayList<Patient> pat = new ArrayList();
+    private ArrayList<Doctor> dr = new ArrayList();
     
     public Dashboard_Gramateia(ArrayList<Patient> patient,ArrayList<Doctor> doctor) {
        this.dr = doctor;

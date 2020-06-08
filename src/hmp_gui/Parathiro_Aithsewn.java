@@ -194,7 +194,7 @@ public class Parathiro_Aithsewn extends javax.swing.JFrame {
         });
 
         jLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel2.setText("<html>Αν ο αριθμός των κρεβατιών της κλινικής ενημερώνεται με λάθος τρόπο, πατήστε στο πλήκτρο \"Διόρθωση\" και θα μεταβείτε στην καρτέλα των Αιτήσεων.<br> Για να διορθώσετε το σφάλμα, απλά πληκτρολογήστε τον αριθμο που επιθυμείτε, στο πεδίο των διαθέσιμων κρεβατιών.</html> ");
+        jLabel2.setText("<html>Αν ο αριθμός των κρεβατιών της κλινικής ενημερώνεται με λάθος τρόπο, πατήστε στο πλήκτρο \"Διόρθωση\" και θα μεταβείτε στην καρτέλα των Αιτήσεων.<br> Για να διορθώσετε το σφάλμα, απλά πληκτρολογήστε τον αριθμο που επιθυμείτε, στο πεδίο των διαθέσιμων κρεβατιών. H τελευταία αίτηση που επιλέξατε<br> θα μεταβεί σε κατάσταση \"In Progress\".</html> ");
 
         javax.swing.GroupLayout Stoixeia_AitLayout = new javax.swing.GroupLayout(Stoixeia_Ait);
         Stoixeia_Ait.setLayout(Stoixeia_AitLayout);
@@ -283,7 +283,7 @@ public class Parathiro_Aithsewn extends javax.swing.JFrame {
                     .addComponent(exit_button2)
                     .addComponent(exit_button3)
                     .addComponent(exit_button4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );

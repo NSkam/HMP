@@ -19,13 +19,16 @@ public class nosileutis_medCheck extends javax.swing.JFrame {
      */
     private String p,pm;
     private boolean checked;
+    private int index,totalSize;
     private ArrayList<String> kati = new ArrayList(20);
     private ArrayList<String> medTaken = new ArrayList();
     
+    
     Date date = new Date();
     
-    public nosileutis_medCheck(String p,String pm,ArrayList<String> medTaken) {
+    public nosileutis_medCheck(String p,String pm,ArrayList<String> medTaken,int index) {
         this.p = p;
+        this.index = index;
         this.pm = pm;
         this.medTaken = medTaken;
         initComponents();
@@ -49,6 +52,7 @@ public class nosileutis_medCheck extends javax.swing.JFrame {
         med_info = new javax.swing.JPanel();
         CheckButtonNo = new javax.swing.JButton();
         CheckButtonYes = new javax.swing.JButton();
+        name = new javax.swing.JTextField();
         question = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,13 +74,34 @@ public class nosileutis_medCheck extends javax.swing.JFrame {
             }
         });
 
+        name.setBackground(new java.awt.Color(153, 204, 255));
+        name.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        name.setForeground(new java.awt.Color(255, 255, 255));
+        name.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        name.setText(this.p);
+        name.setToolTipText("");
+        {
+            name.setEditable(false);
+        }
+        name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameActionPerformed(evt);
+            }
+        });
+
         question.setBackground(new java.awt.Color(153, 204, 255));
         question.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         question.setForeground(new java.awt.Color(255, 255, 255));
-        question.setText("Ο " + this.p + " έλαβε το φάρμακο " + this.pm + ";");
+        question.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        question.setText("Έλαβε το φάρμακο " + this.pm + ";");
         {
             question.setEditable(false);
         }
+        question.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                questionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout med_infoLayout = new javax.swing.GroupLayout(med_info);
         med_info.setLayout(med_infoLayout);
@@ -90,6 +115,9 @@ public class nosileutis_medCheck extends javax.swing.JFrame {
                         .addGap(269, 269, 269)
                         .addComponent(CheckButtonYes))
                     .addGroup(med_infoLayout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(med_infoLayout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addComponent(question, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(53, Short.MAX_VALUE))
@@ -97,9 +125,10 @@ public class nosileutis_medCheck extends javax.swing.JFrame {
         med_infoLayout.setVerticalGroup(
             med_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(med_infoLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(question, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addComponent(question, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(med_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CheckButtonNo)
                     .addComponent(CheckButtonYes))
@@ -122,15 +151,23 @@ public class nosileutis_medCheck extends javax.swing.JFrame {
 
     private void CheckButtonYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckButtonYesActionPerformed
         this.checked = true;
-        this.medTaken.add("Έλαβε το φάρμακο" + "        " + date);
+        this.medTaken.set(index,"Έλαβε το φάρμακο" + "        " + date);
         dispose();
     }//GEN-LAST:event_CheckButtonYesActionPerformed
 
     private void CheckButtonNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckButtonNoActionPerformed
         this.checked = false;
-        this.medTaken.add("Δεν έλαβε το φάρμακο" + "        " + date);
+        this.medTaken.set(index,"Δεν έλαβε το φάρμακο" + "        " + date);
         dispose();
     }//GEN-LAST:event_CheckButtonNoActionPerformed
+
+    private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameActionPerformed
+
+    private void questionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_questionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_questionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,6 +208,7 @@ public class nosileutis_medCheck extends javax.swing.JFrame {
     private javax.swing.JButton CheckButtonNo;
     private javax.swing.JButton CheckButtonYes;
     private javax.swing.JPanel med_info;
+    private javax.swing.JTextField name;
     private javax.swing.JTextField question;
     // End of variables declaration//GEN-END:variables
 }
