@@ -4,6 +4,7 @@ import data.Application;
 import data.Discharge_Application;
 import data.Patient;
 import java.awt.event.ActionEvent;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -221,11 +222,12 @@ public class Discharge_Appl extends javax.swing.JFrame {
     
     //Kanei save to Application
     private void CreateApplication(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateApplication
+            SimpleDateFormat date_format = new SimpleDateFormat("dd/MM/yyyy");
             int index = amka_combo_box.getSelectedIndex();
             if(dashboard.epimelitis.getAMKA() == dashboard.epimelitis.getClinic().getPatientList().get(index).getSupervisedBy().getAMKA()){
             save_appl(index);
             dashboard.Appl_history.updateAppHistory(this.discharge_application);
-            String application_str = "ID: " + this.discharge_application.getID()+ " " + "Ημερομηνία: " + this.discharge_application.getDate() + " " + "Υποβλήθηκε από: " + this.discharge_application.getDoctor().getName() + " Κατάστηση: " +this.discharge_application.getStatus() + " Είδος: "+ this.discharge_application.getType();
+            String application_str = "ID: " + this.discharge_application.getID()+ "    " + "Ημερομηνία: " + date_format.format(this.discharge_application.getDate()) + "    " + "Υποβλήθηκε από: " + this.discharge_application.getDoctor().getName() + "    Κατάστηση: " +this.discharge_application.getStatus() + "    Είδος: "+ this.discharge_application.getType();
             dashboard.setEnabled(true);
             javax.swing.DefaultListModel<String> application_jlist_model = (javax.swing.DefaultListModel<String>)dashboard.getAppl_List().getModel();
             application_jlist_model.addElement(application_str);

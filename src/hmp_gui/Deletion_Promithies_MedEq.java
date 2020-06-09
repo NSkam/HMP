@@ -8,7 +8,7 @@ package hmp_gui;
 import java.util.ArrayList;
 /**
  *
- * @author John
+ * @author Nikos
  */
 public class Deletion_Promithies_MedEq extends javax.swing.JFrame {
 

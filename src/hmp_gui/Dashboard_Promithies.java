@@ -8,7 +8,7 @@ package hmp_gui;
 import java.util.ArrayList;
 /**
  *
- * @author Nikolaos Skamnelos
+ * @author Nikos
  */
 public class Dashboard_Promithies extends javax.swing.JFrame {
 

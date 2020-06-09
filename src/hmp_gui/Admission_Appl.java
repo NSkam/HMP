@@ -4,6 +4,7 @@ package hmp_gui;
 import data.Application;
 import data.Admission_Application;
 import data.Patient;
+import java.text.SimpleDateFormat;
 /**
  *
  * @author Nikolaos Skamnelos
@@ -204,11 +205,12 @@ public class Admission_Appl extends javax.swing.JFrame {
 
     //Kalei ton elenxo gia ta fields kai an einai true to check tote kanei set katalhla tis metablhtes tou Admission Application kai save to application
     private void CreateApplication(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateApplication
+        SimpleDateFormat date_format = new SimpleDateFormat("dd/MM/yyyy");
         boolean check = checkFieldValues();
         if(check == true){
           save_appl();
           dashboard.Appl_history.updateAppHistory(this.admission_application);
-          String application_str = "ID: " + this.admission_application.getID()+ " " + "Ημερομηνία: " + this.admission_application.getDate() + " " + "Υποβλήθηκε από: " + this.admission_application.getDoctor().getName() + " Κατάστηση: " +this.admission_application.getStatus() + " Είδος: "+ this.admission_application.getType();
+          String application_str = "ID: " + this.admission_application.getID()+ "    " + "Ημερομηνία: " + date_format.format(this.admission_application.getDate()) + "    " + "Υποβλήθηκε από: " + this.admission_application.getDoctor().getName() + "    Κατάστηση: " +this.admission_application.getStatus() + "    Είδος: "+ this.admission_application.getType();
           dashboard.setEnabled(true);
           javax.swing.DefaultListModel<String> application_jlist_model = (javax.swing.DefaultListModel<String>)dashboard.getAppl_List().getModel();
           application_jlist_model.addElement(application_str);

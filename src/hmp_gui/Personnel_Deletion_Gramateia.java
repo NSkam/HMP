@@ -19,8 +19,8 @@ public class Personnel_Deletion_Gramateia extends javax.swing.JFrame {
     /**
      * Creates new form Personnel_Deletion_Gramateia
      */
-    ArrayList<Patient> pat = new ArrayList();
-    ArrayList<Doctor> doc = new ArrayList();
+    private ArrayList<Patient> pat = new ArrayList();
+    private ArrayList<Doctor> doc = new ArrayList();
     public Personnel_Deletion_Gramateia(ArrayList<Patient> p, ArrayList<Doctor> d) {
         this.pat = p;
         this.doc = d;

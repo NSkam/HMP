@@ -52,7 +52,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="Button_Panel" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="638" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="728" max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Component id="Tab_Panel" alignment="0" max="32767" attributes="0"/>
@@ -149,8 +149,8 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="&lt;html&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&#x39b;&#x3af;&#x3c3;&#x3c4;&#x3b1;&lt;br&gt;&#x3a0;&#x3c1;&#x3bf;&#x3c3;&#x3c9;&#x3c0;&#x3b9;&#x3ba;&#x3bf;&#x3cd; -&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&#x391;&#x3c3;&#x3b8;&#x3b5;&#x3bd;&#x3ce;&#x3bd;&lt;/html&gt;">
-                        <Property name="tabTitle" type="java.lang.String" value="&lt;html&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&#x39b;&#x3af;&#x3c3;&#x3c4;&#x3b1;&lt;br&gt;&#x3a0;&#x3c1;&#x3bf;&#x3c3;&#x3c9;&#x3c0;&#x3b9;&#x3ba;&#x3bf;&#x3cd; -&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&#x391;&#x3c3;&#x3b8;&#x3b5;&#x3bd;&#x3ce;&#x3bd;&lt;/html&gt;"/>
+                      <JTabbedPaneConstraints tabName="&lt;html&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&#x3a0;&#x3c1;&#x3cc;&#x3c3;&#x3b2;&#x3b1;&#x3c3;&#x3b7;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&#x3c3;&#x3b5; &#x3c0;&#x3bb;&#x3b7;&#x3c1;&#x3bf;&#x3c6;&#x3bf;&#x3c1;&#x3af;&#x3b5;&#x3c2;&lt;br&gt;&#x3c0;&#x3c1;&#x3bf;&#x3c3;&#x3c9;&#x3c0;&#x3b9;&#x3ba;&#x3bf;&#x3cd;/&#x3b1;&#x3c3;&#x3b8;&#x3b5;&#x3bd;&#x3ce;&#x3bd;&lt;/html&gt;">
+                        <Property name="tabTitle" type="java.lang.String" value="&lt;html&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&#x3a0;&#x3c1;&#x3cc;&#x3c3;&#x3b2;&#x3b1;&#x3c3;&#x3b7;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&#x3c3;&#x3b5; &#x3c0;&#x3bb;&#x3b7;&#x3c1;&#x3bf;&#x3c6;&#x3bf;&#x3c1;&#x3af;&#x3b5;&#x3c2;&lt;br&gt;&#x3c0;&#x3c1;&#x3bf;&#x3c3;&#x3c9;&#x3c0;&#x3b9;&#x3ba;&#x3bf;&#x3cd;/&#x3b1;&#x3c3;&#x3b8;&#x3b5;&#x3bd;&#x3ce;&#x3bd;&lt;/html&gt;"/>
                       </JTabbedPaneConstraints>
                     </Constraint>
                   </Constraints>
@@ -177,7 +177,7 @@
                                   </Group>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
@@ -187,12 +187,12 @@
                                           </Group>
                                           <Component id="jScrollPane2" min="-2" pref="315" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="21" max="32767" attributes="0"/>
+                                      <EmptySpace pref="72" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="Label_Personnel_List" min="-2" pref="128" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>

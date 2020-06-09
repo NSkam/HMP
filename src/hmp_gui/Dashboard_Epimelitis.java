@@ -6,6 +6,7 @@ import data.Patient;
 import data.Doctor;
 import data.Application;
 import data.Application_History;
+import java.text.SimpleDateFormat;
 
 
 /**
@@ -42,8 +43,8 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         Tab_Panel = new javax.swing.JPanel();
         Dashboard_tabs = new javax.swing.JTabbedPane();
         user_info = new javax.swing.JPanel();
-        ep_name = new javax.swing.JLabel();
         ep_amka = new javax.swing.JLabel();
+        ep_name = new javax.swing.JLabel();
         ep_speciality = new javax.swing.JLabel();
         ep_clinic = new javax.swing.JLabel();
         ep_rank = new javax.swing.JLabel();
@@ -110,13 +111,13 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         user_info.setBackground(new java.awt.Color(153, 204, 255));
         user_info.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
-        ep_name.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        ep_name.setForeground(new java.awt.Color(255, 255, 255));
-        ep_name.setText("Ονοματεπώνυμο:");
-
         ep_amka.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         ep_amka.setForeground(new java.awt.Color(255, 255, 255));
         ep_amka.setText("AMKA:");
+
+        ep_name.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ep_name.setForeground(new java.awt.Color(255, 255, 255));
+        ep_name.setText("Ονοματεπώνυμο:");
 
         ep_speciality.setBackground(new java.awt.Color(255, 255, 255));
         ep_speciality.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -179,7 +180,7 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
                         .addGroup(user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(clinic_field)
                             .addComponent(rank_field, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(268, Short.MAX_VALUE))
         );
 
         user_infoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {amka_field, clinic_field, name_field, rank_field, speciality_field});
@@ -187,14 +188,17 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         user_infoLayout.setVerticalGroup(
             user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(user_infoLayout.createSequentialGroup()
-                .addContainerGap(95, Short.MAX_VALUE)
                 .addGroup(user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ep_amka, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(name_field, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(user_infoLayout.createSequentialGroup()
+                        .addGap(43, 95, Short.MAX_VALUE)
+                        .addComponent(ep_amka, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(user_infoLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(amka_field, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ep_name, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(amka_field, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(name_field, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(speciality_field, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -249,14 +253,19 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
             applicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(applicationsLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addGroup(applicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(select_appl_label)
+                .addGroup(applicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(applicationsLayout.createSequentialGroup()
-                        .addComponent(create_new_appl)
-                        .addGap(281, 281, 281)
-                        .addComponent(select_appl_button))
-                    .addComponent(Appl_Scroll))
-                .addContainerGap(57, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(select_appl_label)
+                        .addGap(292, 292, 292))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, applicationsLayout.createSequentialGroup()
+                        .addGroup(applicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, applicationsLayout.createSequentialGroup()
+                                .addComponent(create_new_appl)
+                                .addGap(420, 420, 420)
+                                .addComponent(select_appl_button))
+                            .addComponent(Appl_Scroll, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(65, Short.MAX_VALUE))))
         );
         applicationsLayout.setVerticalGroup(
             applicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,6 +288,8 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
 
         Patient_Jlist.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         Patient_Jlist.setModel(new javax.swing.DefaultListModel<String>());
+        Patient_Jlist.setMinimumSize(new java.awt.Dimension(630, 0));
+        Patient_Jlist.setPreferredSize(new java.awt.Dimension(620, 0));
         Patient_Scroll.setViewportView(Patient_Jlist);
 
         SelectPatButton.setText("Επιλογή");
@@ -303,8 +314,8 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         patient_list.setLayout(patient_listLayout);
         patient_listLayout.setHorizontalGroup(
             patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(patient_listLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patient_listLayout.createSequentialGroup()
+                .addContainerGap(39, Short.MAX_VALUE)
                 .addGroup(patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(select_patient_label)
                     .addGroup(patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -312,21 +323,21 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
                             .addComponent(select_patient_msg, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(SelectPatButton))
-                        .addComponent(Patient_Scroll, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                        .addComponent(Patient_Scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(85, 85, 85))
         );
         patient_listLayout.setVerticalGroup(
             patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patient_listLayout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
+                .addGap(57, 57, 57)
                 .addComponent(select_patient_label)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Patient_Scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SelectPatButton)
-                    .addComponent(select_patient_msg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(patient_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(select_patient_msg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SelectPatButton))
+                .addGap(28, 28, 28))
         );
 
         Dashboard_tabs.addTab("Λίστα Ασθενών", patient_list);
@@ -385,7 +396,7 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
             Dashboard_LayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Dashboard_LayerLayout.createSequentialGroup()
                 .addComponent(Button_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 600, Short.MAX_VALUE))
+                .addGap(0, 765, Short.MAX_VALUE))
             .addGroup(Dashboard_LayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(Tab_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -466,6 +477,9 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
     catch(java.lang.ArrayIndexOutOfBoundsException e){
         select_patient_msg.setVisible(true);
         }
+    catch(java.lang.IndexOutOfBoundsException e){
+         select_patient_msg.setVisible(true);
+        }
     }//GEN-LAST:event_SelectPatButtonActionPerformed
 
     private void createNewAppl(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createNewAppl
@@ -480,11 +494,11 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         /////////////Test DATA//////////////
         /**********************************/
         Application appl1 =new Application(epimelitis,Application.Type.admission_appl);
-        Application appl2 =new Application(epimelitis,Application.Type.admission_appl);
-        Application appl3 =new Application(epimelitis,Application.Type.admission_appl);
-        Application appl4 =new Application(epimelitis,Application.Type.admission_appl);
+        Application appl2 =new Application(epimelitis,Application.Type.discharge_appl);
+        Application appl3 =new Application(epimelitis,Application.Type.exam_appl);
+        Application appl4 =new Application(epimelitis,Application.Type.transfer_appl);
         Application appl5 =new Application(epimelitis,Application.Type.admission_appl);
-        Application appl6 =new Application(epimelitis,Application.Type.admission_appl);
+        Application appl6 =new Application(epimelitis,Application.Type.discharge_appl);
         Appl_history.getApplHistory().add(appl1);
         Appl_history.getApplHistory().add(appl2);
         Appl_history.getApplHistory().add(appl3);
@@ -503,10 +517,13 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         Doctor d1 = new Doctor();
         Doctor d2 = new Doctor(123, "Κωστής", "Ψυχίατρος", epimelitis.getClinic());
         epimelitis.getClinic().getPersonnel().add(d2);
-        Patient p1 = new Patient(1, "BOB A", 12, "Thanatos1", "Death1", epimelitis, Patient.status_enum.very_bad);
-        Patient p2 = new Patient(2, "BOB B", 13, "Thanatos2", "Death2", epimelitis, Patient.status_enum.very_bad);
-        Patient p3 = new Patient(3, "BOB C", 14, "Thanatos3", "Death3", d2, Patient.status_enum.very_bad);
-        Patient p4 = new Patient(4, "BOB D", 15, "Thanatos5", "Death4", d1, Patient.status_enum.very_bad);
+    Patient p1 = new Patient(1100, "Ιωάννης Χρίστου", 14, "Κανένα προυπάρχον νόσημα", "Σχετικά καλά", epimelitis, Patient.status_enum.good); //TEST DATA gia astheneis
+    Patient p2 = new Patient(1101, "Λεωνίδας Νικολάου", 15, "Διαβήτης τύπου Α", "Πολύ καλά", epimelitis, Patient.status_enum.good);
+    Patient p3 = new Patient(1102, "Μάριος Χρηστίδης", 45, "Κανένα προυπάρχον νόσημα", "Άσχημα", d2, Patient.status_enum.bad);
+    Patient p4 = new Patient(1103, "Ελένη Μακρή", 61, "Ζάχαρο", "Πολύ άσχημα", d2, Patient.status_enum.very_bad);
+    Patient p5 = new Patient(1104, "Μαρία Λυμπέρη", 11, "Κανένα προυπάρχον νόσημα", "Εξαιρετικά", d1, Patient.status_enum.excellent);
+    Patient p6 = new Patient(1105, "Κώσταντίνος Κυρίτσης", 12, "Καρκίνος στους λεμφαδένες", "Επικείμενος θάνατος", epimelitis, Patient.status_enum.life_threatening);
+    Patient p7 = new Patient(1106, "Αλέξανδρος Βήρας", 13, "Κανένα προυπάρχον νόσημα", "Εξαιρετικά", d1, Patient.status_enum.excellent);
                 
         tempArray.add(p1);
         tempArray.add(p2);
@@ -516,6 +533,9 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         epimelitis.getClinic().getPatientList().add(p2);
         epimelitis.getClinic().getPatientList().add(p3);
         epimelitis.getClinic().getPatientList().add(p4);
+        epimelitis.getClinic().getPatientList().add(p5);
+        epimelitis.getClinic().getPatientList().add(p6);
+        epimelitis.getClinic().getPatientList().add(p7);
         
        epimelitis.setPatientList(tempArray);
        /************************************************/
@@ -528,7 +548,7 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
         javax.swing.DefaultListModel<String> patient_jlist_model = (javax.swing.DefaultListModel<String>)this.Patient_Jlist.getModel();
         patient_jlist_model.clear();
          for(int i=0 ; i<epimelitis.getClinic().getPatientList().size();i++){
-         patient_jlist_model.addElement("AMKA: " + epimelitis.getClinic().getPatientList().get(i).getAmka()+ "        " + "Name: " + epimelitis.getClinic().getPatientList().get(i).getName());
+         patient_jlist_model.addElement("AMKA: " + epimelitis.getClinic().getPatientList().get(i).getAmka()+ "      " + "Name: " + epimelitis.getClinic().getPatientList().get(i).getName());
          }
         
          //Emfanizoume ta stoixeia
@@ -540,11 +560,12 @@ public class Dashboard_Epimelitis extends javax.swing.JFrame {
     
     //Kanei Display to Application Menu
     public void displayAppMenu(){
+        SimpleDateFormat date_format = new SimpleDateFormat("dd/MM/yyyy");
         //Prosthetoume ta stoixeia sto model tis Appl_List
         javax.swing.DefaultListModel<String> application_jlist_model = (javax.swing.DefaultListModel<String>)this.getAppl_List().getModel();
          application_jlist_model.clear();
          for(int i=0 ; i<Appl_history.getApplHistory().size();i++){
-             application_jlist_model.addElement("ID: " + Appl_history.getApplHistory().get(i).getID()+ " " + "Ημερομηνία: " + Appl_history.getApplHistory().get(i).getDate() + " " + "Υποβλήθηκε από: " + Appl_history.getApplHistory().get(i).getDoctor().getName() + " Κατάστηση: " +Appl_history.getApplHistory().get(i).getStatus() + " Είδος: "+ Appl_history.getApplHistory().get(i).getType());
+             application_jlist_model.addElement("ID: " + Appl_history.getApplHistory().get(i).getID()+ "    " + "Ημερομηνία: " + date_format.format(Appl_history.getApplHistory().get(i).getDate()) + "    " + "Υποβλήθηκε από: " + Appl_history.getApplHistory().get(i).getDoctor().getName() + "    "+ "Κατάστηση: " +Appl_history.getApplHistory().get(i).getStatus() + "    " + "Είδος: "+ Appl_history.getApplHistory().get(i).getType());
          }
         Appl_Scroll.setVisible(true);
         Appl_List.setVisible(true);

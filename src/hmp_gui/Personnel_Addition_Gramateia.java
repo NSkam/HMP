@@ -23,8 +23,8 @@ public class Personnel_Addition_Gramateia extends javax.swing.JFrame {
     /**
      * Creates new form Personnel_Addition_Gramateia
      */
-    ArrayList<Doctor> doc = new ArrayList();
-    ArrayList<Patient> pat = new ArrayList();
+    private ArrayList<Doctor> doc = new ArrayList();
+    private ArrayList<Patient> pat = new ArrayList();
     
     public Personnel_Addition_Gramateia(ArrayList<Patient> p,ArrayList<Doctor> d) {
         this.doc = d;

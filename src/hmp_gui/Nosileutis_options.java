@@ -37,10 +37,11 @@ public class Nosileutis_options extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        user_info = new javax.swing.JPanel();
+        option_menu = new javax.swing.JPanel();
         PatProfile = new javax.swing.JButton();
         PatMedicine = new javax.swing.JButton();
         ChatRoom = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -49,8 +50,7 @@ public class Nosileutis_options extends javax.swing.JFrame {
             }
         });
 
-        user_info.setBackground(new java.awt.Color(153, 204, 255));
-        user_info.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        option_menu.setBackground(new java.awt.Color(153, 204, 255));
 
         PatProfile.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         PatProfile.setText("Profile ασθενή");
@@ -76,39 +76,50 @@ public class Nosileutis_options extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout user_infoLayout = new javax.swing.GroupLayout(user_info);
-        user_info.setLayout(user_infoLayout);
-        user_infoLayout.setHorizontalGroup(
-            user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(user_infoLayout.createSequentialGroup()
+        backButton.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        backButton.setText("Επιστροφή στο κεντρικό μενού");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout option_menuLayout = new javax.swing.GroupLayout(option_menu);
+        option_menu.setLayout(option_menuLayout);
+        option_menuLayout.setHorizontalGroup(
+            option_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(option_menuLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addGroup(user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PatProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PatMedicine, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ChatRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addGroup(option_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(PatProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PatMedicine, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ChatRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(backButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
-        user_infoLayout.setVerticalGroup(
-            user_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(user_infoLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(PatProfile)
+        option_menuLayout.setVerticalGroup(
+            option_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(option_menuLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
+                .addComponent(PatProfile)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(PatMedicine)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
                 .addComponent(ChatRoom)
-                .addGap(34, 34, 34))
+                .addGap(28, 28, 28)
+                .addComponent(backButton)
+                .addGap(40, 40, 40))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(user_info, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(option_menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(user_info, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(option_menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -136,6 +147,12 @@ public class Nosileutis_options extends javax.swing.JFrame {
         Nosileutis_Giatros_Chat ngc = new Nosileutis_Giatros_Chat();
         ngc.setVisible(true);
     }//GEN-LAST:event_ChatRoomActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        dispose();
+        Dashboard_Nosileutis dn = new Dashboard_Nosileutis();
+        dn.setVisible(true);
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,7 +193,8 @@ public class Nosileutis_options extends javax.swing.JFrame {
     private javax.swing.JButton ChatRoom;
     private javax.swing.JButton PatMedicine;
     private javax.swing.JButton PatProfile;
+    private javax.swing.JButton backButton;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JPanel user_info;
+    private javax.swing.JPanel option_menu;
     // End of variables declaration//GEN-END:variables
 }

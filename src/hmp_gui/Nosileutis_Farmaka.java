@@ -76,9 +76,9 @@ public class Nosileutis_Farmaka extends javax.swing.JFrame {
             for (int i=0;i<medList.size();i++){
                 pl.addElement(medList.get(i));
                 pl.addElement("");
-                if (medTaken.size() != 0) {
+                //if (medTaken.size() != 0) {
                     pl.addElement(medTaken.get(i));
-                }
+                    //}
             }
         }
         jScrollPane2.setViewportView(pat_list);
@@ -162,7 +162,8 @@ public class Nosileutis_Farmaka extends javax.swing.JFrame {
         medTaken.clear();
         //dispose();
         for (int i=0; i<tmpMedList.size();i++){
-            nosileutis_medCheck nmc = new nosileutis_medCheck(pat.getName(),tmpMedList.get(i).getName(),medTaken);
+            medTaken.add("");
+            nosileutis_medCheck nmc = new nosileutis_medCheck(pat.getName(),tmpMedList.get(i).getName(),medTaken,i);
             nmc.setVisible(true);
             //medTaken.add(nmc.isChecked());
             //System.out.println(nmc.isChecked());
@@ -186,22 +187,22 @@ public class Nosileutis_Farmaka extends javax.swing.JFrame {
     
     public void InitMeds(){
         
-        PatientMedicine pm1 = new PatientMedicine(pat.getName(),pat,"Zanax", "Hremistiko","1 xapi ana 8 wres","adunamia",101);
-        PatientMedicine pm2 = new PatientMedicine(pat.getName(),pat,"Depon", "Pausipono","2 xapia ana 8 wres","-",101);
-        PatientMedicine pm3 = new PatientMedicine(pat.getName(),pat,"A medicine", "Type","recommended dosage","side effects",1);
+        PatientMedicine pm1 = new PatientMedicine(pat.getName(),pat,"Zanax", "Ηρεμιστικό","1 χάπι ανά 8 ώρες","Αδυναμία",101);
+        PatientMedicine pm2 = new PatientMedicine(pat.getName(),pat,"Depon", "Pausipono","2 χάπια ανά 8 ώρες","-",101);
+        PatientMedicine pm3 = new PatientMedicine(pat.getName(),pat,"Algofren", "Παυσίπονο","1 χάπι ανά 8 ώρες","-",1);
         
         
         
-        tmpMedList.add(pm3);
-        tmpMedList.add(pm2);
         tmpMedList.add(pm1);
+        tmpMedList.add(pm2);
+        tmpMedList.add(pm3);
         
         
         medList.clear();
         
         for (int i=0; i<tmpMedList.size();i++){
             medTaken.add("Δεν έλαβε το φάρμακο" + "         " + date);
-            medList.add("Medicine: " + tmpMedList.get(i).getName() + "      Type: " + tmpMedList.get(i).getType() +         "Recommended dosage: " + tmpMedList.get(i).getDosage() + "      Side effects: " + tmpMedList.get(i).getSideEffects());
+            medList.add("Medicine: " + tmpMedList.get(i).getName() + "      Type: " + tmpMedList.get(i).getType() + "      Recommended dosage: " + tmpMedList.get(i).getDosage() + "      Side effects: " + tmpMedList.get(i).getSideEffects());
         }
         
     }

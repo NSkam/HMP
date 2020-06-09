@@ -9,18 +9,18 @@ import data.Doctor;
 import java.util.ArrayList;
 /**
  *
- * @author Nikolaos Skamnelos
+ * @author Nikos
  */
 public class Dashboard_Gramateia extends javax.swing.JFrame {
 
     /**
      * Creates new form Dashboard_Gramateia
      */
-    ArrayList<String> Patient_List = new ArrayList();
-    ArrayList<String> Doctor_List = new ArrayList();
+    private ArrayList<String> Patient_List = new ArrayList();
+    private ArrayList<String> Doctor_List = new ArrayList();
     Doctor doc = new Doctor();
-    ArrayList<Patient> pat = new ArrayList();
-    ArrayList<Doctor> dr = new ArrayList();
+    private ArrayList<Patient> pat = new ArrayList();
+    private ArrayList<Doctor> dr = new ArrayList();
     
     public Dashboard_Gramateia(ArrayList<Patient> patient,ArrayList<Doctor> doctor) {
        this.dr = doctor;
@@ -193,11 +193,11 @@ public class Dashboard_Gramateia extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Personnel_Deletion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(21, Short.MAX_VALUE))
+                        .addContainerGap(72, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, staff_listLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Label_Personnel_List, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(103, 103, 103))))
+                        .addGap(153, 153, 153))))
         );
         staff_listLayout.setVerticalGroup(
             staff_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,7 +222,7 @@ public class Dashboard_Gramateia extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
-        Dashboard_tabs.addTab("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Λίστα<br>Προσωπικού -<br>&nbsp;&nbsp;&nbsp;Ασθενών</html>", staff_list);
+        Dashboard_tabs.addTab("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Πρόσβαση<br>&nbsp;&nbsp;&nbsp;&nbsp;σε πληροφορίες<br>προσωπικού/ασθενών</html>", staff_list);
 
         documents.setBackground(new java.awt.Color(153, 204, 255));
         documents.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
@@ -276,7 +276,7 @@ public class Dashboard_Gramateia extends javax.swing.JFrame {
             Dashboard_LayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Dashboard_LayerLayout.createSequentialGroup()
                 .addComponent(Button_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 638, Short.MAX_VALUE))
+                .addGap(0, 728, Short.MAX_VALUE))
             .addGroup(Dashboard_LayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(Tab_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

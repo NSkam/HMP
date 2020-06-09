@@ -10,6 +10,7 @@ import data.Nosileutis;
 import data.Doctor;
 import data.Clinic;
 import java.util.ArrayList;
+import java.lang.IndexOutOfBoundsException;
 /**
  *
  * @author Nikolaos Skamnelos
@@ -19,9 +20,10 @@ public class Dashboard_Nosileutis extends javax.swing.JFrame {
     /*
      * Creates new form Dashboard_nosileutis
      */
-    Nosileutis nosileutis = new Nosileutis();
-    Clinic c = new Clinic();
-    Doctor doc = new Doctor(69,"Mpamphs o sougias","Ta kanei ola",c);
+    private Clinic Clinic1 = new Clinic("Παθολογική", 200, 1600, 200, 300);
+    Doctor d1 = new Doctor(1234, "Γιώργος Οικονόμου" , "Χειρουργός", Clinic1);
+    Doctor d2 = new Doctor(1235, "Αγγελική Παπαδοπούλου" , "Ενδοκρινολόγος", Clinic1);
+    Doctor d3 = new Doctor(1237, "Νίκος Σηφάκης" , "Παθολόγος", Clinic1);
     
     ArrayList<String> patList = new ArrayList();
     
@@ -267,12 +269,14 @@ public class Dashboard_Nosileutis extends javax.swing.JFrame {
 
     private void SelectPatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectPatButtonActionPerformed
         // TODO add your handling code here:
+        try{
         int Pat_Jlist = Patient_Jlist.getSelectedIndex();
-        Patient patient = doc.getPatientList().get(Pat_Jlist);
+        Patient patient = d1.getPatientList().get(Pat_Jlist);
         
         dispose();
         Nosileutis_options opts = new Nosileutis_options(patient);
         opts.setVisible(true);
+        } catch(java.lang.IndexOutOfBoundsException e){}
             
             
     }//GEN-LAST:event_SelectPatButtonActionPerformed
@@ -280,20 +284,36 @@ public class Dashboard_Nosileutis extends javax.swing.JFrame {
     public void InitPatientList(){
         ArrayList<Patient> temp = new ArrayList(200);
         
-        Patient p1 = new Patient(1,"Spuros",43,"Kapote eixe xtupisei sto odostroma","parton katw",doc,Patient.status_enum.ok);
-        Patient p2 = new Patient(2,"Giwrgos",61,"kapote pe8ane","vlepei ton agio petro",doc,Patient.status_enum.bad);
-        Patient p3 = new Patient(3,"Giannhs",27,"Na nai kala zwi se mas","den 3erw ti na gra4w edw",doc,Patient.status_enum.good);
+        Patient p1 = new Patient(1100, "Ιωάννης Χρίστου", 14, "Κανένα προυπάρχον νόσημα", "Σχετικά καλά", d3, Patient.status_enum.good); //TEST DATA gia astheneis
+        Patient p2 = new Patient(1101, "Λεωνίδας Νικολάου", 15, "Διαβήτης τύπου Α", "Πολύ καλά", d2, Patient.status_enum.good);
+        Patient p3 = new Patient(1102, "Μάριος Χρηστίδης", 45, "Κανένα προυπάρχον νόσημα", "Άσχημα", d3, Patient.status_enum.bad);
+        Patient p4 = new Patient(1103, "Ελένη Μακρή", 61, "Ζάχαρο", "Πολύ άσχημα", d2, Patient.status_enum.very_bad);
+        Patient p5 = new Patient(1104, "Μαρία Λυμπέρη", 11, "Κανένα προυπάρχον νόσημα", "Εξαιρετικά", d3, Patient.status_enum.excellent);
+        Patient p6 = new Patient(1105, "Κώσταντίνος Κυρίτσης", 12, "Καρκίνος στους λεμφαδένες", "Επικείμενος θάνατος", d1, Patient.status_enum.life_threatening);
+        Patient p7 = new Patient(1106, "Αλέξανδρος Βήρας", 13, "Κανένα προυπάρχον νόσημα", "Εξαιρετικά", d3, Patient.status_enum.excellent);
+        Patient p8 = new Patient(1107, "Παναγιώτης Ασωπός", 27, "Υψηλή πίεση, Υψηλή χοληστερίνη", "Πολύ άσχημα", d1, Patient.status_enum.very_bad);
+        Patient p9 = new Patient(1108, "Ελευθέριος Αναστασίου", 37, "Κανένα προυπάρχον νόσημα", "Πολύ καλά", d3, Patient.status_enum.good);
+        Patient p10 = new Patient(1109, "Χριστίνα Πάλλα", 75, "Μη επαρκείς πληροφορίες", "Επικείμενος θάνατος", d1, Patient.status_enum.life_threatening);
         
         temp.add(p1);
         temp.add(p2);
         temp.add(p3);
-        //temp.add(p4);
+        temp.add(p4);
+        temp.add(p5);
+        temp.add(p6);
+        temp.add(p7);
+        temp.add(p8);
+        temp.add(p9);
+        temp.add(p10);
         
-        doc.setPatientList(temp);
+        d1.setPatientList(temp);
+        d2.setPatientList(temp);
+        d3.setPatientList(temp);
+        
         patList.clear();
         int i;
         for (i=0; i<temp.size(); i++){
-            this.patList.add(temp.get(i).getName());
+            this.patList.add(temp.get(i).getName() + "      " + temp.get(i).getAmka());
         }
         
     }
