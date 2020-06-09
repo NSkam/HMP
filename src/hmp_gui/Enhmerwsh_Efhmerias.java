@@ -68,6 +68,7 @@ public class Enhmerwsh_Efhmerias extends javax.swing.JFrame{
         Mhnas = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Προσθήκη εφημερίας");
 
         Enhmerwsh_Efhmerias.setBackground(new java.awt.Color(153, 204, 255));
         Enhmerwsh_Efhmerias.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Προσθήκη εφημερίας", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
