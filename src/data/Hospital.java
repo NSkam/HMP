@@ -10,7 +10,6 @@ public class Hospital {
     private ArrayList<Clinic> Clinics_list = new ArrayList<Clinic>(15); //lista klinikwn nosokomeiou
     private ArrayList<Doctor> Doctors_list = new ArrayList<Doctor>(100); //lista giatrwn nosokomeiou
     private ArrayList<Patient> Patients_list = new ArrayList <Patient>(200); //lista asthenwn nosokomeiou
-    //thelei prosthikh kai allwn stoixewn
     
     //constructor
     public Hospital(String name1, String dname1, ArrayList <Clinic> clist, ArrayList <Doctor> dlist, ArrayList <Patient> plist){

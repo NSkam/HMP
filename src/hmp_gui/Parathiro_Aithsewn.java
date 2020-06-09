@@ -57,7 +57,7 @@ public class Parathiro_Aithsewn extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Patient Info");
+        setTitle("Στοιχεία Αίτησης");
         setLocation(new java.awt.Point(800, 400));
 
         Parath_Aithsewn.setBackground(new java.awt.Color(153, 204, 255));
@@ -343,7 +343,7 @@ public class Parathiro_Aithsewn extends javax.swing.JFrame {
             }else{ //an den arkrun ta krevatia ths klinikhs 
                 appl.setStatus(Application.Status_enum.rejected); //kane thn aithsh rejected
                 Conditional_Message con1 = new Conditional_Message(this);
-                con1.triggerMsg("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Αποτυχία έγκρισης αίτησης. Δεν υπάρχουν διαθέσιμες θέσεις στην κλινική!</html>");
+                con1.triggerMsg("<html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Αποτυχία έγκρισης αίτησης. Δεν υπάρχουν διαθέσιμες κρεβάτια στην κλινική!</html>");
                 con1.setVisible(true);
                 this.setEnabled(false);
             }

@@ -147,6 +147,7 @@ public class Dashboard_Headdoc extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Διευθυντής Κλινικής");
         setBackground(new java.awt.Color(153, 204, 255));
         setLocationByPlatform(true);
 
